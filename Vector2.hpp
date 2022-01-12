@@ -1,6 +1,6 @@
 #include <cmath>
 #include <ostream>
-#include "utils.cpp"
+#include "utils.hpp"
 
 class Vector2 {
     float m_x, m_y;
