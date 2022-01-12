@@ -1,0 +1,13 @@
+N: Test Level 01
+S: 5 5
+T: Default
+L:
+#####
+#a  b
+# C #
+#   #
+##c##
+A:
+a enemy_testEnemy
+b portalLink ???
+c portalLink ???
