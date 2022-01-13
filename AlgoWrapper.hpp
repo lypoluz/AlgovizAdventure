@@ -59,17 +59,17 @@ class AlgoWrapper {
     };*/
 
     // wrapper for Image
-    class Sprite{
+    class Sprite {
         Image image;
     public:
-        Sprite(const std::string path, int x, int y, int w, int h, Window* window) {el = Image(path, x, y, w, h, window);}
+        Sprite(const std::string path, int x, int y, int w, int h, Window* window) {image = Image(path, x, y, w, h, window);}
         Sprite(const std::string path, Vector2 pos, Vector2 dim, Window* window) {Sprite(path, pos.x(), pos.y(), dim.x(), dim.y(), window);}
-        Sprite(const Sprite& sprite) {el = Image(sprite);}
+        Sprite(const Sprite& sprite) {image = Image(sprite);}
 
-        void moveTo(int x, int y) {el.moveTo(x, y);}
+        void moveTo(int x, int y) {image.moveTo(x, y);}
         void moveTo(Vector2 pos) { moveTo(pos.x(), pos.y());}
-        void rotateTo(int alpha) {el.rotateTo(alpha);}
-        void setSize(int w, int h) {el.setSize(w, h);}
+        void rotateTo(int alpha) {image.rotateTo(alpha);}
+        void setSize(int w, int h) {image.setSize(w, h);}
         void setSize(Vector2 dim) { setSize(dim.x(), dim.y());}
     };
 
