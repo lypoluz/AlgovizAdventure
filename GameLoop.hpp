@@ -4,6 +4,7 @@
 #define ALGOVIZADVENTURE_GAMELOOP_HPP
 
 #include "ActiveGameObjects.hpp"
+#include "GameObject.hpp"
 
 class GameLoop {
 

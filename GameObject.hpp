@@ -1,60 +1,79 @@
 // Created by dominik on 12.01.2022.
 
+#ifndef ALGOVIZADVENTURE_GAMEOBJECT_HPP
+#define ALGOVIZADVENTURE_GAMEOBJECT_HPP
 
 #include <string>
 #include <utility>
 #include <vector>
-#include "GameComponent.hpp"
 #include "components/Position.hpp"
-#include "ActiveGameObjects.hpp"
+#include "ObjectStructure.hpp"
+#include "examples/test.hpp"
 
 
-class GameObject {
-    std::vector<GameComponent*> components;
+class GameObject : public ObjectStructure {
+    std::vector<ObjectStructure *> components;
     std::string name{};
 
 public:
     Position* position{}; // required component
 
-    GameObject(ActiveGameObjects *ago, Position *posComp) {
-        ago->add(this);
-        position = posComp;
-        addComponent(*position);
+
+    GameObject(std::string name) {
+        this->name = name;
     }
 
-    void setName(std::string nameStr) {name = std::move(nameStr);}
-    std::string getName() const {return name;}
 
-    template <typename T>
-    T* getComponent() {
-        for (GameComponent* component : components)
-            if (dynamic_cast<T>(*component))
-                return (T*) component;
+    std::string getName() override {
+        return name;
+    }
+
+
+    void addComponent(ObjectStructure* component) override {
+        components.push_back(component);
+    }
+
+    void addPosition(Position * posComp) {
+        position = posComp;
+        addComponent((ObjectStructure*) posComp);
+    }
+
+    ObjectStructure* getComponent(std::string name) override {
+        for (ObjectStructure* component : components)
+            if (component->getName() == name)
+                return component;
         return nullptr;
     }
 
-    void addComponent(GameComponent& component) {
-        components.push_back(&component);
-        component.setGameObject(this);
-    }
 
-    void onStart() {
-        for (GameComponent* component : components)
+    void onStart() override {
+        if(not position) {
+            std::cout << "GameObject " << getName() << " has no 'Position' component" << std::endl;
+            runtimeError(stringBuilder({"GameObject", getName(), "has no 'Position' component"}));
+        }
+        for (ObjectStructure* component : components)
             component->onStart();
     }
-    void preUpdate() {
-        for (GameComponent* component : components)
+    void preUpdate() override {
+        for (ObjectStructure* component : components)
             component->preUpdate();
     }
-    void update() {
-        for (GameComponent* component : components)
+    void update() override {
+        for (ObjectStructure* component : components)
             component->update();
     }
-    void postUpdate() {
-        for (GameComponent* component : components)
+    void postUpdate() override {
+        for (ObjectStructure* component : components)
             component->postUpdate();
     }
+    void onDestroy() override {
+        for (ObjectStructure* component : components)
+            component->onDestroy();
+    }
+
 
 
 
 };
+
+#endif

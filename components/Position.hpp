@@ -10,13 +10,11 @@ class Position : public GameComponent {
     Vector2 position;
     bool dirty{};
 
-    void preUpdate() override {dirty = false;}
-
-
 public:
-    explicit Position(Vector2 pos) { moveTo(pos);}
-    Position(float x, float y) {Position(Vector2(x,y));}
-    Position() {Position(Vector2().zero());}
+    Position(ObjectStructure* os) : GameComponent(os) {}
+
+    void preUpdate() override {dirty = false;}
+    std::string getName() override {return "Position";}
 
     Vector2 getPosition() {return position;}
     float x() {return position.x();}
