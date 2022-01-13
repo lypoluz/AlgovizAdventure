@@ -2,6 +2,7 @@
 
 
 #include <string>
+#include <utility>
 #include <vector>
 #include "GameComponent.hpp"
 #include "components/Position.hpp"
@@ -15,8 +16,11 @@ protected:
 public:
     Position* position; // required component
 
-    GameObject(ActiveGameObjects& ago) {
+    GameObject(ActiveGameObjects& ago, Position* posComp, std::vector<GameComponent *> comps=std::vector<GameComponent*>{}) {
         ago.add(this);
+        position = posComp;
+        components = std::move(comps);
+        addComponent(*position);
     }
 
 
