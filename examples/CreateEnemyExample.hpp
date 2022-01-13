@@ -5,6 +5,7 @@
 
 #include "GameObject.hpp"
 #include "ActiveGameObjects.hpp"
+#include "CreateTestComponent.hpp"
 
 void myFunction(ActiveGameObjects& ago) {
 
@@ -26,9 +27,14 @@ void myFunction(ActiveGameObjects& ago) {
      * Die 'Position'-Komponente wird von jedem 'GameObject' benötigt und muss mit der speziellen Funktion
      * 'addPosition' übergeben werden.
      */
-    Position positionComponent = Position();
+    Position positionComponent = Position(&myEnemy);
     myEnemy.addPosition(&positionComponent);
 
+    /*
+     * Jetzt können wir unsere Beispiel-Komponente 'CreateTestComponent' hinzufügen.
+     */
+    CreateTestComponent testComp = CreateTestComponent(&myEnemy);
+    myEnemy.addComponent((ObjectStructure*)&testComp);
 
 
 
