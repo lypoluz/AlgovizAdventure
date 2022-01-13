@@ -7,4 +7,4 @@ include_directories(.)
 
 add_executable(AlgovizAdventure
         GameComponent.hpp
-        GameComponent.h GameObjects/Player.hpp components/Position.hpp GameInitializer.hpp GameLoop.hpp ActiveComponents.hpp ActiveGameObjects.hpp AlgoWrapper.hpp AlgoViz.h)
+        GameComponent.h gameObjects/Player.hpp components/Position.hpp GameInitializer.hpp GameLoop.hpp ActiveComponents.hpp ActiveGameObjects.hpp AlgoWrapper.hpp AlgoViz.h)
