@@ -4,6 +4,7 @@ class GameObject;
 
 class GameComponent {
 
+
 protected:
     GameObject* gameObject{};
 
@@ -14,7 +15,9 @@ public:
     GameObject* getGameObject() {return gameObject;}
 
     virtual void onStart() {}
+    virtual void preUpdate() {}
     virtual void update() {}
+    virtual void postUpdate() {}
 
 };
 

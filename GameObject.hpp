@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include "GameComponent.hpp"
+#include "components/Position.hpp"
+#include "ActiveGameObjects.hpp"
 
 
 class GameObject {
@@ -11,7 +13,11 @@ protected:
     std::vector<GameComponent*> components;
 
 public:
-    GameComponent* position;
+    Position* position;
+
+    GameObject(ActiveGameObjects& ago) {
+        ago.add(this);
+    }
 
 
     template <typename T>
@@ -31,8 +37,17 @@ public:
         for (GameComponent* component : components)
             component->onStart();
     }
+    void preUpdate() {
+        for (GameComponent* component : components)
+            component->preUpdate();
+    }
     void update() {
         for (GameComponent* component : components)
             component->update();
     }
+    void postUpdate() {
+        for (GameComponent* component : components)
+            component->postUpdate();
+    }
+
 };
