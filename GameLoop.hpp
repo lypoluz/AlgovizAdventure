@@ -14,9 +14,12 @@ class GameLoop {
     }
 
     void update() {
-        for (GameObject* obj : ago->getActive()) {obj->preUpdate();}
-        for (GameObject* obj : ago->getActive()) {obj->update();}
-        for (GameObject* obj : ago->getActive()) {obj->postUpdate();}
+        for (GameObject* obj : ago->getActive())
+            obj->preUpdate();
+        for (GameObject* obj : ago->getActive())
+            obj->update();
+        for (GameObject* obj : ago->getActive())
+            obj->postUpdate();
     }
 
 

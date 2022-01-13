@@ -13,7 +13,7 @@ protected:
     std::vector<GameComponent*> components;
 
 public:
-    Position* position;
+    Position* position; // required compo
 
     GameObject(ActiveGameObjects& ago) {
         ago.add(this);
