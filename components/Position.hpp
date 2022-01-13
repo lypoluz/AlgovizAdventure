@@ -3,8 +3,8 @@
 #ifndef ALGOVIZADVENTURE_POSITION_HPP
 #define ALGOVIZADVENTURE_POSITION_HPP
 
-#include "GameComponent.hpp"
-#include "Vector2.hpp"
+#include "../GameComponent.hpp"
+#include "../Vector2.hpp"
 
 class Position : public GameComponent {
     Vector2 position;
@@ -14,6 +14,10 @@ class Position : public GameComponent {
 
 
 public:
+    explicit Position(Vector2 pos) { moveTo(pos);}
+    Position(float x, float y) {Position(Vector2(x,y));}
+    Position() {Position(Vector2().zero());}
+
     Vector2 getPosition() {return position;}
     float x() {return position.x();}
     float y() {return position.y();}

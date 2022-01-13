@@ -1,5 +1,8 @@
 // created by dominik
 
+#ifndef ALGOVIZADVENTURE_GAMECOMPONENT_HPP
+#define ALGOVIZADVENTURE_GAMECOMPONENT_HPP
+
 class GameObject;
 
 class GameComponent {
@@ -21,3 +24,4 @@ public:
 
 };
 
+#endif

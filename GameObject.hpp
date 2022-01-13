@@ -10,19 +10,20 @@
 
 
 class GameObject {
-protected:
     std::vector<GameComponent*> components;
+    std::string name{};
 
 public:
-    Position* position; // required component
+    Position* position{}; // required component
 
-    GameObject(ActiveGameObjects& ago, Position* posComp, std::vector<GameComponent *> comps=std::vector<GameComponent*>{}) {
-        ago.add(this);
+    GameObject(ActiveGameObjects *ago, Position *posComp) {
+        ago->add(this);
         position = posComp;
-        components = std::move(comps);
         addComponent(*position);
     }
 
+    void setName(std::string nameStr) {name = std::move(nameStr);}
+    std::string getName() const {return name;}
 
     template <typename T>
     T* getComponent() {
@@ -53,5 +54,7 @@ public:
         for (GameComponent* component : components)
             component->postUpdate();
     }
+
+
 
 };
