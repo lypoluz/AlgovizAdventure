@@ -15,7 +15,7 @@ public:
     GameObject* getGameObject() {return gameObject;}
 
     virtual void onStart() {}
-    virtual void preUpdate() {}
+    virtual void preUpdate() {} // shouldn't be used
     virtual void update() {}
     virtual void postUpdate() {}
 
