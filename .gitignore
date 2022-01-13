@@ -1,4 +1,3 @@
 /cmake-build-debug/
 /.idea/
 examples/test.hpp
-.gitignore
