@@ -9,6 +9,8 @@ class Roomlink{
     int posX;
     int posY;
 
+public:
+
     Roomlink(std::string name, std::string target, int posX, int posY){
         this->name = name;
         this->target = target;
@@ -16,7 +18,6 @@ class Roomlink{
         this->posY = posY;
     }
 
-public:
 
     std::string getName(){
         return name;
