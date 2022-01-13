@@ -4,7 +4,7 @@
 #define ALGOVIZADVENTURE_ACTIVEGAMEOBJECTS_HPP
 
 #include <vector>
-class GameObject;
+#include "GameObject.hpp"
 
 class ActiveGameObjects {
     std::vector<GameObject *> activeObjects;

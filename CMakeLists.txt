@@ -5,6 +5,15 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(AlgovizAdventure
+add_executable(
         GameComponent.hpp
-        GameComponent.h gameObjects/Player.hpp components/Position.hpp GameInitializer.hpp GameLoop.hpp ActiveComponents.hpp ActiveGameObjects.hpp AlgoWrapper.hpp AlgoViz.h)
+        components/Position.hpp
+        GameInitializer.hpp
+        GameLoop.hpp
+        ActiveGameObjects.hpp
+        AlgoWrapper.hpp
+        examples/CreateEnemyExample.hpp
+        examples/CreateTestComponent.hpp
+        ObjectStructure.hpp
+        examples/test.hpp
+        )
