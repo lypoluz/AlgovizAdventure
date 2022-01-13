@@ -11,7 +11,7 @@ class Position : public GameComponent {
     bool dirty{};
 
 public:
-    Position(ObjectStructure* os) : GameComponent(os) {}
+    explicit Position(ObjectStructure* os) : GameComponent(os) {}
 
     void preUpdate() override {dirty = false;}
     std::string getName() override {return "Position";}
