@@ -15,5 +15,5 @@ add_executable(
         examples/CreateEnemyExample.hpp
         examples/CreateTestComponent.hpp
         ObjectStructure.hpp
-        examples/test.hpp
+
         )
