@@ -1,0 +1,3 @@
+B:/scripte/cpp/aud/AlgovizAdventure/cmake-build-debug/CMakeFiles/AlgovizAdventure.dir
+B:/scripte/cpp/aud/AlgovizAdventure/cmake-build-debug/CMakeFiles/edit_cache.dir
+B:/scripte/cpp/aud/AlgovizAdventure/cmake-build-debug/CMakeFiles/rebuild_cache.dir

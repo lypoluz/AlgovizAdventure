@@ -1,0 +1,13 @@
+B:\Programme\Jetbrains\apps\CLion\ch-0\213.6461.75\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=B:/Programme/Jetbrains/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe -G Ninja B:\scripte\cpp\aud\AlgovizAdventure
+-- Configuring done
+CMake Error at CMakeLists.txt:8 (add_executable):
+  Cannot find source file:
+
+    GameComponent.h
+
+
+CMake Error at CMakeLists.txt:8 (add_executable):
+  No SOURCES given to target: AlgovizAdventure
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
