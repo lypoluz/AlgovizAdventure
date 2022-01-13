@@ -11,9 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f984bda-689a-4766-9c71-9e7519e2154a" name="Changes" comment="folder rename">
-      <change beforePath="$PROJECT_DIR$/AlgoWrapper.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/AlgoWrapper.hpp" afterDir="false" />
-    </list>
+    <list default="true" id="4f984bda-689a-4766-9c71-9e7519e2154a" name="Changes" comment="gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +42,7 @@
   </component>
   <component name="ProjectId" id="23bWcKP1FMjlgAD6nL33YftBvl7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -92,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1642003345037</updated>
-      <workItem from="1642003346315" duration="17212000" />
+      <workItem from="1642003346315" duration="17520000" />
     </task>
     <task id="LOCAL-00001" summary="test level 02">
       <created>1642023464650</created>
@@ -220,7 +219,35 @@
       <option name="project" value="LOCAL" />
       <updated>1642059304310</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="naming">
+      <created>1642069019924</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1642069019924</updated>
+    </task>
+    <task id="LOCAL-00020" summary="unversioned stoff">
+      <created>1642069102459</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1642069102459</updated>
+    </task>
+    <task id="LOCAL-00021" summary="gitignore">
+      <created>1642069183333</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1642069183333</updated>
+    </task>
+    <task id="LOCAL-00022" summary="gitignore">
+      <created>1642069244608</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1642069244608</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +283,10 @@
     <MESSAGE value="game loop class structure" />
     <MESSAGE value="window (svg) and sprite (image)" />
     <MESSAGE value="folder rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="folder rename" />
+    <MESSAGE value="naming" />
+    <MESSAGE value="unversioned stoff" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
