@@ -44,6 +44,12 @@ public:
     void onDestroy() override {
         std::cout << "Ich wurde zerstört!" << std::endl;
     }
+
+
+    /*
+     * In CLion kann jede der Methoden, außer dem Konstruktor, durch die Tastenkombination STRG+O eingefügt werden, wenn
+     * die Klasse von 'GameComponent' erbt.
+     */
 };
 
 #endif //ALGOVIZADVENTURE_CREATETESTCOMPONENT_HPP
