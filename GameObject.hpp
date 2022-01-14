@@ -8,6 +8,7 @@
 #include <vector>
 #include "components/Position.hpp"
 #include "ObjectStructure.hpp"
+#include "utils.hpp"
 
 
 
@@ -47,10 +48,9 @@ public:
 
 
     void onStart() override {
-        if(not position) {
-            std::cout << "GameObject " << getName() << " has no 'Position' component" << std::endl;
+        if(not position)
             runtimeError(stringBuilder({"GameObject", getName(), "has no 'Position' component"}));
-        }
+
         for (ObjectStructure* component : components)
             component->onStart();
     }
