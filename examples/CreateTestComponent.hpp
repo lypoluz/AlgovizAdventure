@@ -15,6 +15,10 @@ public:
     explicit CreateTestComponent(ObjectStructure* os) : GameComponent(os) {}
 
 
+    // 'getName' sollte sen Namen der Klasse zurückgeben. Diese Funktion muss definiert werden.
+    std::string getName() override {return "CreateTestComponent";}
+
+
     // 'onStart', wird aufgerufen, sobald eine Instanz von der Komponente erstellt wird und in dem Spiel zu sehen ist.
     void onStart() override {
         std::cout << "Ich erwache!" << std::endl;
