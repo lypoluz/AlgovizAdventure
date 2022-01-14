@@ -8,7 +8,7 @@
 #include <vector>
 #include "components/Position.hpp"
 #include "ObjectStructure.hpp"
-#include "examples/test.hpp"
+
 
 
 class GameObject : public ObjectStructure {

@@ -3,7 +3,7 @@
 #ifndef ALGOVIZADVENTURE_GAMECOMPONENT_HPP
 #define ALGOVIZADVENTURE_GAMECOMPONENT_HPP
 
-#include "GameObject.hpp"
+#include "ObjectStructure.hpp"
 
 class GameComponent : public ObjectStructure {
 protected:
