@@ -3,6 +3,7 @@
 #ifndef ALGOVIZADVENTURE_CREATETESTCOMPONENT_HPP
 #define ALGOVIZADVENTURE_CREATETESTCOMPONENT_HPP
 
+#include <iostream>
 #include "../GameComponent.hpp"
 
 class CreateTestComponent : public GameComponent {
