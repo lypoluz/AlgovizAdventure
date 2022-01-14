@@ -9,7 +9,9 @@
 #include "Vector2.hpp"
 
 class AlgoWrapper {
+public:
     void clear() {AlgoViz::clear();}
+    void algoText(std::string txt) {AlgoViz::sendText(txt);}
 
     // wrapper for SVG
     class Window {
@@ -46,31 +48,44 @@ class AlgoWrapper {
         void drawText(const std::string& text, Vector2 pos, int fontSize=16, const std::string& fontFamily="sans-serif") {drawText(text,pos.x(),pos.y(),fontSize,fontFamily);}
         void drawImage(const std::string& href, int x, int y, int width, int height) {svg.drawImage(href,x,y,width,height);}
         void drawImage(const std::string& href, Vector2 pos, Vector2 dim) { drawImage(href, pos.x(), pos.y(), dim.x(), dim.y());}
+
+        std::string lastKey() const {return svg.lastKey();}
     };
 
-    /* wrapper for SVGElement
+    // wrapper for SVGElement
      class WindowElement {
-     protected:
-         SVGElement& el;
      public:
-         int getId() {return el.getId();}
-         virtual int getX() {return el.getX();}
-         virtual int getY() {return el.getY();}
-    };*/
+         virtual int getX() = 0;
+         virtual int getY() = 0;
+         virtual void moveTo(Vector2 pos) = 0;
+         virtual void moveBy(Vector2 amount) = 0;
+         virtual void rotateTo(int alpha) = 0;
+         virtual void toFront() = 0;
+         virtual void hide() = 0;
+         virtual void show() = 0;
+         virtual void removeFromView() = 0;
+    };
 
     // wrapper for Image
-    class Sprite {
-        Image image;
+    class Sprite : public WindowElement {
+        Image image{};
     public:
-        Sprite(const std::string path, int x, int y, int w, int h, Window* window) {image = Image(path, x, y, w, h, window);}
-        Sprite(const std::string path, Vector2 pos, Vector2 dim, Window* window) {Sprite(path, pos.x(), pos.y(), dim.x(), dim.y(), window);}
+        Sprite(const std::string& path, int x, int y, int w, int h, Window* window) {image = Image(path, x, y, w, h, window);}
+        Sprite(const std::string& path, Vector2 pos, Vector2 dim, Window* window) : Sprite(path, pos.x(), pos.y(), dim.x(), dim.y(), window){}
         Sprite(const Sprite& sprite) {image = Image(sprite);}
 
+        int getX() override {return image.getX();}
+        int getY() override {return image.getY();}
         void moveTo(int x, int y) {image.moveTo(x, y);}
-        void moveTo(Vector2 pos) { moveTo(pos.x(), pos.y());}
-        void rotateTo(int alpha) {image.rotateTo(alpha);}
+        void moveTo(Vector2 pos) override { moveTo(pos.x(), pos.y());}
+        void moveBy(Vector2 amount) override {image.moveBy/amount.x(), }
+        void rotateTo(int alpha) override {image.rotateTo(alpha);}
         void setSize(int w, int h) {image.setSize(w, h);}
         void setSize(Vector2 dim) { setSize(dim.x(), dim.y());}
+        void hide() override {image.hide();}
+        void show() override {image.show();}
+        void removeFromView() override {image.removeFromView();}
+
     };
 
 };
