@@ -1,3 +1,7 @@
+#ifndef ALGOVIZADVENTURE_UTILS_CPP
+#define ALGOVIZADVENTURE_UTILS_CPP
+
+
 #include <cstdlib>
 #include <vector>
 #include <string>
@@ -17,3 +21,5 @@ std::string stringBuilder(const std::vector<std::string>& strs) {
 void runtimeError(const std::string& errmsg) {
     throw std::runtime_error(errmsg);
 }
+
+#endif // ALGOVIZADVENTURE_UTILS_CPP
