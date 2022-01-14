@@ -12,6 +12,7 @@
 
 
 
+
 class GameObject : public ObjectStructure {
     std::vector<ObjectStructure *> components;
     std::string name{};
