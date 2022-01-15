@@ -59,7 +59,6 @@ public:
             component->preUpdate();
     }
     void update() override {
-        AlgoWrapper::algoText("update");
         for (ObjectStructure* component : components)
             component->update();
     }

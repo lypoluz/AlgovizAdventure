@@ -19,6 +19,10 @@ public:
     void setColor(int r, int g, int b, float a=1) {circle.setColor(r,g,b,a);}
     void setStrokeWidth(int width) {circle.setStrokeWidth(width);}
 
+    void update() override {
+
+        AlgoWrapper::algoText("update cRenderer");
+    }
 
 };
 
