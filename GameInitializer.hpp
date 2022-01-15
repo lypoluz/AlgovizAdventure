@@ -46,7 +46,7 @@ public:
         // create position component
         auto* position = new Position(player);
         player->addPosition(position);
-        player->position->moveTo(Vector2(windowSize/2, windowSize/2));
+        player->position->moveTo(Vector2(100, 100));
 
         // movement
         auto* movement = new Movement(player);
