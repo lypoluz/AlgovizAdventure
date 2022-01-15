@@ -1,17 +1,18 @@
 //
 // Created by tobia on 14.01.2022.
 //
+
+
+#ifndef ALGOVIZADVENTURE_LEVELPARSER_HPP
+#define ALGOVIZADVENTURE_LEVELPARSER_HPP
+
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <vector>
 #include "Level.hpp"
-#include "../Roomlink.hpp"
+#include "Roomlink.hpp"
 #include <map>
-
-
-#ifndef ALGOVIZADVENTURE_LEVELPARSER_HPP
-#define ALGOVIZADVENTURE_LEVELPARSER_HPP
 
 class LevelParser{
 
