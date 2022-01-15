@@ -18,12 +18,10 @@ public:
         SVG svg;
     public:
         Window() {}
-        Window(int width, int height, int gWidth, int gHeight, std::string title="Algoviz Adventure") {
-            svg = SVG(width, height, gWidth, gHeight, title);
-        }
-        Window(int width, int height, std::string title="Algoviz Adventure") {
-            svg = SVG(width, height, title);
-        }
+        Window(int width, int height, int gWidth, int gHeight, std::string title="Algoviz Adventure") :
+            svg(SVG(width, height, gWidth, gHeight, title)) {}
+        Window(int width, int height, std::string title="Algoviz Adventure") :
+            svg(SVG(width, height, title)) {}
 
         SVG* getSvg() {return &svg;}
 
