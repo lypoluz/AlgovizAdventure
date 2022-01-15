@@ -16,7 +16,7 @@ class Health : public GameComponent {
     gameObject* o;
 
     explicit Health(ObjectStructure* ob) : GameComponent(ob){
-        o = gameObject
+        o = gameObject;
     }
 
     void setHealth(int newHealth){health = newHealth;}
