@@ -4,13 +4,19 @@
 #define ALGOVIZADVENTURE_GAMECOMPONENT_HPP
 
 #include "ObjectStructure.hpp"
+#include "GTime.hpp"
 
 class GameComponent : public ObjectStructure {
 protected:
     ObjectStructure* gameObject{};
+    GTime* gTime;
 
 public:
-    explicit GameComponent(ObjectStructure* gameObj) {gameObject = gameObj; name = typeid(*this).name();}
+    explicit GameComponent(ObjectStructure* gameObj) {
+        gameObject = gameObj;
+        name = typeid(*this).name();
+        gTime = GTime::getInstance();
+    }
     ObjectStructure* getGameObject() {return gameObject;}
 
     void addComponent(ObjectStructure* component) override {gameObject->addComponent(component);}

@@ -9,7 +9,6 @@
 #include "components/Position.hpp"
 #include "ObjectStructure.hpp"
 #include "utils.cpp"
-#include "AlgoWrapper.hpp"
 
 
 class GameObject : public ObjectStructure {

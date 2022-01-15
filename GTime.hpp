@@ -5,16 +5,22 @@
 
 
 class GTime {
-private:
     std::chrono::time_point<std::chrono::system_clock> startTime{};
     std::chrono::time_point<std::chrono::system_clock> lastTime{};
     double lastDelta{};
     long timeFactor{};
 
+    GTime() = default;
+
 public:
-    explicit GTime(long timeFactor=1000000000) {
+
+    static GTime* getInstance() {
+        static GTime instance;
+        return &instance;
+    }
+
+    void setTimeFactor(long timeFactor=1000000000) {
         this->timeFactor = timeFactor;
-        setStart();
     }
 
     void setStart() {
@@ -24,7 +30,7 @@ public:
 
     void setDelta() {
         auto now = std::chrono::high_resolution_clock::now();
-        lastDelta = (double) (now - lastTime).count() * timeFactor;
+        lastDelta = (double) (now - lastTime).count() / timeFactor;
         lastTime = now;
 
     }
@@ -36,7 +42,7 @@ public:
 
     // returns total run time
     double runTime() {
-        return (double) (lastTime - startTime).count() * timeFactor;
+        return (double) (lastTime - startTime).count() / timeFactor;
     }
 
 };

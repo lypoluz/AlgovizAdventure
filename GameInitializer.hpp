@@ -17,19 +17,25 @@ class GameInitializer {
     ActiveGameObjects ago;
     int windowSize = 1000;
     AlgoWrapper::Window window;
-    float playerSpeed = 20;
+    float playerSpeed = 150;
     GameObject* player;
     GTime* gTime;
 
 public:
     GameInitializer() {
-        ago = ActiveGameObjects();
+        createReferences();
         windowCreation();
         createPlayerInstance();
         loadItems();
         loadEnemies();
         loadLevel();
         startGameLoop();
+    }
+
+    void createReferences() {
+        ago = ActiveGameObjects();
+        gTime = GTime::getInstance();
+        gTime->setTimeFactor();
     }
 
     void windowCreation() {
@@ -88,7 +94,6 @@ public:
 
     void startGameLoop() {
         AlgoWrapper::algoText("start game loop");
-        gTime = new GTime();
         GameLoop gameLoop(&ago);
         gameLoop.setPlayer(player);
         gameLoop.setGTime(gTime);

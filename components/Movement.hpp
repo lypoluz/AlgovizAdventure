@@ -8,13 +8,13 @@
 #include "../GameObject.hpp"
 #include "../GTime.hpp"
 #include "../GameLoop.hpp"
+#include "../AlgoWrapper.hpp"
 
 
 class Movement : public GameComponent {
 
     Position* position;
     float speed;
-    GTime* gTime{};
 
 
 public:
@@ -23,12 +23,9 @@ public:
         speed = 1;
     }
 
-    void onStart() override {
-        gTime = GameLoop::getInstance()->getGTime();
-    }
-
     void setSpeed(float newSpeed) {speed = newSpeed;}
     void MoveInDirection(Vector2 direction) {
+        AlgoWrapper::algoText(std::to_string(gTime->deltaTime()));
         position->moveBy(direction.normalized()*speed*gTime->deltaTime());
     }
 
