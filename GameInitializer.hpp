@@ -11,6 +11,7 @@
 #include "components/CircleRenderer.hpp"
 #include "components/EntityScript.hpp"
 #include "GTime.hpp"
+#include "Engine.hpp"
 
 class GameInitializer {
 
@@ -34,7 +35,7 @@ public:
 
     void createReferences() {
         ago = ActiveGameObjects();
-        gTime = GTime::getInstance();
+        gTime = new GTime();
         gTime->setTimeFactor();
     }
 
@@ -94,6 +95,12 @@ public:
 
     void startGameLoop() {
         AlgoWrapper::algoText("start game loop");
+
+        Engine* engine = Engine::getInstance();
+        engine->setPlayer(player);
+        engine->setAGO(&ago);
+        engine->setGTime(gTime);
+
         GameLoop gameLoop(&ago);
         gameLoop.setPlayer(player);
         gameLoop.setGTime(gTime);

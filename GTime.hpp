@@ -10,15 +10,7 @@ class GTime {
     double lastDelta{};
     long timeFactor{};
 
-    GTime() = default;
-
 public:
-
-    static GTime* getInstance() {
-        static GTime instance;
-        return &instance;
-    }
-
     void setTimeFactor(long timeFactor=1000000000) {
         this->timeFactor = timeFactor;
     }
@@ -36,7 +28,7 @@ public:
     }
 
     // returns the time difference in seconds between last two time points
-    double deltaTime() {
+    double deltaTime() const {
         return lastDelta;
     }
 

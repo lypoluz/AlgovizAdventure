@@ -5,6 +5,7 @@
 
 #include "ObjectStructure.hpp"
 #include "GTime.hpp"
+#include "Engine.hpp"
 
 class GameComponent : public ObjectStructure {
 protected:
@@ -15,7 +16,7 @@ public:
     explicit GameComponent(ObjectStructure* gameObj) {
         gameObject = gameObj;
         name = typeid(*this).name();
-        gTime = GTime::getInstance();
+        gTime = Engine::getInstance()->getGTime();
     }
     ObjectStructure* getGameObject() {return gameObject;}
 
