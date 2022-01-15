@@ -8,10 +8,12 @@
 #include "GTime.hpp"
 
 class GameLoop {
-
+    static GameLoop* gameLoop;
     ActiveGameObjects* ago;
     GameObject* player;
+
     GTime* gTime;
+
 
     void update() {
         for (GameObject* obj : ago->getActive())
@@ -21,10 +23,8 @@ class GameLoop {
         for (GameObject* obj : ago->getActive())
             obj->postUpdate();
     }
-
-
 public:
-    static GameLoop* gameLoop;
+
     explicit GameLoop(ActiveGameObjects* ago) {
         gameLoop = this;
         this->ago = ago;
@@ -44,6 +44,7 @@ public:
         }
     }
 
+    static GameLoop* getGameLoop() {return gameLoop;}
     ActiveGameObjects* getAGO() {return ago;}
     GTime* getGTime() {return gTime;}
 };
