@@ -41,9 +41,9 @@ public:
 
     void switchInputMap(InputMap newInputMap) {inputMap = std::move(newInputMap);}
 
-    Vector2 getMoveVector() {return (currentVec + lastVec).normalized();}
-    bool isAttacking() {return lastKey == inputMap.attack;}
-    bool isPickingUp() {return lastKey == inputMap.pickUp;}
+    Vector2 getMoveVector() override {return (currentVec + lastVec).normalized();}
+    bool isAttacking() override {return lastKey == inputMap.attack;}
+    bool isPickingUp() override {return lastKey == inputMap.pickUp;}
     std::string getRawInput() {return lastKey;}
 };
 

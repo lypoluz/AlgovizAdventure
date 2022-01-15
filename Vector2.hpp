@@ -1,3 +1,7 @@
+#ifndef ALGOVIZADVENTURE_VECTOR2_HPP
+#define ALGOVIZADVENTURE_VECTOR2_HPP
+
+
 #include <cmath>
 #include <ostream>
 #include "utils.cpp"
@@ -26,7 +30,8 @@ public:
 
     Vector2 normalized() const {
         float length = magnitude();
-        return {m_x / length, m_y/length};
+        if(length == 0) return zero();
+        return {m_x / length, m_y / length};
     }
 
     float magnitude() const {
@@ -37,6 +42,9 @@ public:
         return m_x * other.x() + m_y * other.y();
     }
 
+    std::string toString() const {
+        return stringBuilder({"(", std::to_string(m_x), ", ", std::to_string(m_y), ")"});
+    }
 
     // Vector2 with Vector2 operators
     bool operator<(const Vector2 &rhs) const {return magnitude() < rhs.magnitude();}
@@ -67,6 +75,8 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& stream, const Vector2& vec) {
-    stream << "(" << vec.x() << ", " << vec.y() << ")";
+    stream << vec.toString();
     return stream;
 }
+
+#endif // ALGOVIZADVENTURE_VECTOR2_HPP

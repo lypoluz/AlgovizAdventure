@@ -17,14 +17,13 @@ public:
     class Window {
         SVG svg;
     public:
-        Window(int width, int height, int gWidth, int gHeight, std::string title="Algoviz Adventure") {
-            svg = SVG(width, height, gWidth, gHeight, title);
-        }
-        Window(int width, int height, std::string title="Algoviz Adventure") {
-            svg = SVG(width, height, title);
-        }
+        Window() {}
+        Window(int width, int height, int gWidth, int gHeight, std::string title="Algoviz Adventure") :
+            svg(SVG(width, height, gWidth, gHeight, title)) {}
+        Window(int width, int height, std::string title="Algoviz Adventure") :
+            svg(SVG(width, height, title)) {}
 
-        SVG getSvg() {return svg;}
+        SVG* getSvg() {return &svg;}
 
         int getWidth() { return svg.getWidth();}
         int getHeight() { return svg.getHeight();}
@@ -51,7 +50,7 @@ public:
         void drawImage(const std::string& href, int x, int y, int width, int height) {svg.drawImage(href,x,y,width,height);}
         void drawImage(const std::string& href, Vector2 pos, Vector2 dim) { drawImage(href, pos.x(), pos.y(), dim.x(), dim.y());}
 
-        std::string lastKey() const {return svg.lastKey();}
+        std::string lastKey() {return svg.lastKey();}
     };
 
     // wrapper for SVGElement
@@ -76,21 +75,21 @@ public:
         Image image;
     public:
         Sprite(const std::string& path, int x, int y, int w, int h, Window* window) {image = Image(path, x, y, w, h, window->getSvg());}
-        Sprite(const std::string& path, Vector2 pos, Vector2 dim, Window* window) : Sprite(path, pos.x(), pos.y(), dim.x(), dim.y(), window->getSvg()){}
+        Sprite(const std::string& path, Vector2 pos, Vector2 dim, Window* window) : Sprite(path, pos.x(), pos.y(), dim.x(), dim.y(), window){}
         Sprite(const Sprite& sprite) {image = Image(image);}
 
         int getX() override {return image.getX();}
         int getY() override {return image.getY();}
         void moveTo(int x, int y) {image.moveTo(x, y);}
         void moveTo(Vector2 pos) override { moveTo(pos.x(), pos.y());}
-        void moveBy(Vector2 amount) override {image.moveBy/amount.x(), }
+        void moveBy(Vector2 amount) override {image.moveBy(amount.x(), amount.y());}
         void rotateTo(int alpha) override {image.rotateTo(alpha);}
         void hide() override {image.hide();}
         void show() override {image.show();}
         void removeFromView() override {image.removeFromView();}
-        void setColor (int r, int g, int b, float a) override {image.setColor(r,g,b,a)};
-        void setFill (int r, int g, int b, float a) override {image.setFill(r,g,b,a)};
-        void setStrokeWidth (int width) override {image.setStrokeWidth(width)};
+        void setColor (int r, int g, int b, float a) override {image.setColor(r,g,b,a);};
+        void setFill (int r, int g, int b, float a) override {image.setFill(r,g,b,a);};
+        void setStrokeWidth (int width) override {image.setStrokeWidth(width);};
 
         void setSize(int w, int h) {image.setSize(w, h);}
         void setSize(Vector2 dim) { setSize(dim.x(), dim.y());}
@@ -112,9 +111,9 @@ public:
         void hide() override {circle.hide();}
         void show() override {circle.show();}
         void removeFromView() override {circle.removeFromView();}
-        void setColor (int r, int g, int b, float a) override {circle.setColor(r,g,b,a)};
-        void setFill (int r, int g, int b, float a) override {circle.setFill(r,g,b,a)};
-        void setStrokeWidth (int width) override {circle.setStrokeWidth(width)};
+        void setColor (int r, int g, int b, float a) override {circle.setColor(r,g,b,a);};
+        void setFill (int r, int g, int b, float a) override {circle.setFill(r,g,b,a);};
+        void setStrokeWidth (int width) override {circle.setStrokeWidth(width);};
 
 
         void setRadius(int radius) {circle.setRadius(radius);}
