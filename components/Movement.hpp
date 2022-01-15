@@ -8,6 +8,7 @@
 #include "../GameObject.hpp"
 #include "../GTime.hpp"
 #include "../GameLoop.hpp"
+#include "../AlgoWrapper.hpp"
 
 
 class Movement : public GameComponent {
@@ -24,6 +25,7 @@ public:
 
     void setSpeed(float newSpeed) {speed = newSpeed;}
     void MoveInDirection(Vector2 direction) {
+        AlgoWrapper::algoText(std::to_string(gTime->deltaTime()));
         position->moveBy(direction.normalized()*speed*gTime->deltaTime());
     }
 
