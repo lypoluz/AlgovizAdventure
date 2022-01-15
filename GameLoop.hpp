@@ -5,10 +5,13 @@
 
 #include "ActiveGameObjects.hpp"
 #include "GameObject.hpp"
+#include "GTime.hpp"
 
 class GameLoop {
 
     ActiveGameObjects* ago;
+    GameObject* player;
+    GTime* gTime;
 
     void update() {
         for (GameObject* obj : ago->getActive())
@@ -19,18 +22,30 @@ class GameLoop {
             obj->postUpdate();
     }
 
+
 public:
-    [[noreturn]] explicit GameLoop(ActiveGameObjects* ago) {
+    static GameLoop* gameLoop;
+    explicit GameLoop(ActiveGameObjects* ago) {
+        gameLoop = this;
         this->ago = ago;
-        for (GameObject* obj : ago->getActive()) {
+    }
+
+    void setPlayer(GameObject* pPlayer) {player = pPlayer;}
+    void setGTime(GTime *pTime) {gTime = pTime;}
+
+    [[noreturn]] void startGameLoop() {
+        for (GameObject* obj : ago->getActive())
             obj->onStart();
-        }
+
+        gTime->setStart();
         while (true) {
+            gTime->setDelta();
             update();
         }
     }
 
-
+    ActiveGameObjects* getAGO() {return ago;}
+    GTime* getGTime() {return gTime;}
 };
 
 #endif //ALGOVIZADVENTURE_GAMELOOP_HPP

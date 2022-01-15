@@ -10,13 +10,16 @@
 #include "GameLoop.hpp"
 #include "components/CircleRenderer.hpp"
 #include "components/EntityScript.hpp"
+#include "GTime.hpp"
 
 class GameInitializer {
 
     ActiveGameObjects ago;
     int windowSize = 1000;
     AlgoWrapper::Window window;
-    float playerSpeed = 1;
+    float playerSpeed = 20;
+    GameObject* player;
+    GTime* gTime;
 
 public:
     GameInitializer() {
@@ -40,13 +43,13 @@ public:
         AlgoWrapper::algoText("create player");
 
         // create player instance
-        auto* player = new GameObject("Player");
+        player = new GameObject("Player");
         ago.add(player);
 
         // create position component
         auto* position = new Position(player);
         player->addPosition(position);
-        player->position->moveTo(Vector2(100, 100));
+        player->position->moveTo(Vector2(windowSize/2, windowSize/2));
 
         // movement
         auto* movement = new Movement(player);
@@ -81,16 +84,15 @@ public:
 
     void loadLevel() {
         AlgoWrapper::algoText("load level");
-
     }
 
     void startGameLoop() {
         AlgoWrapper::algoText("start game loop");
-
+        gTime = new GTime();
         GameLoop gameLoop(&ago);
-
-
-
+        gameLoop.setPlayer(player);
+        gameLoop.setGTime(gTime);
+        gameLoop.startGameLoop();
     }
 
 };
