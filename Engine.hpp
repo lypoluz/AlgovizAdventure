@@ -24,7 +24,7 @@ public:
     void setGTime(GTime* gt) {gTime = gt;}
     GTime* getGTime() {return gTime;}
 
-    void setPlayer(GameObject* p) {player = p;}
+    void setPlayer(ObjectStructure* p) {player = p;}
     ObjectStructure* getPlayer() {return player;}
 
     void setAGO(ActiveGameObjects* a) {ago = a;}
