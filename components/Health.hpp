@@ -21,7 +21,7 @@ class Health : public GameComponent {
 
     void update() override {
         if (health == 0){
-            ActiveGameObjects::remove(gameObject);
+//            ActiveGameObjects::remove(gameObject);
         }
     }
 };
