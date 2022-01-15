@@ -13,7 +13,6 @@
 class Health : public GameComponent {
 
     int health;
-    GameObject* o;
 
     explicit Health(ObjectStructure* ob) : GameComponent(ob){
     }
@@ -21,8 +20,8 @@ class Health : public GameComponent {
     void setHealth(int newHealth){health = newHealth;}
 
     void update() override {
-        if(health == 0){
-            ActiveGameObjects::remove(o);
+        if (health == 0){
+            ActiveGameObjects::remove(gameObject);
         }
     }
 };
