@@ -10,10 +10,6 @@ class GameLoop {
 
     ActiveGameObjects* ago;
 
-    GameLoop(ActiveGameObjects* ago) {
-        this->ago = ago;
-    }
-
     void update() {
         for (GameObject* obj : ago->getActive())
             obj->preUpdate();
@@ -21,6 +17,17 @@ class GameLoop {
             obj->update();
         for (GameObject* obj : ago->getActive())
             obj->postUpdate();
+    }
+
+public:
+    [[noreturn]] explicit GameLoop(ActiveGameObjects* ago) {
+        this->ago = ago;
+        for (GameObject* obj : ago->getActive()) {
+            obj->onStart();
+        }
+        while (true) {
+            update();
+        }
     }
 
 

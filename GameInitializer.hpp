@@ -4,33 +4,91 @@
 #define ALGOVIZADVENTURE_GAMEINITIALIZER_HPP
 
 #include "ActiveGameObjects.hpp"
+#include "AlgoWrapper.hpp"
+#include "Movement.hpp"
+#include "PlayerInputController.hpp"
+#include "GameLoop.hpp"
+#include "CircleRenderer.hpp"
 
 class GameInitializer {
 
     ActiveGameObjects ago;
+    int windowSize = 1000;
+    AlgoWrapper::Window window;
+    float playerSpeed = 1;
+
 
     GameInitializer() {
         ago = ActiveGameObjects();
         windowCreation();
-        setupControls();
         createPlayerInstance();
+        loadItems();
+        loadEnemies();
+        loadLevel();
         startGameLoop();
     }
 
     void windowCreation() {
-
+        AlgoWrapper::clear();
+        AlgoWrapper::algoText("window creation");
+        window = AlgoWrapper::Window(windowSize, windowSize, "scene");
     }
 
-    void setupControls() {
-
-    }
 
     void createPlayerInstance() {
+        AlgoWrapper::algoText("create player");
 
-        // ago.add(playerInstance);
+        // create player instance
+        auto* player = new GameObject("Player");
+        ago.add(player);
+
+        // create position component
+        auto* position = new Position(player);
+        player->addPosition(position);
+        player->position->moveTo(Vector2(windowSize/2, windowSize/2));
+
+        // movement
+        auto* movement = new Movement(player);
+        movement->setSpeed(playerSpeed);
+        player->addComponent(movement);
+
+        // player input
+        auto* playerInputController = new PlayerInputController(player, window);
+        player->addComponent(playerInputController);
+
+        // player script
+        auto* playerScript = new EntityController(player, playerInputController, movement);
+        player->addComponent(playerScript);
+
+        // renderer
+        auto* renderer = new CircleRenderer(player, window);
+        renderer->setFill(0,0,255);
+        renderer->setRadius(windowSize/20);
+        player->addComponent(renderer);
+
+    }
+
+    void loadItems() {
+        AlgoWrapper::algoText("load items");
+
+    }
+
+    void loadEnemies() {
+        AlgoWrapper::algoText("load enemies");
+
+    }
+
+    void loadLevel() {
+        AlgoWrapper::algoText("load level");
+
     }
 
     void startGameLoop() {
+        AlgoWrapper::algoText("start game loop");
+
+        GameLoop gameLoop(&ago);
+
+
 
     }
 

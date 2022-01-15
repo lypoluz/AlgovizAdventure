@@ -9,13 +9,15 @@ include_directories(components/abstract)
 include_directories(examples)
 
 add_executable(AlgovizAdventure
+        components/abstract/EntityController.hpp
         components/abstract/Renderer.hpp
         components/abstract/Weapon.hpp
         components/BasicAi.hpp
-        components/InputController.hpp
+        components/CircleRenderer.hpp
+        components/EntityScript.hpp
         components/Level.hpp
         components/Movement.hpp
-        components/PlayerScript.hpp
+        components/PlayerInputController.hpp
         components/Position.hpp
         components/SpriteRenderer.hpp
         examples/CreateEnemyExample.hpp
