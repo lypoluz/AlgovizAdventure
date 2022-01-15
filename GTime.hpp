@@ -42,7 +42,7 @@ public:
 
     // returns total run time
     double runTime() {
-        return (double) (lastTime - startTime).count() * timeFactor;
+        return (double) (lastTime - startTime).count() / timeFactor;
     }
 
 };
