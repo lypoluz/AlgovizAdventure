@@ -24,6 +24,8 @@ public:
             svg = SVG(width, height, title);
         }
 
+        SVG getSvg() {return svg;}
+
         int getWidth() { return svg.getWidth();}
         int getHeight() { return svg.getHeight();}
         void setViewBox(int x, int y, int w, int h, std::string aspect="") {svg.setViewBox(x,y,w,h,aspect);}
@@ -64,15 +66,18 @@ public:
          virtual void hide() = 0;
          virtual void show() = 0;
          virtual void removeFromView() = 0;
+         virtual void setColor(int r, int g, int b, float a) = 0;
+         virtual void setFill(int r, int g, int b, float a) = 0;
+         virtual void setStrokeWidth(int width) = 0;
     };
 
     // wrapper for Image
     class Sprite : public WindowElement {
-        Image image{};
+        Image image;
     public:
-        Sprite(const std::string& path, int x, int y, int w, int h, Window* window) {image = Image(path, x, y, w, h, window);}
-        Sprite(const std::string& path, Vector2 pos, Vector2 dim, Window* window) : Sprite(path, pos.x(), pos.y(), dim.x(), dim.y(), window){}
-        Sprite(const Sprite& sprite) {image = Image(sprite);}
+        Sprite(const std::string& path, int x, int y, int w, int h, Window* window) {image = Image(path, x, y, w, h, window->getSvg());}
+        Sprite(const std::string& path, Vector2 pos, Vector2 dim, Window* window) : Sprite(path, pos.x(), pos.y(), dim.x(), dim.y(), window->getSvg()){}
+        Sprite(const Sprite& sprite) {image = Image(image);}
 
         int getX() override {return image.getX();}
         int getY() override {return image.getY();}
@@ -80,12 +85,39 @@ public:
         void moveTo(Vector2 pos) override { moveTo(pos.x(), pos.y());}
         void moveBy(Vector2 amount) override {image.moveBy/amount.x(), }
         void rotateTo(int alpha) override {image.rotateTo(alpha);}
-        void setSize(int w, int h) {image.setSize(w, h);}
-        void setSize(Vector2 dim) { setSize(dim.x(), dim.y());}
         void hide() override {image.hide();}
         void show() override {image.show();}
         void removeFromView() override {image.removeFromView();}
+        void setColor (int r, int g, int b, float a) override {image.setColor(r,g,b,a)};
+        void setFill (int r, int g, int b, float a) override {image.setFill(r,g,b,a)};
+        void setStrokeWidth (int width) override {image.setStrokeWidth(width)};
 
+        void setSize(int w, int h) {image.setSize(w, h);}
+        void setSize(Vector2 dim) { setSize(dim.x(), dim.y());}
+    };
+
+    // wrapper for circle
+    class CircleShape : public WindowElement {
+        Circle circle;
+    public:
+        CircleShape(Vector2 pos, int radius, Window* window) {circle = Circle(pos.x(), pos.y(), radius, window->getSvg());}
+        CircleShape(const CircleShape& cs) {circle = Circle(circle);}
+
+        int getX() override { return circle.getX(); }
+        int getY() override {return circle.getY();}
+        void moveTo(Vector2 pos) override {circle.moveTo(pos.x(), pos.y());}
+        void moveBy(Vector2 amount) override {circle.moveBy(amount.x(), amount.y());}
+        void rotateTo(int alpha) override {circle.rotateTo(alpha);}
+        void toFront() override {circle.toFront();}
+        void hide() override {circle.hide();}
+        void show() override {circle.show();}
+        void removeFromView() override {circle.removeFromView();}
+        void setColor (int r, int g, int b, float a) override {circle.setColor(r,g,b,a)};
+        void setFill (int r, int g, int b, float a) override {circle.setFill(r,g,b,a)};
+        void setStrokeWidth (int width) override {circle.setStrokeWidth(width)};
+
+
+        void setRadius(int radius) {circle.setRadius(radius);}
     };
 
 };
