@@ -1,7 +1,7 @@
 // Created by Lypoluz (Dominik) on 14.01.2022.
 
-#ifndef ALGOVIZADVENTURE_INPUTCONTROLLER_HPP
-#define ALGOVIZADVENTURE_INPUTCONTROLLER_HPP
+#ifndef ALGOVIZADVENTURE_PLAYERINPUTCONTROLLER_HPP
+#define ALGOVIZADVENTURE_PLAYERINPUTCONTROLLER_HPP
 
 #include <utility>
 
@@ -9,9 +9,10 @@
 #include "Vector2.hpp"
 #include "AlgoWrapper.hpp"
 #include "InputMap.hpp"
+#include "EntityController.hpp"
 
 
-class InputController : public GameComponent {
+class PlayerInputController : public EntityController {
     Vector2 currentVec;
     Vector2 lastVec;
     AlgoWrapper::Window* window;
@@ -19,7 +20,7 @@ class InputController : public GameComponent {
     std::string lastKey;
 
 public:
-    InputController(ObjectStructure * os, AlgoWrapper::Window* win) : GameComponent(os) {
+    PlayerInputController(ObjectStructure * os, AlgoWrapper::Window* win) : EntityController(os) {
         currentVec = Vector2::zero();
         lastVec = Vector2::zero();
         window = win;
@@ -40,10 +41,10 @@ public:
 
     void switchInputMap(InputMap newInputMap) {inputMap = std::move(newInputMap);}
 
-    Vector2 getInputVector() {return (currentVec + lastVec).normalized();}
+    Vector2 getMoveVector() {return (currentVec + lastVec).normalized();}
     bool isAttacking() {return lastKey == inputMap.attack;}
     bool isPickingUp() {return lastKey == inputMap.pickUp;}
     std::string getRawInput() {return lastKey;}
 };
 
-#endif //ALGOVIZADVENTURE_INPUTCONTROLLER_HPP
+#endif //ALGOVIZADVENTURE_PLAYERINPUTCONTROLLER_HPP

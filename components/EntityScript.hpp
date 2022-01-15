@@ -1,19 +1,19 @@
 // Created by Lypoluz (Dominik) on 14.01.2022.
 
-#ifndef ALGOVIZADVENTURE_PLAYERSCRIPT_HPP
-#define ALGOVIZADVENTURE_PLAYERSCRIPT_HPP
+#ifndef ALGOVIZADVENTURE_ENTITYSCRIPT_HPP
+#define ALGOVIZADVENTURE_ENTITYSCRIPT_HPP
 
 
 #include <utility>
 
 #include "../GameComponent.hpp"
-#include "InputController.hpp"
+#include "PlayerInputController.hpp"
 #include "Movement.hpp"
 #include "abstract/Weapon.hpp"
 
 
-class PlayerScript : public GameComponent {
-    InputController* inputController;
+class EntityScript : public GameComponent {
+    EntityController* inputController;
     Movement* movement;
     Weapon* currentWeapon;
     /*Inventory* inventory;
@@ -26,15 +26,15 @@ class PlayerScript : public GameComponent {
     }*/
 
 public:
-    PlayerScript(ObjectStructure* os, InputController* ic, Movement* m/*, Inventory* i*/) : GameComponent(os) {
-        inputController = ic;
+    EntityScript(ObjectStructure* os, EntityController* ec, Movement* m/*, Inventory* i*/) : GameComponent(os) {
+        inputController = ec;
         movement = m;
         //inventory = i;
     }
 
     void update() override {
         // movement
-        movement->MoveInDirection(inputController->getInputVector());
+        movement->MoveInDirection(inputController->getMoveVector());
 
         // attack
         if (inputController->isAttacking() && currentWeapon)
@@ -48,9 +48,7 @@ public:
         }*/
     }
 
-    void switchInputMap(InputMap newInputMap) {inputController->switchInputMap(std::move(newInputMap));}
-
 
 };
 
-#endif //ALGOVIZADVENTURE_PLAYERSCRIPT_HPP
+#endif //ALGOVIZADVENTURE_ENTITYSCRIPT_HPP
