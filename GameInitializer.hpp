@@ -23,14 +23,19 @@ class GameInitializer {
 
 public:
     GameInitializer() {
-        ago = ActiveGameObjects();
-        gTime = new GTime();
+        createReferences();
         windowCreation();
         createPlayerInstance();
         loadItems();
         loadEnemies();
         loadLevel();
         startGameLoop();
+    }
+
+    void createReferences() {
+        ago = ActiveGameObjects();
+        gTime = GTime::getInstance();
+        gTime->setTimeFactor();
     }
 
     void windowCreation() {

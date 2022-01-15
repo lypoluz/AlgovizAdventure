@@ -5,22 +5,23 @@
 
 
 class GTime {
-private:
-    static GTime* instance;
-
     std::chrono::time_point<std::chrono::system_clock> startTime{};
     std::chrono::time_point<std::chrono::system_clock> lastTime{};
     double lastDelta{};
     long timeFactor{};
 
+    GTime() = default;
+
 public:
-    explicit GTime(long timeFactor=1000000000) {
-        instance = this;
-        this->timeFactor = timeFactor;
-        setStart();
+
+    static GTime* getInstance() {
+        static GTime instance;
+        return &instance;
     }
 
-    static GTime* getInstance() {return instance;}
+    void setTimeFactor(long timeFactor=1000000000) {
+        this->timeFactor = timeFactor;
+    }
 
     void setStart() {
         startTime = std::chrono::high_resolution_clock::now();
