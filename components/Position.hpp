@@ -37,7 +37,7 @@ public:
     bool isDirty() {return dirty;}
 
     void postUpdate() override {
-        AlgoWrapper::algoText(position.toString());
+        AlgoWrapper::algoText(std::to_string(position.x()));
     }
 };
 
