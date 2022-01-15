@@ -17,7 +17,7 @@ class GameInitializer {
     ActiveGameObjects ago;
     int windowSize = 1000;
     AlgoWrapper::Window window;
-    float playerSpeed = 20;
+    float playerSpeed = 150;
     GameObject* player;
     GTime* gTime;
 
