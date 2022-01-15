@@ -4,12 +4,12 @@
 #define ALGOVIZADVENTURE_ENGINE_HPP
 
 #include "GTime.hpp"
-#include "GameObject.hpp"
+#include "ObjectStructure.hpp"
 #include "ActiveGameObjects.hpp"
 
 class Engine {
     GTime* gTime{};
-    GameObject* player{};
+    ObjectStructure* player{};
     ActiveGameObjects* ago;
     // Audio* audio;
 
@@ -25,7 +25,7 @@ public:
     GTime* getGTime() {return gTime;}
 
     void setPlayer(GameObject* p) {player = p;}
-    GameObject* getPlayer() {return player;}
+    ObjectStructure* getPlayer() {return player;}
 
     void setAGO(ActiveGameObjects* a) {ago = a;}
     ActiveGameObjects* getAGO() {return ago;}
