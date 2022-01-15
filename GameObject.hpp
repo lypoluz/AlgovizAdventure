@@ -9,8 +9,7 @@
 #include "components/Position.hpp"
 #include "ObjectStructure.hpp"
 #include "utils.cpp"
-
-
+#include "AlgoWrapper.hpp"
 
 
 class GameObject : public ObjectStructure {
@@ -60,6 +59,7 @@ public:
             component->preUpdate();
     }
     void update() override {
+        AlgoWrapper::algoText("update");
         for (ObjectStructure* component : components)
             component->update();
     }
