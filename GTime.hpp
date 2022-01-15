@@ -30,7 +30,7 @@ public:
 
     void setDelta() {
         auto now = std::chrono::high_resolution_clock::now();
-        lastDelta = (double) (now - lastTime).count() * timeFactor;
+        lastDelta = (double) (now - lastTime).count() /* timeFactor*/;
         lastTime = now;
 
     }
