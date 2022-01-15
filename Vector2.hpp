@@ -41,6 +41,9 @@ public:
         return m_x * other.x() + m_y * other.y();
     }
 
+    std::string toString() const {
+        return stringBuilder({"(", std::to_string(m_x), ", ", std::to_string(m_y), ")"});
+    }
 
     // Vector2 with Vector2 operators
     bool operator<(const Vector2 &rhs) const {return magnitude() < rhs.magnitude();}
@@ -71,7 +74,7 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& stream, const Vector2& vec) {
-    stream << "(" << vec.x() << ", " << vec.y() << ")";
+    stream << vec.toString();
     return stream;
 }
 
