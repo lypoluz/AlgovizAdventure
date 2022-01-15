@@ -6,22 +6,30 @@
 #include "../GameComponent.hpp"
 #include "Position.hpp"
 #include "../GameObject.hpp"
+#include "../GTime.hpp"
+#include "../GameLoop.hpp"
+
 
 class Movement : public GameComponent {
 
     Position* position;
     float speed;
+    GTime* gTime{};
 
 
 public:
-    Movement(ObjectStructure* os) : GameComponent(os) {
+    explicit Movement(ObjectStructure* os) : GameComponent(os) {
         position = ((GameObject*)gameObject)->position;
         speed = 1;
     }
 
+    void onStart() override {
+        gTime = GameLoop::getInstance()->getGTime();
+    }
+
     void setSpeed(float newSpeed) {speed = newSpeed;}
     void MoveInDirection(Vector2 direction) {
-        position->moveBy(direction.normalized()*speed);
+        position->moveBy(direction.normalized()*speed*gTime->deltaTime());
     }
 
 };
