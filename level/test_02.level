@@ -1,6 +1,13 @@
-N: test_level_02
-S: 10 11
-T: Lush
+N:
+test_level_02
+S:
+10 11
+T:
+Lush
+A:
+a roomlink link_test_level_02_left link_test_level_01_right
+b enemy test_enemy_light
+c enemy test_enemy_strong
 L:
 ###########
 # b #   #C#
@@ -12,7 +19,3 @@ a  ## #   #
 #       c #
 #     c  c#
 ###########
-A:
-a roomlink link_test_level_02_left link_test_level_01_right
-b enemy test_enemy_light
-c enemy test_enemy_strong

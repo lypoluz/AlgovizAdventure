@@ -1,12 +1,15 @@
-N: test_level_1
-S: 5 5
-T: Default
+N:
+test_level_1
+S:
+5 5
+T:
+Default
+A:
+a enemy enemy_testEnemy
+b roomlink link_test_level_01_right link_test_level_02_left
 L:
 #####
 #a  b
 # C #
 #   #
 #####
-A:
-a enemy enemy_testEnemy
-b roomlink link_test_level_01_right link_test_level_02_left
