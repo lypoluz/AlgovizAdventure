@@ -9,6 +9,7 @@
 #include "components/PlayerInputController.hpp"
 #include "GameLoop.hpp"
 #include "components/CircleRenderer.hpp"
+#include "components/EntityScript.hpp"
 
 class GameInitializer {
 
@@ -17,7 +18,7 @@ class GameInitializer {
     AlgoWrapper::Window window;
     float playerSpeed = 1;
 
-
+public:
     GameInitializer() {
         ago = ActiveGameObjects();
         windowCreation();
@@ -53,15 +54,15 @@ class GameInitializer {
         player->addComponent(movement);
 
         // player input
-        auto* playerInputController = new PlayerInputController(player, window);
+        auto* playerInputController = new PlayerInputController(player, &window);
         player->addComponent(playerInputController);
 
         // player script
-        auto* playerScript = new EntityController(player, playerInputController, movement);
+        auto* playerScript = new EntityScript(player, playerInputController, movement);
         player->addComponent(playerScript);
 
         // renderer
-        auto* renderer = new CircleRenderer(player, window);
+        auto* renderer = new CircleRenderer(player, &window);
         renderer->setFill(0,0,255);
         renderer->setRadius(windowSize/20);
         player->addComponent(renderer);

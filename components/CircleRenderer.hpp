@@ -10,9 +10,8 @@ class CircleRenderer : public Renderer {
     AlgoWrapper::CircleShape circle;
 
 public:
-    CircleRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {
-        circle = AlgoWrapper::CircleShape(Vector2::zero(), 1, window);
-        element = circle;
+    CircleRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win), circle(AlgoWrapper::CircleShape(Vector2::zero(), 1, window)) {
+        element = &circle;
     }
 
     void setRadius(int r) {circle.setRadius(r);}

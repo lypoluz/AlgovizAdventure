@@ -1,3 +1,7 @@
+#ifndef ALGOVIZADVENTURE_VECTOR2_HPP
+#define ALGOVIZADVENTURE_VECTOR2_HPP
+
+
 #include <cmath>
 #include <ostream>
 #include "utils.cpp"
@@ -70,3 +74,5 @@ std::ostream& operator<<(std::ostream& stream, const Vector2& vec) {
     stream << "(" << vec.x() << ", " << vec.y() << ")";
     return stream;
 }
+
+#endif // ALGOVIZADVENTURE_VECTOR2_HPP
