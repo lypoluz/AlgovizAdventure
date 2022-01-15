@@ -35,10 +35,6 @@ public:
     void rotateBy(float angle) {rotation += angle;}
 
     bool isDirty() {return dirty;}
-
-    void postUpdate() override {
-        AlgoWrapper::algoText(std::to_string(position.x()));
-    }
 };
 
 #endif //ALGOVIZADVENTURE_POSITION_HPP
