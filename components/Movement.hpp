@@ -24,7 +24,7 @@ public:
     }
 
     void onStart() override {
-        gTime = GameLoop::getGameLoop()->getGTime();
+        gTime = GameLoop::getInstance()->getGTime();
     }
 
     void setSpeed(float newSpeed) {speed = newSpeed;}

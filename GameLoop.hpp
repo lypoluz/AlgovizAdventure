@@ -8,12 +8,12 @@
 #include "GTime.hpp"
 
 class GameLoop {
-    static GameLoop* gameLoop;
+    static GameLoop* instance;
     ActiveGameObjects* ago;
     GameObject* player;
-
     GTime* gTime;
 
+    GameLoop() = delete;
 
     void update() {
         for (GameObject* obj : ago->getActive())
@@ -26,7 +26,7 @@ class GameLoop {
 public:
 
     explicit GameLoop(ActiveGameObjects* ago) {
-        gameLoop = this;
+        instance = this;
         this->ago = ago;
     }
 
@@ -44,9 +44,10 @@ public:
         }
     }
 
-    static GameLoop* getGameLoop() {return gameLoop;}
+    static GameLoop* getInstance() {return instance;}
     ActiveGameObjects* getAGO() {return ago;}
     GTime* getGTime() {return gTime;}
+    GameObject* getPlayer() {return player;}
 };
 
 #endif //ALGOVIZADVENTURE_GAMELOOP_HPP
