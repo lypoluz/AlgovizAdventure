@@ -5,7 +5,7 @@
 
 #include "../GameComponent.hpp"
 #include "../Vector2.hpp"
-#include "AlgoWrapper.hpp"
+#include "../AlgoWrapper.hpp"
 
 class Position : public GameComponent {
     Vector2 position;
