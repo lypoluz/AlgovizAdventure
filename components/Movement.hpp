@@ -9,7 +9,7 @@
 #include "../GTime.hpp"
 #include "../GameLoop.hpp"
 #include "../AlgoWrapper.hpp"
-
+#include "../Engine.hpp"
 
 class Movement : public GameComponent {
 
@@ -25,6 +25,7 @@ public:
 
     void setSpeed(float newSpeed) {speed = newSpeed;}
     void MoveInDirection(Vector2 direction) {
+        gTime = Engine::getInstance()->getGTime();
         AlgoWrapper::algoText(std::to_string(gTime->deltaTime()));
         position->moveBy(direction.normalized()*speed*gTime->deltaTime());
     }
