@@ -7,6 +7,7 @@
 #include <vector>
 #include "Level.hpp"
 #include "../Roomlink.hpp"
+#include <map>
 
 
 #ifndef ALGOVIZADVENTURE_LEVELPARSER_HPP
@@ -23,8 +24,8 @@ public:
         int ySize;
         std::string theme = "Default";
         std::vector <std::vector<char>> levelVector;
+        std::map<char, std::string> specialSymbols;
         // todo add roomlink map
-        // todo add special symbol map
 
         std::ifstream levelFile(pathToLevel);
         std::string currentLine;
@@ -44,7 +45,11 @@ public:
                     theme = currentLine;
                     break;
                 case 'A':
-                    // code block
+                    std::getline(levelFile, currentLine);
+                    for (int i = 0; i < std::stoi(currentLine); ++i) {
+                        std::getline(levelFile, currentLine);
+                        specialSymbols[currentLine[0]] = currentLine.substr(2,currentLine.length()-1);
+                    }
                     break;
                 case 'L':
                     for (int i = 0; i < ySize; ++i) {
@@ -61,7 +66,7 @@ public:
             }
         }
         levelFile.close();
-        return Level(name, xSize, ySize, theme, levelVector);
+        return Level(name, xSize, ySize, theme, specialSymbols, levelVector);
     }
 
 };

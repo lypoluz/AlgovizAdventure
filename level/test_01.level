@@ -5,6 +5,7 @@ S:
 T:
 Default
 A:
+2
 a enemy enemy_testEnemy
 b roomlink link_test_level_01_right link_test_level_02_left
 L:
