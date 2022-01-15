@@ -14,7 +14,6 @@ class Movement : public GameComponent {
 
     Position* position;
     float speed;
-    GTime* gTime{};
 
 
 public:

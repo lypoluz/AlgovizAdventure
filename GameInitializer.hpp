@@ -24,6 +24,7 @@ class GameInitializer {
 public:
     GameInitializer() {
         ago = ActiveGameObjects();
+        gTime = new GTime();
         windowCreation();
         createPlayerInstance();
         loadItems();
@@ -88,7 +89,6 @@ public:
 
     void startGameLoop() {
         AlgoWrapper::algoText("start game loop");
-        gTime = new GTime();
         GameLoop gameLoop(&ago);
         gameLoop.setPlayer(player);
         gameLoop.setGTime(gTime);
