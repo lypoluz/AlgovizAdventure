@@ -30,7 +30,8 @@ public:
 
     Vector2 normalized() const {
         float length = magnitude();
-        return {m_x / length, m_y/length};
+        if(length == 0) return zero();
+        return {m_x / length, m_y / length};
     }
 
     float magnitude() const {
