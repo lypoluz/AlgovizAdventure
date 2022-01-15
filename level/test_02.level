@@ -5,6 +5,7 @@ S:
 T:
 Lush
 A:
+3
 a roomlink link_test_level_02_left link_test_level_01_right
 b enemy test_enemy_light
 c enemy test_enemy_strong
