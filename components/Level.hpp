@@ -27,7 +27,7 @@ struct Level {
 
     // Gibt einen Character an der Gewünschten Position zurück
     char getCharAt(int x, int y){
-        return levelVector;
+        return levelVector[x][y];
     }
 
 };
