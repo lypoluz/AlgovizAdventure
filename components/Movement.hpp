@@ -22,10 +22,6 @@ public:
         speed = 1;
     }
 
-    void onStart() override {
-        gTime = GameLoop::getInstance()->getGTime();
-    }
-
     void setSpeed(float newSpeed) {speed = newSpeed;}
     void MoveInDirection(Vector2 direction) {
         position->moveBy(direction.normalized()*speed*gTime->deltaTime());
