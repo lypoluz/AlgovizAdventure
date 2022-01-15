@@ -5,6 +5,7 @@
 
 #include "../GameComponent.hpp"
 #include "../Vector2.hpp"
+#include "AlgoWrapper.hpp"
 
 class Position : public GameComponent {
     Vector2 position;
@@ -34,6 +35,10 @@ public:
     void rotateBy(float angle) {rotation += angle;}
 
     bool isDirty() {return dirty;}
+
+    void postUpdate() override {
+        AlgoWrapper::algoText(position.toString());
+    }
 };
 
 #endif //ALGOVIZADVENTURE_POSITION_HPP
