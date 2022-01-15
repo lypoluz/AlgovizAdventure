@@ -5,10 +5,10 @@
 
 #include "ActiveGameObjects.hpp"
 #include "AlgoWrapper.hpp"
-#include "Movement.hpp"
-#include "PlayerInputController.hpp"
+#include "components/Movement.hpp"
+#include "components/PlayerInputController.hpp"
 #include "GameLoop.hpp"
-#include "CircleRenderer.hpp"
+#include "components/CircleRenderer.hpp"
 
 class GameInitializer {
 

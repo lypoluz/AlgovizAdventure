@@ -3,9 +3,9 @@
 #ifndef ALGOVIZADVENTURE_MOVEMENT_HPP
 #define ALGOVIZADVENTURE_MOVEMENT_HPP
 
-#include "GameComponent.hpp"
+#include "../GameComponent.hpp"
 #include "Position.hpp"
-#include "GameObject.hpp"
+#include "../GameObject.hpp"
 
 class Movement : public GameComponent {
 

@@ -3,7 +3,7 @@
 #ifndef ALGOVIZADVENTURE_CIRCLERENDERER_HPP
 #define ALGOVIZADVENTURE_CIRCLERENDERER_HPP
 
-#include "Renderer.hpp"
+#include "abstract/Renderer.hpp"
 
 class CircleRenderer : public Renderer {
 

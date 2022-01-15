@@ -3,8 +3,8 @@
 #ifndef ALGOVIZADVENTURE_ENTITYCONTROLLER_HPP
 #define ALGOVIZADVENTURE_ENTITYCONTROLLER_HPP
 
-#include "GameComponent.hpp"
-#include "Vector2.hpp"
+#include "../../GameComponent.hpp"
+#include "../../Vector2.hpp"
 
 class EntityController : public GameComponent {
 

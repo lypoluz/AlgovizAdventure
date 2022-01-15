@@ -5,11 +5,11 @@
 
 #include <utility>
 
-#include "GameComponent.hpp"
-#include "Vector2.hpp"
-#include "AlgoWrapper.hpp"
-#include "InputMap.hpp"
-#include "EntityController.hpp"
+#include "../GameComponent.hpp"
+#include "../Vector2.hpp"
+#include "../AlgoWrapper.hpp"
+#include "../InputMap.hpp"
+#include "abstract/EntityController.hpp"
 
 
 class PlayerInputController : public EntityController {

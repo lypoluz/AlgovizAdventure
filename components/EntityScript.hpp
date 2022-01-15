@@ -5,7 +5,6 @@
 
 
 #include <utility>
-
 #include "../GameComponent.hpp"
 #include "PlayerInputController.hpp"
 #include "Movement.hpp"
