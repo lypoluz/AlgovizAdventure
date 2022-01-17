@@ -1,3 +1,5 @@
+// Created by Lypoluz (Dominik)
+
 #ifndef ALGOVIZADVENTURE_VECTOR2_HPP
 #define ALGOVIZADVENTURE_VECTOR2_HPP
 
