@@ -3,6 +3,7 @@
 #ifndef ALGOVIZADVENTURE_GAMEINITIALIZER_HPP
 #define ALGOVIZADVENTURE_GAMEINITIALIZER_HPP
 
+#include <map>
 #include "ActiveGameObjects.hpp"
 #include "AlgoWrapper.hpp"
 #include "components/Movement.hpp"
@@ -12,18 +13,29 @@
 #include "components/EntityScript.hpp"
 #include "GTime.hpp"
 #include "Engine.hpp"
+#include "ConfigParser.hpp"
 
 class GameInitializer {
 
-    ActiveGameObjects ago;
-    int windowSize = 1000;
-    AlgoWrapper::Window window;
-    float playerSpeed = 150;
-    GameObject* player;
-    GTime* gTime;
+    ActiveGameObjects ago{};
+    AlgoWrapper::Window window{};
+    GameObject* player{};
+    GTime* gTime{};
 
 public:
-    GameInitializer() {
+    int windowSize = 1000;
+    float playerSpeed = 150;
+    bool funnyEnemies = false;
+
+    explicit GameInitializer(const std::map<std::string, std::string>& config) {
+        ConfigParser cp(&config);
+        windowSize = cp.stringToIntOrDefault("windowSize", windowSize);
+        playerSpeed = cp.stringToFloatOrDefault("playerSpeed", playerSpeed);
+        funnyEnemies = cp.stringToBoolOrDefault("funnyEnemies", funnyEnemies);
+    }
+
+
+    void initialize() {
         createReferences();
         windowCreation();
         createPlayerInstance();
