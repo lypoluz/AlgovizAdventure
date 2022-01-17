@@ -6,9 +6,9 @@
 #include <string>
 #include <utility>
 #include <vector>
-#include "components/Position.hpp"
+#include "../components/Position.hpp"
 #include "ObjectStructure.hpp"
-#include "utils.cpp"
+#include "../utils.cpp"
 
 
 class GameObject : public ObjectStructure {

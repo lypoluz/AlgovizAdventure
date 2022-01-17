@@ -3,7 +3,7 @@
 #ifndef ALGOVIZADVENTURE_POSITION_HPP
 #define ALGOVIZADVENTURE_POSITION_HPP
 
-#include "engine/GameComponent.hpp"
+#include "../engine/GameComponent.hpp"
 #include "../Vector2.hpp"
 
 class Position : public GameComponent {
@@ -13,31 +13,50 @@ class Position : public GameComponent {
     bool dirty{};
 
 public:
-    explicit Position(ObjectStructure* os) : GameComponent(os) {
+    explicit Position(ObjectStructure *os) : GameComponent(os) {
         lastPosition = Vector2::zero();
         position = Vector2::zero();
         rotation = 0;
     }
 
-    void preUpdate() override {dirty = false;}
-    std::string getName() override {return "Position";}
+    void preUpdate() override { dirty = false; }
 
-    Vector2 getLastMoveVector() {return position - lastPosition;}
-    Vector2 getPosition() {return position;}
-    float x() {return position.x();}
-    float y() {return position.y();}
+    std::string getName() override { return "Position"; }
 
-    int getRotation() {return rotation;}
+    Vector2 getLastMoveVector() { return position - lastPosition; }
 
-    void moveTo(Vector2 newPos) {lastPosition = position; position = newPos; dirty = true;}
-    void moveTo(float x, float y) { moveTo(Vector2(x,y));}
-    void moveBy(Vector2 amount) {lastPosition = position; position += amount; dirty = true;}
-    void moveBy(float x, float y) {moveBy(Vector2(x,y));}
+    Vector2 getPosition() { return position; }
 
-    void rotateTo(float angle) {rotation = angle; dirty = true;}
-    void rotateBy(float angle) {rotation += angle;}
+    float x() { return position.x(); }
 
-    bool isDirty() {return dirty;}
+    float y() { return position.y(); }
+
+    int getRotation() { return rotation; }
+
+    void moveTo(Vector2 newPos) {
+        lastPosition = position;
+        position = newPos;
+        dirty = true;
+    }
+
+    void moveTo(float x, float y) { moveTo(Vector2(x, y)); }
+
+    void moveBy(Vector2 amount) {
+        lastPosition = position;
+        position += amount;
+        dirty = true;
+    }
+
+    void moveBy(float x, float y) { moveBy(Vector2(x, y)); }
+
+    void rotateTo(float angle) {
+        rotation = angle;
+        dirty = true;
+    }
+
+    void rotateBy(float angle) { rotation += angle; }
+
+    bool isDirty() { return dirty; }
 };
 
 #endif //ALGOVIZADVENTURE_POSITION_HPP

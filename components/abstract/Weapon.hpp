@@ -4,7 +4,7 @@
 #define ALGOVIZADVENTURE_WEAPON_HPP
 
 
-#include "engine/GameComponent.hpp"
+#include "../engine/GameComponent.hpp"
 
 class Weapon : public GameComponent {
 public:

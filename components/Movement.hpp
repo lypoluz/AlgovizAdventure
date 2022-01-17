@@ -3,13 +3,13 @@
 #ifndef ALGOVIZADVENTURE_MOVEMENT_HPP
 #define ALGOVIZADVENTURE_MOVEMENT_HPP
 
-#include "engine/GameComponent.hpp"
+#include "../engine/GameComponent.hpp"
 #include "Position.hpp"
-#include "engine/GameObject.hpp"
-#include "engine/GTime.hpp"
+#include "../engine/GameObject.hpp"
+#include "../engine/GTime.hpp"
 #include "../GameLoop.hpp"
 #include "../AlgoWrapper.hpp"
-#include "engine/Engine.hpp"
+#include "../engine/Engine.hpp"
 
 class Movement : public GameComponent {
 
