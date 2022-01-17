@@ -4,7 +4,7 @@
 #define ALGOVIZADVENTURE_CREATETESTCOMPONENT_HPP
 
 #include <iostream>
-#include "../GameComponent.hpp"
+#include "engine/GameComponent.hpp"
 
 class CreateTestComponent : public GameComponent {
 

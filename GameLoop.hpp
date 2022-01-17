@@ -3,9 +3,9 @@
 #ifndef ALGOVIZADVENTURE_GAMELOOP_HPP
 #define ALGOVIZADVENTURE_GAMELOOP_HPP
 
-#include "ActiveGameObjects.hpp"
-#include "GameObject.hpp"
-#include "GTime.hpp"
+#include "engine/ActiveGameObjects.hpp"
+#include "engine/GameObject.hpp"
+#include "engine/GTime.hpp"
 #include "AlgoWrapper.hpp"
 
 class GameLoop {

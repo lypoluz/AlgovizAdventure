@@ -7,8 +7,8 @@
 
 
 
-#include "../GameComponent.hpp"
-#include "../ActiveGameObjects.hpp"
+#include "engine/GameComponent.hpp"
+#include "engine/ActiveGameObjects.hpp"
 
 class Health : public GameComponent {
 

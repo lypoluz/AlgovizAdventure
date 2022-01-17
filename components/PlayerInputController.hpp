@@ -5,7 +5,7 @@
 
 #include <utility>
 
-#include "../GameComponent.hpp"
+#include "engine/GameComponent.hpp"
 #include "../Vector2.hpp"
 #include "../AlgoWrapper.hpp"
 #include "../InputMap.hpp"

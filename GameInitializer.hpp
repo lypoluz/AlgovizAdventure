@@ -4,15 +4,15 @@
 #define ALGOVIZADVENTURE_GAMEINITIALIZER_HPP
 
 #include <map>
-#include "ActiveGameObjects.hpp"
+#include "engine/ActiveGameObjects.hpp"
 #include "AlgoWrapper.hpp"
 #include "components/Movement.hpp"
 #include "components/PlayerInputController.hpp"
 #include "GameLoop.hpp"
 #include "components/CircleRenderer.hpp"
 #include "components/EntityScript.hpp"
-#include "GTime.hpp"
-#include "Engine.hpp"
+#include "engine/GTime.hpp"
+#include "engine/Engine.hpp"
 #include "ConfigParser.hpp"
 
 class GameInitializer {

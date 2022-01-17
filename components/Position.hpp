@@ -3,7 +3,7 @@
 #ifndef ALGOVIZADVENTURE_POSITION_HPP
 #define ALGOVIZADVENTURE_POSITION_HPP
 
-#include "../GameComponent.hpp"
+#include "engine/GameComponent.hpp"
 #include "../Vector2.hpp"
 
 class Position : public GameComponent {
