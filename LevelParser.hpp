@@ -26,8 +26,9 @@ public:
         std::string theme = "Default";
         std::vector <std::vector<char>> levelVector;
         std::map<char, std::string> specialSymbols;
-        // todo add roomlink map
+        // maybe add roomlink map
 
+        //Lesen der Datei, je nach Marker in der Datei werden die Variablen gesetzt
         std::ifstream levelFile(pathToLevel);
         std::string currentLine;
         while (std::getline(levelFile, currentLine)){

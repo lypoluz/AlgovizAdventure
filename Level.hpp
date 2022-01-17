@@ -18,7 +18,7 @@ struct Level {
     std::string theme;
     std::vector <std::vector<char>> levelVector;
     std::map<char, std::string> specialSymbols;
-    // todo Add roomlink map
+    // maybe Add roomlink map
 
 
     Level(std::string name, int xSize, int ySize, std::string theme, std::map<char, std::string> specialSymbols, std::vector <std::vector<char>> levelVector) {
