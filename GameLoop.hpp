@@ -6,6 +6,7 @@
 #include "ActiveGameObjects.hpp"
 #include "GameObject.hpp"
 #include "GTime.hpp"
+#include "AlgoWrapper.hpp"
 
 class GameLoop {
     ActiveGameObjects* ago;
@@ -37,8 +38,11 @@ public:
 
         gTime->setStart();
         while (true) {
+            AlgoWrapper::draw();
             gTime->setDelta();
+
             update();
+            AlgoWrapper::algoText(std::to_string(1/(gTime->deltaTime())));
         }
     }
 
