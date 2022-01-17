@@ -70,9 +70,6 @@ public:
             component->onDestroy();
     }
 
-
-
-
 };
 
 #endif
