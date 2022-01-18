@@ -25,12 +25,14 @@ class GameInitializer {
 
 public:
     int windowSize = 480;
+    int windowFrameSizeFactor = 2;
     float playerSpeed = 150;
     bool funnyEnemies = false;
 
     explicit GameInitializer(const std::map<std::string, std::string>& config) {
         ConfigParser cp(&config);
         windowSize = cp.stringToIntOrDefault("windowSize", windowSize);
+        windowFrameSizeFactor = cp.stringToIntOrDefault("windowFrameSizeFactor", windowFrameSizeFactor);
         playerSpeed = cp.stringToFloatOrDefault("playerSpeed", playerSpeed);
         funnyEnemies = cp.stringToBoolOrDefault("funnyEnemies", funnyEnemies);
     }
@@ -55,7 +57,7 @@ public:
     void windowCreation() {
         AlgoWrapper::clear();
         AlgoWrapper::algoText("window creation");
-        window = AlgoWrapper::Window(windowSize, windowSize, "scene");
+        window = AlgoWrapper::Window(windowSize, windowSize, windowSize*2, windowSize*2 "scene");
     }
 
 
