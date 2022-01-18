@@ -14,7 +14,7 @@
 class Movement : public GameComponent {
 
     Position* position;
-    float speed = 1;  //speed value of 2 means half the speed
+    float speed = 1;  //speed value of 2 means twice the speed
     float transitionTime = 0.5;
     float timeKeeper;
     bool movable = true;
