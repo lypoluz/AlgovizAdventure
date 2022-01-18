@@ -14,7 +14,7 @@
 #include "engine/GTime.hpp"
 #include "engine/Engine.hpp"
 #include "ConfigParser.hpp"
-#include "SpriteRenderer.hpp"
+#include "components/SpriteRenderer.hpp"
 
 class GameInitializer {
 
