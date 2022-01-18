@@ -24,7 +24,7 @@ class GameInitializer {
     GTime* gTime{};
 
 public:
-    int windowSize = 1000;
+    int windowSize = 480;
     float playerSpeed = 150;
     bool funnyEnemies = false;
 
