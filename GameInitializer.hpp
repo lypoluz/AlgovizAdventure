@@ -14,6 +14,7 @@
 #include "engine/GTime.hpp"
 #include "engine/Engine.hpp"
 #include "ConfigParser.hpp"
+#include "SpriteRenderer.hpp"
 
 class GameInitializer {
 
@@ -84,10 +85,14 @@ public:
         player->addComponent(playerScript);
 
         // renderer
+        /* Circle Renderer
         auto* renderer = new CircleRenderer(player, &window);
         renderer->setFill(0,0,255);
-        renderer->setRadius(windowSize/20);
+        renderer->setRadius(windowSize/20);*/
+        auto* renderer = new SpriteRenderer(player, window);
+        renderer->setSprite("sprites/default/player_down.png", {16,16});
         player->addComponent(renderer);
+
 
     }
 
