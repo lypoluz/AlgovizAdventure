@@ -85,6 +85,7 @@ public:
         void moveTo(Vector2 pos) override { moveTo(pos.x(), pos.y());}
         void moveBy(Vector2 amount) override {image.moveBy(amount.x(), amount.y());}
         void rotateTo(int alpha) override {image.rotateTo(alpha);}
+        void toFront() override {image.toFront();}
         void hide() override {image.hide();}
         void show() override {image.show();}
         void removeFromView() override {image.removeFromView();}
