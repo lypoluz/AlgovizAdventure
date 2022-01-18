@@ -89,7 +89,7 @@ public:
         auto* renderer = new CircleRenderer(player, &window);
         renderer->setFill(0,0,255);
         renderer->setRadius(windowSize/20);*/
-        auto* renderer = new SpriteRenderer(player, window);
+        auto* renderer = new SpriteRenderer(player, &window);
         renderer->setSprite("sprites/default/player_down.png", {16,16});
         player->addComponent(renderer);
 
