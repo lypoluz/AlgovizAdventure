@@ -26,6 +26,7 @@ public:
         std::string theme = "Default";
         std::vector <std::vector<char>> levelVector;
         std::map<char, std::string> specialSymbols;
+        int iterator;
         // maybe add roomlink map
 
         //Lesen der Datei, je nach Marker in der Datei werden die Variablen gesetzt
@@ -48,7 +49,8 @@ public:
                     break;
                 case 'A':
                     std::getline(levelFile, currentLine);
-                    for (int i = 0; i < std::stoi(currentLine); ++i) {
+                    iterator = std::stoi(currentLine);
+                    for (int i = 0; i<iterator ; ++i) {
                         std::getline(levelFile, currentLine);
                         specialSymbols[currentLine[0]] = currentLine.substr(2,currentLine.length()-1);
                     }
