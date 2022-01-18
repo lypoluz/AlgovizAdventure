@@ -57,7 +57,11 @@ public:
     void windowCreation() {
         AlgoWrapper::clear();
         AlgoWrapper::algoText("window creation");
-        window = AlgoWrapper::Window(windowSize, windowSize, windowSize*2, windowSize*2 "scene");
+        window = AlgoWrapper::Window(windowSize,
+                                     windowSize,
+                                     windowSize * windowFrameSizeFactor,
+                                     windowSize * windowFrameSizeFactor,
+                                     "scene");
     }
 
 
