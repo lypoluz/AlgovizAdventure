@@ -14,7 +14,7 @@
 class Movement : public GameComponent {
 
     Position* position;
-    float speed = 1;
+    float speed = 1;  //speed value of 2 means half the speed
     float transitionTime = 0.5;
     float timeKeeper;
     bool movable = true;
@@ -34,12 +34,15 @@ public:
 
     float getTransitionTime() {return transitionTime;}
 
+    // if movement is enabled and movement is more than zero, move 1
     void MoveInDirection(Vector2 direction) {
         if(movable && (direction != Vector2::zero())) {
             position->moveBy(direction.normalized());
             movable = false;
         }
     }
+
+    // adds the time passed and enables movement if enough time has passed
     void update() override{
         timeKeeper += gTime->deltaTime();
         if (timeKeeper >= transitionTime/speed){
