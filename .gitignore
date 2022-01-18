@@ -2,3 +2,4 @@
 /.idea/
 documentation/test.hpp
 CMakeLists.txt
+*.aseprite
