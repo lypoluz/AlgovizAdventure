@@ -5,7 +5,7 @@
 
 
 #include <utility>
-#include "../GameComponent.hpp"
+#include "../engine/GameComponent.hpp"
 #include "PlayerInputController.hpp"
 #include "Movement.hpp"
 #include "abstract/Weapon.hpp"

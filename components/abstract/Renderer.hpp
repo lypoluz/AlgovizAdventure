@@ -3,8 +3,8 @@
 #ifndef ALGOVIZADVENTURE_RENDERER_HPP
 #define ALGOVIZADVENTURE_RENDERER_HPP
 
-#include "../../GameComponent.hpp"
-#include "../../GameObject.hpp"
+#include "../../engine/GameComponent.hpp"
+#include "../../engine/GameObject.hpp"
 #include "../../AlgoWrapper.hpp"
 
 class Renderer : public GameComponent {

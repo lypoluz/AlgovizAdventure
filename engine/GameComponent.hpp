@@ -10,13 +10,11 @@
 class GameComponent : public ObjectStructure {
 protected:
     ObjectStructure* gameObject{};
-    //GTime* gTime;
 
 public:
     explicit GameComponent(ObjectStructure* gameObj) {
         gameObject = gameObj;
         name = typeid(*this).name();
-        //gTime = Engine::getInstance()->getGTime();
     }
     ObjectStructure* getGameObject() {return gameObject;}
 

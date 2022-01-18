@@ -11,7 +11,8 @@
 class AlgoWrapper {
 public:
     static void clear() {AlgoViz::clear();}
-    static void algoText(std::string txt) {AlgoViz::sendText(txt);}
+    static void algoText(const std::string& txt) {AlgoViz::sendText(txt);}
+    static void draw() {AlgoViz::flushMessages();AlgoViz::collectMessages();}
 
     // wrapper for SVG
     class Window {

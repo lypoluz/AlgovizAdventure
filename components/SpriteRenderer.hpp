@@ -3,9 +3,9 @@
 #ifndef ALGOVIZADVENTURE_SPRITERENDERER_HPP
 #define ALGOVIZADVENTURE_SPRITERENDERER_HPP
 
-#include "../GameComponent.hpp"
+#include "../engine/GameComponent.hpp"
 #include "../AlgoWrapper.hpp"
-#include "../GameObject.hpp"
+#include "../engine/GameObject.hpp"
 #include "abstract/Renderer.hpp"
 
 class SpriteRenderer : public Renderer {

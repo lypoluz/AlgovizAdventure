@@ -3,8 +3,8 @@
 #ifndef ALGOVIZADVENTURE_CREATEENEMYEXAMPLE_HPP
 #define ALGOVIZADVENTURE_CREATEENEMYEXAMPLE_HPP
 
-#include "GameObject.hpp"
-#include "ActiveGameObjects.hpp"
+#include "engine/GameObject.hpp"
+#include "engine/ActiveGameObjects.hpp"
 #include "CreateTestComponent.hpp"
 
 void myFunction(ActiveGameObjects& ago) {

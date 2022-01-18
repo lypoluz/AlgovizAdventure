@@ -3,13 +3,13 @@
 #ifndef ALGOVIZADVENTURE_MOVEMENT_HPP
 #define ALGOVIZADVENTURE_MOVEMENT_HPP
 
-#include "../GameComponent.hpp"
+#include "../engine/GameComponent.hpp"
 #include "Position.hpp"
-#include "../GameObject.hpp"
-#include "../GTime.hpp"
+#include "../engine/GameObject.hpp"
+#include "../engine/GTime.hpp"
 #include "../GameLoop.hpp"
 #include "../AlgoWrapper.hpp"
-#include "../Engine.hpp"
+#include "../engine/Engine.hpp"
 
 class Movement : public GameComponent {
 
@@ -26,7 +26,6 @@ public:
     void setSpeed(float newSpeed) {speed = newSpeed;}
     void MoveInDirection(Vector2 direction) {
         GTime* gTime = Engine::getInstance()->getGTime();
-        AlgoWrapper::algoText(std::to_string(gTime->deltaTime()));
         position->moveBy(direction.normalized()*speed*gTime->deltaTime());
     }
 
