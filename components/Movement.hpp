@@ -14,19 +14,38 @@
 class Movement : public GameComponent {
 
     Position* position;
-    float speed;
-
+    float speed = 1;
+    float transitionTime = 0.5;
+    float timeKeeper;
+    bool movable = true;
+    GTime* gTime{};
 
 public:
+    void onStart() override{gTime = Engine::getInstance()->getGTime();}
+
     explicit Movement(ObjectStructure* os) : GameComponent(os) {
         position = ((GameObject*)gameObject)->position;
         speed = 1;
     }
 
     void setSpeed(float newSpeed) {speed = newSpeed;}
+
+    void setTransitionTime(float newTransitionTime) {transitionTime = newTransitionTime;}
+
+    float getTransitionTime() {return transitionTime;}
+
     void MoveInDirection(Vector2 direction) {
-        GTime* gTime = Engine::getInstance()->getGTime();
-        position->moveBy(direction.normalized()*speed*gTime->deltaTime());
+        if(movable && (direction != Vector2::zero())) {
+            position->moveBy(direction.normalized());
+            movable = false;
+        }
+    }
+    void update() override{
+        timeKeeper += gTime->deltaTime();
+        if (timeKeeper >= transitionTime/speed){
+            timeKeeper = 0;
+            movable = true;
+        }
     }
 
 };
