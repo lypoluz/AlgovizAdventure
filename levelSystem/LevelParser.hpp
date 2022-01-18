@@ -50,7 +50,7 @@ public:
                 case 'A':
                     std::getline(levelFile, currentLine);
                     iterator = std::stoi(currentLine);
-                    for (int i = 0; i<iterator ; ++i) {
+                    for (int i = 0; i < iterator ; ++i) {
                         std::getline(levelFile, currentLine);
                         specialSymbols[currentLine[0]] = currentLine.substr(2,currentLine.length()-1);
                     }
