@@ -75,6 +75,7 @@ public:
     class Sprite : public WindowElement {
         Image image;
     public:
+        Sprite() {}
         Sprite(const std::string& path, int x, int y, int w, int h, Window* window) {image = Image(path, x, y, w, h, window->getSvg());}
         Sprite(const std::string& path, Vector2 pos, Vector2 dim, Window* window) : Sprite(path, pos.x(), pos.y(), dim.x(), dim.y(), window){}
         Sprite(const Sprite& sprite) {image = Image(image);}

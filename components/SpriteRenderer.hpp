@@ -9,7 +9,7 @@
 #include "abstract/Renderer.hpp"
 
 class SpriteRenderer : public Renderer {
-    AlgoWrapper::Sprite sprite;
+    AlgoWrapper::Sprite sprite{};
 
 public:
     SpriteRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {}
