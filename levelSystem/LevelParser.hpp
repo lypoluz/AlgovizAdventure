@@ -18,7 +18,7 @@ class LevelParser{
 
 public:
     // Gibt ein Level zurück
-    Level readFile(std::string pathToLevel){
+    static Level readFile(const std::string& pathToLevel){
         // Informationen für das Level
         std::string name;
         std::string theme = "Default";
