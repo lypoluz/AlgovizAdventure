@@ -37,7 +37,6 @@ public:
 
         config.windowSize = cp.stringToIntOrDefault("windowSize", config.windowSize);
         config.windowFrameSizeFactor = cp.stringToIntOrDefault("windowFrameSizeFactor", config.windowFrameSizeFactor);
-        config.gridSize = cp.stringToIntOrDefault("gridSize", config.gridSize);
         config.playerSpeed = cp.stringToFloatOrDefault("playerSpeed", config.playerSpeed);
         config.funnyEnemies = cp.stringToBoolOrDefault("funnyEnemies", config.funnyEnemies);
     }
