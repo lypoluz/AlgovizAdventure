@@ -34,7 +34,7 @@ class LevelBuilder{
 
         auto* renderer = new SpriteRenderer(wall, window);
         renderer->setSize({16,16});
-        renderer->setSprite("sprites/" + theme + "/wall_01.png");
+        renderer->setSprite("sprites/" + theme + "/wall_01.svg");
         wall->addComponent(renderer);
     }
 
