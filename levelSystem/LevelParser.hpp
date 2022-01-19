@@ -24,7 +24,7 @@ public:
         Logger::log(pathToLevel);
         // Informationen für das Level
         std::string name;
-        std::string theme = "Default";
+        std::string theme = "default";
         std::vector <std::vector<char>> levelVector;
         std::map<char, std::string> specialSymbols;
         int iterator;
