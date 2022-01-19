@@ -10,7 +10,7 @@
 #include "../engine/Engine.hpp"
 #include "../components/WallComponent.hpp"
 #include "../components/SpriteRenderer.hpp"
-#include "Logger.hpp"
+#include "../Logger.hpp"
 #include <string>
 
 

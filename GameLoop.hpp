@@ -11,6 +11,7 @@
 #include "AlgoWrapper.hpp"
 #include "levelSystem/Level.hpp"
 #include "levelSystem/LevelBuilder.hpp"
+#include "Logger.hpp"
 
 class GameLoop {
     ActiveGameObjects* ago;

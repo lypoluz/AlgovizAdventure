@@ -17,6 +17,7 @@
 #include "components/SpriteRenderer.hpp"
 #include "Config.hpp"
 #include "levelSystem/LevelParser.hpp"
+#include "Logger.hpp"
 
 class GameInitializer {
 
