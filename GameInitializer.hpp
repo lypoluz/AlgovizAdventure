@@ -15,6 +15,7 @@
 #include "engine/Engine.hpp"
 #include "ConfigParser.hpp"
 #include "components/SpriteRenderer.hpp"
+#include "Config.hpp"
 
 class GameInitializer {
 
@@ -22,28 +23,23 @@ class GameInitializer {
     AlgoWrapper::Window window{};
     GameObject* player{};
     GTime* gTime{};
+    Config config;
 
 public:
-    bool expandAlgoViz = true;
-    bool fullscreen = true;
-    int windowSize = 480;
-    int windowFrameSizeFactor = 24;
-    int gridSize = 30;
-    float playerSpeed = 2.5;
-    bool funnyEnemies = false;
 
-    explicit GameInitializer(const std::map<std::string, std::string>& config) {
-        ConfigParser cp(&config);
-        expandAlgoViz = cp.stringToBoolOrDefault("expandAlgoViz", expandAlgoViz);
-        fullscreen = cp.stringToBoolOrDefault("fullscreen", fullscreen);
-        if(fullscreen and expandAlgoViz) windowFrameSizeFactor = 32;
-        else if(expandAlgoViz) windowFrameSizeFactor = 34;
+    explicit GameInitializer(const std::map<std::string, std::string>& configMap) {
+        ConfigParser cp(&configMap);
 
-        windowSize = cp.stringToIntOrDefault("windowSize", windowSize);
-        windowFrameSizeFactor = cp.stringToIntOrDefault("windowFrameSizeFactor", windowFrameSizeFactor);
-        gridSize = cp.stringToIntOrDefault("gridSize", gridSize);
-        playerSpeed = cp.stringToFloatOrDefault("playerSpeed", playerSpeed);
-        funnyEnemies = cp.stringToBoolOrDefault("funnyEnemies", funnyEnemies);
+        config.expandAlgoViz = cp.stringToBoolOrDefault("expandAlgoViz", config.expandAlgoViz);
+        config.fullscreen = cp.stringToBoolOrDefault("fullscreen", config.fullscreen);
+        if(config.fullscreen and config.expandAlgoViz) config.windowFrameSizeFactor = 32;
+        else if(config.expandAlgoViz) config.windowFrameSizeFactor = 34;
+
+        config.windowSize = cp.stringToIntOrDefault("windowSize", config.windowSize);
+        config.windowFrameSizeFactor = cp.stringToIntOrDefault("windowFrameSizeFactor", config.windowFrameSizeFactor);
+        config.gridSize = cp.stringToIntOrDefault("gridSize", config.gridSize);
+        config.playerSpeed = cp.stringToFloatOrDefault("playerSpeed", config.playerSpeed);
+        config.funnyEnemies = cp.stringToBoolOrDefault("funnyEnemies", config.funnyEnemies);
     }
 
 
@@ -64,16 +60,16 @@ public:
     }
 
     void windowCreation() {
-        if(expandAlgoViz)
+        if(config.expandAlgoViz)
             AlgoWrapper::expand();
-        if(fullscreen)
+        if(config.fullscreen)
             AlgoWrapper::enterFullscreen();
         AlgoWrapper::clear();
         AlgoWrapper::algoText("window creation");
-        window = AlgoWrapper::Window(windowSize,
-                                     windowSize,
-                                     windowFrameSizeFactor,
-                                     windowFrameSizeFactor,
+        window = AlgoWrapper::Window(config.windowSize,
+                                     config.windowSize,
+                                     config.windowFrameSizeFactor,
+                                     config.windowFrameSizeFactor,
                                      "AlgoViz Adventure");
 
     }
@@ -89,11 +85,11 @@ public:
         // create position component
         auto* position = new Position(player);
         player->addPosition(position);
-        player->position->moveTo(Vector2(windowSize/2, windowSize/2));
+        player->position->moveTo(Vector2(config.windowSize/32, config.windowSize/32));
 
         // movement
         auto* movement = new Movement(player);
-        movement->setSpeed(playerSpeed);
+        movement->setSpeed(config.playerSpeed);
         player->addComponent(movement);
 
         // player input
@@ -137,6 +133,7 @@ public:
         engine->setPlayer(player);
         engine->setAGO(&ago);
         engine->setGTime(gTime);
+        engine->setConfig(&config);
 
         GameLoop gameLoop(&ago);
         gameLoop.setPlayer(player);
