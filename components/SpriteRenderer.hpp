@@ -16,6 +16,7 @@ public:
 
     void setSprite(const std::string& pathToSprite, Vector2 dim=Vector2::one()) {
         sprite = AlgoWrapper::Sprite(pathToSprite, position->getPosition(), dim, window);
+        sprite.setAttribute("image-rendering", "crisp-edges");
         element = &sprite;
     }
 
