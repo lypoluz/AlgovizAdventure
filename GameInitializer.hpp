@@ -36,7 +36,8 @@ public:
         ConfigParser cp(&config);
         expandAlgoViz = cp.stringToBoolOrDefault("expandAlgoViz", expandAlgoViz);
         fullscreen = cp.stringToBoolOrDefault("fullscreen", fullscreen);
-
+        if(fullscreen and expandAlgoViz) windowFrameSizeFactor = 32;
+        else if(expandAlgoViz) windowFrameSizeFactor = 34;
 
         windowSize = cp.stringToIntOrDefault("windowSize", windowSize);
         windowFrameSizeFactor = cp.stringToIntOrDefault("windowFrameSizeFactor", windowFrameSizeFactor);
@@ -73,7 +74,7 @@ public:
                                      windowSize,
                                      windowFrameSizeFactor,
                                      windowFrameSizeFactor,
-                                     "scene");
+                                     "AlgoViz Adventure");
 
     }
 
