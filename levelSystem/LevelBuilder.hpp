@@ -19,7 +19,7 @@ class LevelBuilder{
     ActiveGameObjects* ago = Engine::getInstance()->getAGO();
     AlgoWrapper::Window* window = Engine::getInstance()->getGameWindow();
 
-    void placeWall(int x, int y, std::string theme) {
+    void placeWall(int x, int y, const std::string& theme) {
 
 
         GameObject* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
