@@ -18,12 +18,12 @@ class LevelBuilder{
 
     static void placeWall(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window) {
         Logger::log("GameObject");
-        GameObject* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
+        auto* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
         ago->add(wall);
 
         //instantiate position component
         Logger::log("Position");
-        Position* position = new Position(wall);
+        auto* position = new Position(wall);
 
         //set position to value
         position->moveTo(x, y);
@@ -32,12 +32,14 @@ class LevelBuilder{
         wall->addPosition(position);
 
         Logger::log("wallComp");
-        WallComponent* wallComp = new WallComponent(wall);
+        auto* wallComp = new WallComponent(wall);
         wall->addComponent(wallComp);
 
         Logger::log("Renderer");
         auto* renderer = new SpriteRenderer(wall, window);
+        Logger::log("loading wall with theme: " + theme);
         renderer->setSprite("sprites/" + theme + "/wall_01.png");
+        Logger::log("set size");
         renderer->setSize({16,16});
         Logger::log("addComp");
         wall->addComponent(renderer);
@@ -46,24 +48,22 @@ class LevelBuilder{
 
 public:
     static void build(Level level) {
+        Logger::log("parsing level: " + level.name);
         char levelArray[30][30];
         ActiveGameObjects* ago = Engine::getInstance()->getAGO();
         AlgoWrapper::Window* window = Engine::getInstance()->getGameWindow();
 
-        Logger::log(level.name);
         for (int i = 0; i < 30; ++i) {
             for (int j = 0; j < 30; ++j) {
                 levelArray[j][i] = level.levelVector[i][j];
             }
         }
 
-        Logger::log("switch");
         for (int y = 0; y < 30; ++y) {
             for (int x = 0; x < 30; ++x) {
 
                 switch (levelArray[x][y]) {
                     case '#':
-                        Logger::log("#");
                         placeWall(x, y, level.theme, ago, window);
                         break;
 
