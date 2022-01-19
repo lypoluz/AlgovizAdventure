@@ -8,8 +8,8 @@
 #include "Level.hpp"
 #include "../engine/ActiveGameObjects.hpp"
 #include "../engine/Engine.hpp"
-#include "../WallComponent.hpp"
-#include "../SpriteRenderer.hpp"
+#include "../components/WallComponent.hpp"
+#include "../components/SpriteRenderer.hpp"
 #include <string>
 
 
