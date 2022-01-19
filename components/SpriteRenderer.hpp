@@ -21,7 +21,6 @@ public:
         Logger::log(pathToSprite);
         Logger::log(position->getPosition().toString());
         Logger::log(dimension.toString());
-        Logger::log(reinterpret_cast<const char *>(window));
 
         sprite = AlgoWrapper::Sprite(pathToSprite, position->getPosition(), dimension, window);
         sprite.setAttribute("image-rendering", "crisp-edges");
