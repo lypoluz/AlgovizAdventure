@@ -26,7 +26,7 @@ protected:
 public:
     void postUpdate() override {
         if (position->isDirty()) {
-            element->moveTo(position->getPosition() + positionOffset);
+            element->moveTo((position->getPosition() + positionOffset) * 16);
             element->rotateTo(position->getRotation() + rotationOffset);
         }
     }
