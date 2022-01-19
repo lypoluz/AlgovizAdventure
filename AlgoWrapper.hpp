@@ -15,10 +15,10 @@ public:
     static void clear() {AlgoViz::clear();}
     static void algoText(const std::string& txt) {AlgoViz::sendText(txt);}
     static void draw() {AlgoViz::flushMessages();AlgoViz::collectMessages();}
-    static void expand() {JavaScript::run("expandAlgoViz()");}
-    static void compress() {JavaScript::run("compressAlgoViz()");}
-    static void enterFullscreen() {JavaScript::run("enterFullscreen()");}
-    static void exitFullscreen() {JavaScript::run("exitFullscreen()");}
+    static void expand() {JavaScript::run("expandAlgoViz();");}
+    static void compress() {JavaScript::run("compressAlgoViz();");}
+    static void enterFullscreen() {JavaScript::run("enterFullscreen();");}
+    static void exitFullscreen() {JavaScript::run("exitFullscreen();");}
 
     // wrapper for SVG
     class Window {
