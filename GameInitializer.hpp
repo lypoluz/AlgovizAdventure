@@ -73,6 +73,7 @@ public:
                                      config.windowFrameSizeFactor,
                                      config.windowFrameSizeFactor,
                                      "AlgoViz Adventure");
+        window.setAttribute("shape-rendering", "crispEdges");
 
     }
 
