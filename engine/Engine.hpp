@@ -7,12 +7,14 @@
 #include "ObjectStructure.hpp"
 #include "ActiveGameObjects.hpp"
 #include "AlgoWrapper.hpp"
+#include "Config.hpp"
 
 class Engine {
     GTime* gTime{};
     ObjectStructure* player{};
     ActiveGameObjects* ago;
     AlgoWrapper::Window* gameWindow{};
+    Config* config;
     // Audio* audio;
 
     Engine() = default;
@@ -34,6 +36,9 @@ public:
 
     void setGameWindow(AlgoWrapper::Window* window) {gameWindow = window;}
     AlgoWrapper::Window* getGameWindow() {return gameWindow;}
+
+    void setConfig(Config* c) {config = c;}
+    Config* getConfig() {return config;}
 };
 
 #endif //ALGOVIZADVENTURE_ENGINE_HPP
