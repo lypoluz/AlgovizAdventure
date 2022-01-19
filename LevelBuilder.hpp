@@ -46,6 +46,7 @@ class LevelBuilder{
     }
 
 public:
+
     LevelBuilder(Level level){
         for (int i = 0; i < 30; ++i) {
             for (int j = 0; j < 30; ++j) {
