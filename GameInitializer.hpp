@@ -121,7 +121,7 @@ public:
 
     void loadLevel() {
         Logger::log("load level");
-        startLevel = LevelParser::readFile("test_01.level");
+        startLevel = LevelParser::readFile("../level/test_01.level");
     }
 
     void startGameLoop() {
