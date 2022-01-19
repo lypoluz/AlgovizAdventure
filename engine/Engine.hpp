@@ -6,8 +6,8 @@
 #include "GTime.hpp"
 #include "ObjectStructure.hpp"
 #include "ActiveGameObjects.hpp"
-#include "AlgoWrapper.hpp"
-#include "Config.hpp"
+#include "../AlgoWrapper.hpp"
+#include "../Config.hpp"
 
 class Engine {
     GTime* gTime{};
