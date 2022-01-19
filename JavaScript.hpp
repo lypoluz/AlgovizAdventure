@@ -9,9 +9,9 @@
 #include "xcpp/xdisplay.hpp"
 
 class JavaScript {
-    std::string cmd;
     explicit JavaScript(std::string cmd) : cmd(std::move(cmd)) {}
 public:
+    std::string cmd;
     static void run(const std::string& str) {
         JavaScript js = JavaScript(std::string("<script src='JupyterInteraction.js'>" + str + "</script>"));
         xcpp::display(js);
@@ -20,7 +20,7 @@ public:
 
 xeus::xjson mime_bundle_repr(const JavaScript& js) {
     auto bundle = xeus::xjson::object();
-    bundle["text/html"] = js.js6;
+    bundle["text/html"] = js.cmd;
     return bundle;
 }
 
