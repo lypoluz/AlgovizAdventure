@@ -16,7 +16,7 @@
 #include "ConfigParser.hpp"
 #include "components/SpriteRenderer.hpp"
 #include "Config.hpp"
-#include "LevelParser.hpp"
+#include "levelSystem/LevelParser.hpp"
 
 class GameInitializer {
 
