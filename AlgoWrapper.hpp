@@ -1,4 +1,4 @@
-2// Created by Lypoluz (Dominik) on 13.01.2022.
+// Created by Lypoluz (Dominik) on 13.01.2022.
 
 #ifndef ALGOVIZADVENTURE_ALGOWRAPPER_HPP
 #define ALGOVIZADVENTURE_ALGOWRAPPER_HPP
