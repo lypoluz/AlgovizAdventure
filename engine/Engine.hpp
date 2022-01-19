@@ -6,11 +6,13 @@
 #include "GTime.hpp"
 #include "ObjectStructure.hpp"
 #include "ActiveGameObjects.hpp"
+#include "AlgoWrapper.hpp"
 
 class Engine {
     GTime* gTime{};
     ObjectStructure* player{};
     ActiveGameObjects* ago;
+    AlgoWrapper::Window* gameWindow{};
     // Audio* audio;
 
     Engine() = default;
@@ -30,6 +32,8 @@ public:
     void setAGO(ActiveGameObjects* a) {ago = a;}
     ActiveGameObjects* getAGO() {return ago;}
 
+    void setGameWindow(AlgoWrapper::Window* window) {gameWindow = window;}
+    AlgoWrapper::Window* getGameWindow() {return gameWindow;}
 };
 
 #endif //ALGOVIZADVENTURE_ENGINE_HPP
