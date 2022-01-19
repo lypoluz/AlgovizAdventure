@@ -21,8 +21,6 @@ public:
     Level readFile(std::string pathToLevel){
         // Informationen für das Level
         std::string name;
-        int xSize;
-        int ySize;
         std::string theme = "Default";
         std::vector <std::vector<char>> levelVector;
         std::map<char, std::string> specialSymbols;
@@ -38,11 +36,6 @@ public:
                     std::getline(levelFile, currentLine);
                     name = currentLine;
                     break;
-                case 'S':
-                    std::getline(levelFile, currentLine);
-                    xSize = std::stoi(currentLine.substr(0, currentLine.find(' ')));
-                    ySize = std::stoi(currentLine.substr(currentLine.find(' ')+1, currentLine.length()-1));
-                    break;
                 case 'T':
                     std::getline(levelFile, currentLine);
                     theme = currentLine;
@@ -56,10 +49,10 @@ public:
                     }
                     break;
                 case 'L':
-                    for (int i = 0; i < ySize; ++i) {
+                    for (int i = 0; i < 30; ++i) {
                         std::vector<char> inputVector;
                         std::getline(levelFile, currentLine);
-                        for (int j = 0; j < xSize; ++j) {
+                        for (int j = 0; j < 30; ++j) {
                             inputVector.push_back(currentLine[j]);
                         }
                         levelVector.push_back(inputVector);
@@ -70,7 +63,7 @@ public:
             }
         }
         levelFile.close();
-        return Level(name, xSize, ySize, theme, specialSymbols, levelVector);
+        return Level(name, theme, specialSymbols, levelVector);
     }
 
 };

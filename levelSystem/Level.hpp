@@ -13,18 +13,14 @@
 
 struct Level {
     std::string name;
-    int xSize;
-    int ySize;
     std::string theme;
     std::vector <std::vector<char>> levelVector;
     std::map<char, std::string> specialSymbols;
     // maybe Add roomlink map
 
 
-    Level(std::string name, int xSize, int ySize, std::string theme, std::map<char, std::string> specialSymbols, std::vector <std::vector<char>> levelVector) {
+    Level(std::string name,std::string theme, std::map<char, std::string> specialSymbols, std::vector <std::vector<char>> levelVector) {
         this->name = name;
-        this->xSize = xSize;
-        this->ySize = ySize;
         this->theme = theme;
         this->levelVector = levelVector;
         this->specialSymbols = specialSymbols;

@@ -75,6 +75,7 @@ public:
          virtual void setColor(int r, int g, int b, float a) = 0;
          virtual void setFill(int r, int g, int b, float a) = 0;
          virtual void setStrokeWidth(int width) = 0;
+         virtual void setAttribute(std::string attr, std::string val) = 0;
     };
 
     // wrapper for Image
@@ -99,6 +100,7 @@ public:
         void setColor (int r, int g, int b, float a) override {image.setColor(r,g,b,a);};
         void setFill (int r, int g, int b, float a) override {image.setFill(r,g,b,a);};
         void setStrokeWidth (int width) override {image.setStrokeWidth(width);};
+        void setAttribute(std::string attr, std::string val) override {image.setAttribute(attr,val);}
 
         void setSize(int w, int h) {image.setSize(w, h);}
         void setSize(Vector2 dim) { setSize(dim.x(), dim.y());}
@@ -123,7 +125,7 @@ public:
         void setColor (int r, int g, int b, float a) override {circle.setColor(r,g,b,a);};
         void setFill (int r, int g, int b, float a) override {circle.setFill(r,g,b,a);};
         void setStrokeWidth (int width) override {circle.setStrokeWidth(width);};
-
+        void setAttribute(std::string attr, std::string val) override {circle.setAttribute(attr,val);}
 
         void setRadius(int radius) {circle.setRadius(radius);}
     };
