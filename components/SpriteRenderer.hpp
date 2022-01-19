@@ -10,17 +10,18 @@
 
 class SpriteRenderer : public Renderer {
     AlgoWrapper::Sprite sprite{};
+    Vector2 dimension;
 
 public:
-    SpriteRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {}
+    SpriteRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {dimension = Vector2::zero(); }
 
-    void setSprite(const std::string& pathToSprite, Vector2 dim=Vector2::one()) {
-        sprite = AlgoWrapper::Sprite(pathToSprite, position->getPosition(), dim, window);
+    void setSprite(const std::string& pathToSprite) {
+        sprite = AlgoWrapper::Sprite(pathToSprite, position->getPosition(), dimension, window);
         sprite.setAttribute("image-rendering", "crisp-edges");
         element = &sprite;
     }
 
-    void setSize(Vector2 dimension) {sprite.setSize(dimension);}
+    void setSize(Vector2 d) {dimension = d; sprite.setSize(dimension);}
 };
 
 #endif //ALGOVIZADVENTURE_SPRITERENDERER_HPP
