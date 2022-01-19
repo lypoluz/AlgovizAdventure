@@ -10,7 +10,7 @@ class Position : public GameComponent {
     Vector2 lastPosition;
     Vector2 position;
     float rotation;
-    bool dirty{};
+    bool dirty = true;
 
 public:
     explicit Position(ObjectStructure *os) : GameComponent(os) {
