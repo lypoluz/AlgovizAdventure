@@ -19,6 +19,7 @@ public:
     void setSprite(const std::string& pathToSprite) {
         sprite = AlgoWrapper::Sprite(pathToSprite, position->getPosition() * 16, dimension, window);
         sprite.setAttribute("image-rendering", "crisp-edges");
+        sprite.setAttribute("shape-rendering", "crispEdges");
         element = &sprite;
     }
 
