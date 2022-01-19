@@ -15,41 +15,45 @@ class Movement : public GameComponent {
 
     Position* position;
     float speed = 1;  //speed value of 2 means twice the speed
-    float transitionTime = 0.5;
     float timeKeeper;
     bool movable = true;
+    Vector2 startPosition;
+    Vector2 targetPosition;
     GTime* gTime{};
 
-public:
-    void onStart() override{gTime = Engine::getInstance()->getGTime();}
 
+public:
     explicit Movement(ObjectStructure* os) : GameComponent(os) {
         position = ((GameObject*)gameObject)->position;
         speed = 1;
+        startPosition = Vector2::zero();
+        targetPosition = Vector2::zero();
     }
 
+    void onStart() override{gTime = Engine::getInstance()->getGTime();}
+
     void setSpeed(float newSpeed) {speed = newSpeed;}
-
-    void setTransitionTime(float newTransitionTime) {transitionTime = newTransitionTime;}
-
-    float getTransitionTime() {return transitionTime;}
-
     bool canMove() {return movable;};
 
     // if movement is enabled and movement is more than zero, move 1
     void MoveInDirection(Vector2 direction) {
         if(movable && (direction != Vector2::zero())) {
-            position->moveBy(direction.normalized());
+            startPosition = position->getPosition();
+            targetPosition = position->getPosition() + direction.normalized();
             movable = false;
         }
     }
 
     // adds the time passed and enables movement if enough time has passed
     void update() override{
-        timeKeeper += gTime->deltaTime();
-        if (timeKeeper >= transitionTime/speed){
+        if (timeKeeper >= 1/speed){
             timeKeeper = 0;
             movable = true;
+        } else {
+            timeKeeper += gTime->deltaTime();
+        }
+        if(not movable) {
+            position->moveTo(Vector2::lerp(startPosition, targetPosition, timeKeeper*speed));
         }
     }
 
