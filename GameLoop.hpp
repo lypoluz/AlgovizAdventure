@@ -30,6 +30,7 @@ class GameLoop {
     }
 
     void buildStartLevel() {
+        AlgoWrapper::algoText("Build start level");
         LevelBuilder::build(startLevel);
     }
 
