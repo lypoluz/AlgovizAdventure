@@ -7,7 +7,7 @@
 #include "../AlgoWrapper.hpp"
 #include "../engine/GameObject.hpp"
 #include "abstract/Renderer.hpp"
-#include "Logger.hpp"
+#include "../Logger.hpp"
 
 class SpriteRenderer : public Renderer {
     AlgoWrapper::Sprite sprite{};
