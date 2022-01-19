@@ -10,7 +10,7 @@ L: das Level selbst. jedes zeichen entspricht einem block im Grid des Levels. Di
 N:
 level_01
 T:
-Default
+default
 A:
 2
 a enemy enemy_Enemy
