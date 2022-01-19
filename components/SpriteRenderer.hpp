@@ -17,7 +17,7 @@ public:
     SpriteRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {dimension = Vector2::one(); }
 
     void setSprite(const std::string& pathToSprite) {
-        sprite = AlgoWrapper::Sprite(pathToSprite, position->getPosition(), dimension, window);
+        sprite = AlgoWrapper::Sprite(pathToSprite, position->getPosition() * 16, dimension, window);
         sprite.setAttribute("image-rendering", "crisp-edges");
         element = &sprite;
     }
