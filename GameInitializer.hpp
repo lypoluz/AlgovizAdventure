@@ -25,16 +25,22 @@ class GameInitializer {
 
 public:
     int windowSize = 480;
-    int windowFrameSizeFactor = 2;
-    float playerSpeed = 150;
+    int windowFrameSizeFactor = 24;
+    int gridSize = 30;
+    float playerSpeed = 2.5;
     bool funnyEnemies = false;
+    bool expandAlgoViz = true;
+    bool fullscreen = true;
 
     explicit GameInitializer(const std::map<std::string, std::string>& config) {
         ConfigParser cp(&config);
         windowSize = cp.stringToIntOrDefault("windowSize", windowSize);
         windowFrameSizeFactor = cp.stringToIntOrDefault("windowFrameSizeFactor", windowFrameSizeFactor);
+        gridSize = cp.stringToIntOrDefault("gridSize", gridSize);
         playerSpeed = cp.stringToFloatOrDefault("playerSpeed", playerSpeed);
         funnyEnemies = cp.stringToBoolOrDefault("funnyEnemies", funnyEnemies);
+        expandAlgoViz = cp.stringToBoolOrDefault("expandAlgoViz", expandAlgoViz);
+        fullscreen = cp.stringToBoolOrDefault("fullscreen", fullscreen);
     }
 
 
@@ -62,6 +68,10 @@ public:
                                      windowFrameSizeFactor,
                                      windowFrameSizeFactor,
                                      "scene");
+        if(expandAlgoViz)
+            AlgoWrapper::expand();
+        if(fullscreen)
+            AlgoWrapper::enterFullscreen();
     }
 
 
