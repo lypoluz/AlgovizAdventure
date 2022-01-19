@@ -17,7 +17,9 @@ void myFunction() {
         GameObject* wall = new GameObject("wall" + i);
         ago->add(wall);
 
+        int x, y;
         Position* position = new Position(wall);
+        position->moveTo(x, y);
         wall->addPosition(position);
 
         WallComponent* wallComp = new WallComponent(wall);
