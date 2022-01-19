@@ -34,7 +34,7 @@ public:
 
     float getTransitionTime() {return transitionTime;}
 
-    bool canMove() {return movable};
+    bool canMove() {return movable;};
 
     // if movement is enabled and movement is more than zero, move 1
     void MoveInDirection(Vector2 direction) {
