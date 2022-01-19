@@ -1,6 +1,9 @@
 //
 // Created by tobia on 12.01.2022.
 //
+#ifndef ALGOVIZADVENTURE_ROOMLINK_HPP
+#define ALGOVIZADVENTURE_ROOMLINK_HPP
+
 #include <string>
 
 class Roomlink{
@@ -36,3 +39,5 @@ public:
     }
 
 };
+
+#endif
