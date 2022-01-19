@@ -15,13 +15,7 @@
 
 class LevelBuilder{
 
-    char levelArray[30][30];
-    ActiveGameObjects* ago = Engine::getInstance()->getAGO();
-    AlgoWrapper::Window* window = Engine::getInstance()->getGameWindow();
-
-    void placeWall(int x, int y, const std::string& theme) {
-
-
+    static void placeWall(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window) {
         GameObject* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
         ago->add(wall);
 
@@ -41,12 +35,15 @@ class LevelBuilder{
         renderer->setSprite("sprites/" + theme + "/wall_01.png");
         renderer->setSize({16,16});
         wall->addComponent(renderer);
-
-
     }
 
 public:
-    LevelBuilder(Level level){
+    static void build(Level level) {
+        char levelArray[30][30];
+        ActiveGameObjects* ago = Engine::getInstance()->getAGO();
+        AlgoWrapper::Window* window = Engine::getInstance()->getGameWindow();
+
+
         for (int i = 0; i < 30; ++i) {
             for (int j = 0; j < 30; ++j) {
                 levelArray[j][i] =  level.levelVector[i][j];
@@ -59,7 +56,7 @@ public:
 
                 switch (levelArray[x][y]) {
                     case '#':
-                        placeWall(x, y, level.theme);
+                        placeWall(x, y, level.theme, ago, window);
                         break;
 
                     case ' ':
@@ -82,8 +79,6 @@ public:
             }
 
         }
-
-
     }
 
 
