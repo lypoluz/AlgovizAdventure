@@ -3,7 +3,7 @@
 #ifndef ALGOVIZADVENTURE_WALLCOMPONENT_HPP
 #define ALGOVIZADVENTURE_WALLCOMPONENT_HPP
 
-#include "engine/GameComponent.hpp"
+#include "../engine/GameComponent.hpp"
 
 class WallComponent : public GameComponent {
 
