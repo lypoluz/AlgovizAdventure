@@ -16,6 +16,7 @@
 #include "ConfigParser.hpp"
 #include "components/SpriteRenderer.hpp"
 #include "Config.hpp"
+#include "levelSystem/LevelParser.hpp"
 
 class GameInitializer {
 
@@ -24,6 +25,7 @@ class GameInitializer {
     GameObject* player{};
     GTime* gTime{};
     Config config;
+    Level startLevel;
 
 public:
 
@@ -100,16 +102,10 @@ public:
         player->addComponent(playerScript);
 
         // renderer
-        /* Circle Renderer
-        auto* renderer = new CircleRenderer(player, &window);
-        renderer->setFill(0,0,255);
-        renderer->setRadius(windowSize/20);*/
         auto* renderer = new SpriteRenderer(player, &window);
         renderer->setSprite("sprites/default/player_down.png");
         renderer->setSize({16,16});
         player->addComponent(renderer);
-
-
     }
 
     void loadItems() {
@@ -124,6 +120,7 @@ public:
 
     void loadLevel() {
         AlgoWrapper::algoText("load level");
+        startLevel = LevelParser::readFile("test_01.level");
     }
 
     void startGameLoop() {
@@ -138,6 +135,7 @@ public:
         GameLoop gameLoop(&ago);
         gameLoop.setPlayer(player);
         gameLoop.setGTime(gTime);
+        gameLoop.setStartLevel(startLevel);
         gameLoop.startGameLoop();
     }
 

@@ -11,14 +11,15 @@
 #include <iostream>
 #include <vector>
 #include "Level.hpp"
-#include "Roomlink.hpp"
 #include <map>
 
 class LevelParser{
 
 public:
     // Gibt ein Level zurück
-    Level readFile(std::string pathToLevel){
+    static Level readFile(std::string pathToLevel) {
+        std::string pathPrefix = "../level/";
+        pathToLevel = pathPrefix + pathToLevel;
         // Informationen für das Level
         std::string name;
         std::string theme = "Default";

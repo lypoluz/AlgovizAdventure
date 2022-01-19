@@ -12,13 +12,14 @@
 #include <map>
 
 struct Level {
-    std::string name;
-    std::string theme;
-    std::vector <std::vector<char>> levelVector;
-    std::map<char, std::string> specialSymbols;
+    std::string name{};
+    std::string theme{};
+    std::vector <std::vector<char>> levelVector{};
+    std::map<char, std::string> specialSymbols{};
     // maybe Add roomlink map
 
 
+    Level() = default;
     Level(std::string name,std::string theme, std::map<char, std::string> specialSymbols, std::vector <std::vector<char>> levelVector) {
         this->name = name;
         this->theme = theme;
