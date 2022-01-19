@@ -132,6 +132,7 @@ public:
         engine->setAGO(&ago);
         engine->setGTime(gTime);
         engine->setConfig(&config);
+        engine->setGameWindow(&window);
 
         GameLoop gameLoop(&ago);
         gameLoop.setPlayer(player);
