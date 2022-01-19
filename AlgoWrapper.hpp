@@ -56,6 +56,7 @@ public:
         void drawText(const std::string& text, Vector2 pos, int fontSize=16, const std::string& fontFamily="sans-serif") {drawText(text,pos.x(),pos.y(),fontSize,fontFamily);}
         void drawImage(const std::string& href, int x, int y, int width, int height) {svg.drawImage(href,x,y,width,height);}
         void drawImage(const std::string& href, Vector2 pos, Vector2 dim) { drawImage(href, pos.x(), pos.y(), dim.x(), dim.y());}
+        void setAttribute(std::string attr, std::string val) {svg.setAttribute(attr,val);}
 
         std::string lastKey() {return svg.lastKey();}
     };
