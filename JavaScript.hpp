@@ -9,14 +9,19 @@
 #include "xeus/xjson.hpp"
 #include "xcpp/xdisplay.hpp"
 
+bool ranOnce = false;
+
 class JavaScript {
     explicit JavaScript(std::string cmd) : cmd(std::move(cmd)) {}
 public:
     std::string cmd;
-    static void run(std::string str) {
-        str = std::string("<script src='JupyterInteraction.js'>" + str + "</script>");
-        std::cout << str;
-        JavaScript js = JavaScript(std::string("<script src='JupyterInteraction.js'>" + str + "</script>"));
+    static void run(const std::string& str) {
+        if (not ranOnce) {
+            JavaScript load = JavaScript("<script src='JupyterInteraction.js'></script>");
+            xcpp::display(load);
+            ranOnce = true;
+        }
+        JavaScript js = JavaScript(std::string("<script>" + str + "</script>"));
         xcpp::display(js);
     }
 };
