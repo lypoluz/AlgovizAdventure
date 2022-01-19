@@ -50,10 +50,10 @@ public:
         ActiveGameObjects* ago = Engine::getInstance()->getAGO();
         AlgoWrapper::Window* window = Engine::getInstance()->getGameWindow();
 
-        Logger::log("copy");
+        Logger::log(level.name);
         for (int i = 0; i < 30; ++i) {
             for (int j = 0; j < 30; ++j) {
-                levelArray[j][i] =  level.levelVector[i][j];
+                levelArray[j][i] = level.levelVector[i][j];
             }
         }
 

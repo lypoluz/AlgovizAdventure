@@ -11,6 +11,7 @@
 #include <iostream>
 #include <vector>
 #include "Level.hpp"
+#include "../Logger.hpp"
 #include <map>
 
 class LevelParser{
@@ -20,6 +21,7 @@ public:
     static Level readFile(std::string pathToLevel) {
         std::string pathPrefix = "../level/";
         pathToLevel = pathPrefix + pathToLevel;
+        Logger::log(pathToLevel);
         // Informationen für das Level
         std::string name;
         std::string theme = "Default";
