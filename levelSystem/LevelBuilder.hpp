@@ -5,11 +5,11 @@
 #ifndef ALGOVIZADVENTURE_LEVELBUILDER_HPP
 #define ALGOVIZADVENTURE_LEVELBUILDER_HPP
 
-#include "levelSystem/Level.hpp"
-#include "engine/ActiveGameObjects.hpp"
-#include "engine/Engine.hpp"
-#include "WallComponent.hpp"
-#include "SpriteRenderer.hpp"
+#include "Level.hpp"
+#include "../engine/ActiveGameObjects.hpp"
+#include "../engine/Engine.hpp"
+#include "../WallComponent.hpp"
+#include "../SpriteRenderer.hpp"
 #include <string>
 
 
