@@ -18,7 +18,9 @@ class LevelParser{
 
 public:
     // Gibt ein Level zurück
-    static Level readFile(const std::string& pathToLevel){
+    static Level readFile(std::string pathToLevel) {
+        std::string pathPrefix = "../level/";
+        pathToLevel = pathPrefix + pathToLevel;
         // Informationen für das Level
         std::string name;
         std::string theme = "Default";
