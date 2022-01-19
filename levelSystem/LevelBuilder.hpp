@@ -10,18 +10,19 @@
 #include "../engine/Engine.hpp"
 #include "../components/WallComponent.hpp"
 #include "../components/SpriteRenderer.hpp"
+#include "Logger.hpp"
 #include <string>
 
 
 class LevelBuilder{
 
     static void placeWall(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window) {
-        AlgoWrapper::algoText("GameObject");
+        Logger::log("GameObject");
         GameObject* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
         ago->add(wall);
 
         //instantiate position component
-        AlgoWrapper::algoText("Position");
+        Logger::log("Position");
         Position* position = new Position(wall);
 
         //set position to value
@@ -30,42 +31,39 @@ class LevelBuilder{
         //game object gets its position
         wall->addPosition(position);
 
-        AlgoWrapper::algoText("wallComp");
+        Logger::log("wallComp");
         WallComponent* wallComp = new WallComponent(wall);
         wall->addComponent(wallComp);
 
-        AlgoWrapper::algoText("Renderer");
+        Logger::log("Renderer");
         auto* renderer = new SpriteRenderer(wall, window);
         renderer->setSprite("sprites/" + theme + "/wall_01.png");
         renderer->setSize({16,16});
-        AlgoWrapper::algoText("addComp");
+        Logger::log("addComp");
         wall->addComponent(renderer);
-        AlgoWrapper::algoText("after");
+        Logger::log("after");
     }
 
 public:
     static void build(Level level) {
-        AlgoWrapper::algoText("levelArray");
         char levelArray[30][30];
-        AlgoWrapper::algoText("ago");
         ActiveGameObjects* ago = Engine::getInstance()->getAGO();
-        AlgoWrapper::algoText("window");
         AlgoWrapper::Window* window = Engine::getInstance()->getGameWindow();
 
-        AlgoWrapper::algoText("copy");
+        Logger::log("copy");
         for (int i = 0; i < 30; ++i) {
             for (int j = 0; j < 30; ++j) {
                 levelArray[j][i] =  level.levelVector[i][j];
             }
         }
 
-        AlgoWrapper::algoText("switch");
+        Logger::log("switch");
         for (int y = 0; y < 30; ++y) {
             for (int x = 0; x < 30; ++x) {
 
                 switch (levelArray[x][y]) {
                     case '#':
-                        AlgoWrapper::algoText("#");
+                        Logger::log("#");
                         placeWall(x, y, level.theme, ago, window);
                         break;
 

@@ -30,7 +30,7 @@ class GameLoop {
     }
 
     void buildStartLevel() {
-        AlgoWrapper::algoText("Build start level");
+        Logger::log("Build start level");
         LevelBuilder::build(startLevel);
     }
 
@@ -59,8 +59,6 @@ public:
         }
     }
 
-    ActiveGameObjects* getAGO() {return ago;}
-    GameObject* getPlayer() {return player;}
 };
 
 #endif //ALGOVIZADVENTURE_GAMELOOP_HPP

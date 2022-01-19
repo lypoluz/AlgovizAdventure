@@ -10,7 +10,7 @@
 
 struct Logger{
 
-    static void logThing(std::string input){
+    static void log(std::string input){
         std::ofstream file("logfile.txt");
         file << input << "\n";
         file.close();
