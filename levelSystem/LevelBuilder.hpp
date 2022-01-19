@@ -37,10 +37,11 @@ class LevelBuilder{
 
         Logger::log("Renderer");
         auto* renderer = new SpriteRenderer(wall, window);
-        Logger::log("loading wall with theme: " + theme);
-        renderer->setSprite("sprites/" + theme + "/wall_01.png");
         Logger::log("set size");
         renderer->setSize({16,16});
+        Logger::log("loading wall with theme: ");
+        Logger::log("sprites/" + theme + "/wall_01.png");
+        renderer->setSprite("sprites/" + theme + "/wall_01.png");
         Logger::log("addComp");
         wall->addComponent(renderer);
         Logger::log("after");
