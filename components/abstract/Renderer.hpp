@@ -6,6 +6,7 @@
 #include "../../engine/GameComponent.hpp"
 #include "../../engine/GameObject.hpp"
 #include "../../AlgoWrapper.hpp"
+#include "../../Logger.hpp"
 
 class Renderer : public GameComponent {
 protected:
@@ -26,6 +27,8 @@ protected:
 public:
     void postUpdate() override {
         if (position->isDirty()) {
+            Logger::log("moving " + gameObject->getName() +
+            " to" + ((position->getPosition() + positionOffset) * 16).toString());
             element->moveTo((position->getPosition() + positionOffset) * 16);
             element->rotateTo(position->getRotation() + rotationOffset);
         }
