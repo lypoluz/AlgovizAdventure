@@ -45,8 +45,11 @@ class LevelBuilder{
 
 public:
     static void build(Level level) {
+        AlgoWrapper::algoText("levelArray");
         char levelArray[30][30];
+        AlgoWrapper::algoText("ago");
         ActiveGameObjects* ago = Engine::getInstance()->getAGO();
+        AlgoWrapper::algoText("window");
         AlgoWrapper::Window* window = Engine::getInstance()->getGameWindow();
 
         AlgoWrapper::algoText("copy");
