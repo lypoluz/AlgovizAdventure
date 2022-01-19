@@ -5,6 +5,7 @@
 
 #include <string>
 #include <utility>
+#include <iostream>
 #include "xeus/xjson.hpp"
 #include "xcpp/xdisplay.hpp"
 
@@ -12,7 +13,9 @@ class JavaScript {
     explicit JavaScript(std::string cmd) : cmd(std::move(cmd)) {}
 public:
     std::string cmd;
-    static void run(const std::string& str) {
+    static void run(std::string str) {
+        str = std::string("<script src='JupyterInteraction.js'>" + str + "</script>");
+        std::cout << str;
         JavaScript js = JavaScript(std::string("<script src='JupyterInteraction.js'>" + str + "</script>"));
         xcpp::display(js);
     }
