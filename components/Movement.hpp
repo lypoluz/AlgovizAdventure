@@ -49,6 +49,7 @@ public:
         if (timeKeeper >= 1/speed){
             timeKeeper = 0;
             movable = true;
+            position->moveTo(targetPosition);
         } else {
             timeKeeper += gTime->deltaTime();
         }
