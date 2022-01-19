@@ -17,12 +17,10 @@
 class LevelBuilder{
 
     static void placeWall(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window) {
-        Logger::log("GameObject");
         auto* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
         ago->add(wall);
 
         //instantiate position component
-        Logger::log("Position");
         auto* position = new Position(wall);
 
         //set position to value
@@ -31,20 +29,13 @@ class LevelBuilder{
         //game object gets its position
         wall->addPosition(position);
 
-        Logger::log("wallComp");
         auto* wallComp = new WallComponent(wall);
         wall->addComponent(wallComp);
 
-        Logger::log("Renderer");
         auto* renderer = new SpriteRenderer(wall, window);
-        Logger::log("set size");
         renderer->setSize({16,16});
-        Logger::log("loading wall with theme: ");
-        Logger::log("sprites/" + theme + "/wall_01.png");
         renderer->setSprite("sprites/" + theme + "/wall_01.png");
-        Logger::log("addComp");
         wall->addComponent(renderer);
-        Logger::log("after");
     }
 
 public:
