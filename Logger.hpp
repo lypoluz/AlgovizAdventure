@@ -11,7 +11,7 @@
 struct Logger{
 
     static void log(std::string input){
-        std::ofstream file("logfile.txt");
+        std::ofstream file("logfile.txt", std::ios::app);
         file << input << "\n";
         file.close();
     }
