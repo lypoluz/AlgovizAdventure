@@ -34,8 +34,8 @@ public:
 
         if     (lastKey == inputMap.down)  currentVec = Vector2::down();
         else if(lastKey == inputMap.up)    currentVec = Vector2::up();
-        else if(lastKey == inputMap.right) currentVec = Vector2::right();
-        else if(lastKey == inputMap.left)  currentVec = Vector2::left();
+        else if (lastKey == inputMap.right) currentVec = Vector2::right();
+        else { if (lastKey == inputMap.left) currentVec = Vector2::left(); AlgoWrapper::expand(); }
     }
 
 
