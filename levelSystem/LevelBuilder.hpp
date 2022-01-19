@@ -34,7 +34,9 @@ class LevelBuilder{
         auto* renderer = new SpriteRenderer(wall, window);
         renderer->setSprite("sprites/" + theme + "/wall_01.png");
         renderer->setSize({16,16});
+        AlgoWrapper::algoText("before");
         wall->addComponent(renderer);
+        AlgoWrapper::algoText("after");
     }
 
 public:
