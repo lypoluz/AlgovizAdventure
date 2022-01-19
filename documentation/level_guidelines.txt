@@ -1,16 +1,14 @@
 
 Die verschiedenen Teile des Levels werden durch Tags festgelegt. Nach einem Tag kommt eine neue Zeile
+Alle level sind 30 mal 30 blöcke groß
 
 N: für den Namen
-S: für die Größe, die erste Zahl ist die Breite und die zweite Zahl ist die Höhe des Levels. Die beiden Zahlen sollen mit einem Leerzeichen voneinander getrennt werden.
 T: für das Theme
 A: für die Symbole, die Noch gesondert zugeordnet werden müssen (Roomlink, Enemy und item). Zuerst eine Zahl, die angibt wie viele verschiedene Symbole es gibt.
 L: das Level selbst. jedes zeichen entspricht einem block im Grid des Levels. Die Außenwände sollen zwei Blöcke dick sein.
 
 N:
 level_01
-S:
-5 5
 T:
 Default
 A:
@@ -18,10 +16,33 @@ A:
 a enemy enemy_Enemy
 b roomlink link_level_01_right link_level_02_left
 L:
-#######
-#######
-##a   b
-## C ##
-##   ##
-#######
-#######
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############a   b###########
+############## C #############
+##############   #############
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
+##############################
