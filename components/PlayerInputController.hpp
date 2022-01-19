@@ -14,7 +14,6 @@
 
 class PlayerInputController : public EntityController {
     Vector2 currentVec;
-    Vector2 lastVec;
     AlgoWrapper::Window* window;
     InputMap inputMap{};
     std::string lastKey;
@@ -22,13 +21,11 @@ class PlayerInputController : public EntityController {
 public:
     PlayerInputController(ObjectStructure * os, AlgoWrapper::Window* win) : EntityController(os) {
         currentVec = Vector2::zero();
-        lastVec = Vector2::zero();
         window = win;
         lastKey = "";
     }
 
     void preUpdate() override {
-        lastVec = currentVec;
         currentVec = Vector2::zero();
         lastKey = window->lastKey();
 
@@ -41,7 +38,7 @@ public:
 
     void switchInputMap(InputMap newInputMap) {inputMap = std::move(newInputMap);}
 
-    Vector2 getMoveVector() override {return (currentVec + lastVec).normalized();}
+    Vector2 getMoveVector() override {return currentVec.normalized();}
     bool isAttacking() override {return lastKey == inputMap.attack;}
     bool isPickingUp() override {return lastKey == inputMap.pickUp;}
     std::string getRawInput() {return lastKey;}
