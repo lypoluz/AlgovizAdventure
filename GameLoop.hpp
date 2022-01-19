@@ -32,6 +32,7 @@ class GameLoop {
 
     void buildStartLevel() {
         Logger::log("Build start level");
+        AlgoWrapper::draw();
         LevelBuilder::build(startLevel);
     }
 
