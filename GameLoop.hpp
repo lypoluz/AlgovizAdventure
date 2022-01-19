@@ -9,8 +9,8 @@
 #include "engine/GameObject.hpp"
 #include "engine/GTime.hpp"
 #include "AlgoWrapper.hpp"
-#include "Level.hpp"
-#include "LevelBuilder.hpp"
+#include "levelSystem/Level.hpp"
+#include "levelSystem/LevelBuilder.hpp"
 
 class GameLoop {
     ActiveGameObjects* ago;
