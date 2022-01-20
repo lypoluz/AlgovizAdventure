@@ -11,7 +11,9 @@
 
 class ChangeSpriteOnMove : public GameComponent {
     Position* position{};
-    Vector2 lastPosition;
+    Vector2 lastPosition1;
+    Vector2 lastPosition2;
+    Vector2 lastPosition3;
     SpriteRenderer* spriteRend;
     std::string downSprite{};
     std::string leftSprite{};
@@ -34,8 +36,8 @@ public:
     }
 
     void postUpdate() override {
-        Vector2 moveVec = (position -> getPosition() - lastPosition).normalized();
-        AlgoWrapper::algoText(position-> getPosition().toString() + " - " + lastPosition.toString() + " .norm() = " + moveVec.toString());
+        Vector2 moveVec = (position -> getPosition() - lastPosition3).normalized();
+        AlgoWrapper::algoText(position-> getPosition().toString() + " - " + lastPosition3.toString() + " .norm() = " + moveVec.toString());
         if(moveVec == Vector2::down()){
             spriteRend -> setSprite(downSprite);
         }
@@ -48,7 +50,9 @@ public:
         else if(moveVec == Vector2::up()){
             spriteRend -> setSprite(upSprite);
         }
-        lastPosition = position -> getPosition();
+        lastPosition3 = lastPosition2;
+        lastPosition2 = lastPosition1;
+        lastPosition1 = position -> getPosition();
     }
 };
 
