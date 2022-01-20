@@ -106,7 +106,7 @@ public:
 
         // renderer
         auto* renderer = new SpriteRenderer(player, &window);
-        renderer->setSprite("sprites/default/player_down.png");
+        renderer->setSprite("sprites/default/player_down.svg");
         renderer->setSize({16,16});
         player->addComponent(renderer);
 
