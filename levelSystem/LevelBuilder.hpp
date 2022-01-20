@@ -16,7 +16,7 @@
 
 class LevelBuilder{
 
-    static void placeWall(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window) {
+    static void placeWall(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window, bool wallSurroundings[3][3]) {
         auto* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
         ago->add(wall);
 
@@ -32,9 +32,64 @@ class LevelBuilder{
         auto* wallComp = new WallComponent(wall);
         wall->addComponent(wallComp);
 
+        std::string wallType = "wall_center";
+
+        //  10
+        //01  21
+        //  12
+        //wall_center
+        if(wallSurroundings[1][0] && wallSurroundings[0][1] && wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_center";}
+
+        //wall_bottomtop
+        if (!wallSurroundings[1][0] && wallSurroundings[0][1] && !wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_bottomtop";}
+
+        //wall_corner_lowerleft
+        if (wallSurroundings[1][0] && !wallSurroundings[0][1] && !wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_corner_lowerleft";}
+
+        //wall_corner_lowerright
+        if (wallSurroundings[1][0] && wallSurroundings[0][1] && !wallSurroundings[1][2] && !wallSurroundings[2][1]){wallType="wall_corner_lowerright";}
+
+        //wall_corner_upperleft
+        if (!wallSurroundings[1][0] && !wallSurroundings[0][1] && wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_corner_upperleft";}
+
+        //wall_corner_upperleft
+        if (!wallSurroundings[1][0] && wallSurroundings[0][1] && wallSurroundings[1][2] && !wallSurroundings[2][1]){wallType="wall_corner_upperleft";}
+
+        //wall_down
+        if (wallSurroundings[1][0] && wallSurroundings[0][1] && !wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_down";}
+
+        //wall_left
+        if (wallSurroundings[1][0] && !wallSurroundings[0][1] && wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_left";}
+
+        //wall_leftright
+        if (wallSurroundings[1][0] && !wallSurroundings[0][1] && wallSurroundings[1][2] && !wallSurroundings[2][1]){wallType="wall_leftright";}
+
+        //wall_open_down
+        if (!wallSurroundings[1][0] && !wallSurroundings[0][1] && wallSurroundings[1][2] && !wallSurroundings[2][1]){wallType="wall_open_down";}
+
+        //wall_open_left
+        if (!wallSurroundings[1][0] && wallSurroundings[0][1] && !wallSurroundings[1][2] && !wallSurroundings[2][1]){wallType="wall_open_left";}
+
+        //wall_open_right
+        if (!wallSurroundings[1][0] && !wallSurroundings[0][1] && !wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_open_right";}
+
+        //wall_open_up
+        if (wallSurroundings[1][0] && !wallSurroundings[0][1] && !wallSurroundings[1][2] && !wallSurroundings[2][1]){wallType="wall_open_up";}
+
+        //wall_right
+        if (wallSurroundings[1][0] && wallSurroundings[0][1] && wallSurroundings[1][2] && !wallSurroundings[2][1]){wallType="wall_right";}
+
+        //wall_up
+        if (!wallSurroundings[1][0] && wallSurroundings[0][1] && wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_up";}
+
+        //wall_closed
+        if (wallSurroundings[1][0] && wallSurroundings[0][1] && wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_closed";}
+
+
+
         auto* renderer = new SpriteRenderer(wall, window);
         renderer->setSize({16,16});
-        renderer->setSprite("sprites/" + theme + "/wall_center.svg");
+        renderer->setSprite("sprites/" + theme + "/" + wallType + "svg");
         wall->addComponent(renderer);
     }
 
@@ -57,9 +112,17 @@ public:
                 switch (levelArray[x][y]) {
                     case '#':
                         // wall code
-                        // todo amend wall code to look around each block to place correct wall
-                        // make switch case
-                        placeWall(x, y, level.theme, ago, window);
+                        bool wallSurroundings[3][3];
+                        for (int i = -1; i <= 1; ++i) {
+                            for (int j = -1; j <= 1; ++j) {
+                                if (x+j < 0 || x+j >= 30 || y+i < 0 || y+i >= 30){
+                                    wallSurroundings[j+1][i+1] = true;
+                                }else {
+                                    wallSurroundings[j + 1][i + 1] = level.levelVector[x + j][y + i] == '#';
+                                }
+                            }
+                        }
+                        placeWall(x, y, level.theme, ago, window, wallSurroundings);
                         break;
                     case '0':
                         //blank wall code so basically floor but with collision
