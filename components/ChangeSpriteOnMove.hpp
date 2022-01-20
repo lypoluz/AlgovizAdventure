@@ -37,7 +37,6 @@ public:
 
     void postUpdate() override {
         Vector2 moveVec = (position -> getPosition() - lastPosition3).normalized();
-        AlgoWrapper::algoText(position-> getPosition().toString() + " - " + lastPosition3.toString() + " .norm() = " + moveVec.toString());
         if(moveVec == Vector2::down()){
             spriteRend -> setSprite(downSprite);
         }
