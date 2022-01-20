@@ -57,7 +57,7 @@ public:
             gTime->setDelta();
 
             update();
-            AlgoWrapper::algoText(std::to_string(1/(gTime->deltaTime())));
+            //AlgoWrapper::algoText(std::to_string(1/(gTime->deltaTime())));
         }
     }
 
