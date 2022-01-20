@@ -82,6 +82,9 @@ class LevelBuilder{
         //wall_up
         if (!wallSurroundings[1][0] && wallSurroundings[0][1] && wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_up";}
 
+        //wall_closed
+        if (wallSurroundings[1][0] && wallSurroundings[0][1] && wallSurroundings[1][2] && wallSurroundings[2][1]){wallType="wall_closed";}
+
 
 
         auto* renderer = new SpriteRenderer(wall, window);
