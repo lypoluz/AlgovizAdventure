@@ -11,7 +11,7 @@
 #include "../GameLoop.hpp"
 #include "../AlgoWrapper.hpp"
 #include "../engine/Engine.hpp"
-#include "Ease.hpp"
+#include "../Ease.hpp"
 
 class Movement : public GameComponent {
 
