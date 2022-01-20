@@ -18,6 +18,7 @@
 #include "Config.hpp"
 #include "levelSystem/LevelParser.hpp"
 #include "Logger.hpp"
+#include "components/ChangeSpriteOnMove.hpp"
 
 class GameInitializer {
 
@@ -102,11 +103,19 @@ public:
         auto* playerScript = new EntityScript(player, playerInputController, movement);
         player->addComponent(playerScript);
 
+
         // renderer
         auto* renderer = new SpriteRenderer(player, &window);
         renderer->setSprite("sprites/default/player_down.png");
         renderer->setSize({16,16});
         player->addComponent(renderer);
+
+        // changeSpriteOnMove
+        auto* spriteChanger = new ChangeSpriteOnMove(player, renderer);
+        spriteChanger->setDownSprite("sprites/default/player_down.svg");
+        spriteChanger->setLeftSprite("sprites/default/player_left.svg");
+        spriteChanger->setRightSprite("sprites/default/player_right.svg");
+        spriteChanger->setUpSprite("sprites/default/player_up.svg");
     }
 
     void loadItems() {

@@ -1,38 +1,50 @@
-// Created by Lypoluz (Dominik) on 19.01.2022.
+// Created by Annika on 19.01.2022.
 
 #ifndef ALGOVIZADVENTURE_CHANGESPRITEONMOVE_HPP
 #define ALGOVIZADVENTURE_CHANGESPRITEONMOVE_HPP
 
-#include "GameComponent.hpp"
+#include <utility>
+
+#include "../engine/GameComponent.hpp"
 #include "SpriteRenderer.hpp"
 #include "Position.hpp"
 
 class ChangeSpriteOnMove : public GameComponent {
-    Position* position;
+    Position* position{};
     Vector2 lastPosition;
     SpriteRenderer* spriteRend;
+    std::string downSprite{};
+    std::string leftSprite{};
+    std::string rightSprite{};
+    std::string upSprite{};
 
 
 public:
     ChangeSpriteOnMove(ObjectStructure* os, SpriteRenderer* sr) : GameComponent(os) {
         spriteRend = sr;
-
     }
-    void onStart(){
+
+    void setDownSprite(std::string path) {downSprite = std::move(path);}
+    void setLeftSprite(std::string path) {leftSprite = std::move(path);}
+    void setRightSprite(std::string path) {rightSprite = std::move(path);}
+    void setUpSprite(std::string path) {upSprite = std::move(path);}
+
+    void onStart() override {
         position = ((GameObject*)gameObject) -> position;
     }
-    void postUpdate() {
+
+    void postUpdate() override {
         if((position -> getPosition() - lastPosition).normalized() == Vector2::down()){
-            spriteRend -> setSprite("sprites/default/player_down.png");
+            spriteRend -> setSprite(downSprite);
         }
-        if((position -> getPosition() - lastPosition).normalized() == Vector2::left()){
-            spriteRend -> setSprite("sprites/default/player_left");
+        else if((position -> getPosition() - lastPosition).normalized() == Vector2::left()){
+            spriteRend -> setSprite(leftSprite);
         }
-        if((position -> getPosition() - lastPosition).normalized() == Vector2::right()){
-            spriteRend -> setSprite("sprites/default/player_right");
+        else if((position -> getPosition() - lastPosition).normalized() == Vector2::right()){
+            spriteRend -> setSprite(rightSprite);
         }
-        if((position -> getPosition() - lastPosition).normalized() == Vector2::up()){
-            spriteRend -> setSprite("sprites/default/player_up");
+        else if((position -> getPosition() - lastPosition).normalized() == Vector2::up()){
+            spriteRend -> setSprite(upSprite);
         }
         lastPosition = position -> getPosition();
     }
