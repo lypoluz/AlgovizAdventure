@@ -109,7 +109,6 @@ public:
                 switch (levelArray[x][y]) {
                     case '#':
                         // wall code
-
                         bool wallSurroundings[3][3];
                         for (int i = -1; i <= 1; ++i) {
                             for (int j = -1; j <= 1; ++j) {
@@ -119,11 +118,7 @@ public:
                                     wallSurroundings[j + 1][i + 1] = level.levelVector[x + j][y + i] == '#';
                                 }
                             }
-
                         }
-                        // todo amend wall code to look around each block to place correct wall
-                        // make switch case
-
                         placeWall(x, y, level.theme, ago, window, wallSurroundings);
                         break;
                     case '0':
