@@ -114,7 +114,7 @@ public:
 
         // attack animator
         auto* attackAnimator = new AttackAnimator(player, renderer, aRenderer);
-        attackAnimator->setPlayerAttackSprite(
+        attackAnimator->setPlayerAttackSprites(
                 "sprites/player/player_up_attacking.svg",
                 "sprites/player/player_down_attacking.svg",
                 "sprites/player/player_left_attacking.svg",
