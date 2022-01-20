@@ -34,16 +34,18 @@ public:
     }
 
     void postUpdate() override {
-        if((position -> getPosition() - lastPosition).normalized() == Vector2::down()){
+        Vector2 moveVec = (position -> getPosition() - lastPosition).normalized();
+        AlgoWrapper::algoText(position-> getPosition().toString() + " - " + lastPosition.toString() + " .norm() = " + moveVec.toString());
+        if(moveVec == Vector2::down()){
             spriteRend -> setSprite(downSprite);
         }
-        else if((position -> getPosition() - lastPosition).normalized() == Vector2::left()){
+        else if(moveVec == Vector2::left()){
             spriteRend -> setSprite(leftSprite);
         }
-        else if((position -> getPosition() - lastPosition).normalized() == Vector2::right()){
+        else if(moveVec == Vector2::right()){
             spriteRend -> setSprite(rightSprite);
         }
-        else if((position -> getPosition() - lastPosition).normalized() == Vector2::up()){
+        else if(moveVec == Vector2::up()){
             spriteRend -> setSprite(upSprite);
         }
         lastPosition = position -> getPosition();
