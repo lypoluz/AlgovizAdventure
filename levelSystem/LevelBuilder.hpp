@@ -56,6 +56,7 @@ public:
 
                 switch (levelArray[x][y]) {
                     case '#':
+                        //wall code
                         placeWall(x, y, level.theme, ago, window);
                         break;
 
@@ -73,6 +74,7 @@ public:
 
                     default:
                         //special symbol code
+                        //find thing in special symbol map by character using the find function then place thing there
                         break;
                 }
             }
