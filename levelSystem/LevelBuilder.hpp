@@ -34,7 +34,7 @@ class LevelBuilder{
 
         auto* renderer = new SpriteRenderer(wall, window);
         renderer->setSize({16,16});
-        renderer->setSprite("sprites/" + theme + "/wall_01.svg");
+        renderer->setSprite("sprites/" + theme + "/wall_center.svg");
         wall->addComponent(renderer);
     }
 
@@ -75,14 +75,9 @@ public:
                         //special symbol code
                         break;
                 }
-
             }
-
         }
     }
-
-
-
 };
 
 
