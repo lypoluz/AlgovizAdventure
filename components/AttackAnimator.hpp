@@ -5,9 +5,9 @@
 
 #include <utility>
 
-#include "GameComponent.hpp"
+#include "../engine/GameComponent.hpp"
 #include "SpriteRenderer.hpp"
-#include "Engine.hpp"
+#include "../engine/Engine.hpp"
 
 class AttackAnimator : public GameComponent {
 
