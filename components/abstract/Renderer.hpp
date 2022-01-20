@@ -25,10 +25,12 @@ protected:
 
 
 public:
+    void onStart() override {
+        element->moveTo((position->getPosition() + positionOffset) * 16);
+        element->rotateTo(position->getRotation() + rotationOffset);
+    }
     void postUpdate() override {
         if (position->isDirty()) {
-            Logger::log("moving " + gameObject->getName() +
-            " to" + ((position->getPosition() + positionOffset) * 16).toString());
             element->moveTo((position->getPosition() + positionOffset) * 16);
             element->rotateTo(position->getRotation() + rotationOffset);
         }
