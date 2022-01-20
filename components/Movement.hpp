@@ -3,6 +3,7 @@
 #ifndef ALGOVIZADVENTURE_MOVEMENT_HPP
 #define ALGOVIZADVENTURE_MOVEMENT_HPP
 
+#include <algorithm>
 #include "../engine/GameComponent.hpp"
 #include "Position.hpp"
 #include "../engine/GameObject.hpp"
@@ -54,7 +55,7 @@ public:
             timeKeeper += gTime->deltaTime();
         }
         if(not movable) {
-            position->moveTo(Vector2::lerp(startPosition, targetPosition, timeKeeper*speed));
+            position->moveTo(Vector2::lerp(startPosition, targetPosition, std::min(timeKeeper*speed, 1.0f)));
         }
     }
 
