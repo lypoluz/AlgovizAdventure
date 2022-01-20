@@ -31,7 +31,7 @@ public:
     float y() { return position.y(); }
     float getRotation() const { return rotation; }
 
-    void moveTo(float x, float y) { moveTo(Vector2(x, y)); }
+    void moveTo(float x, float y) { moveTo({x,y}); }
     void moveTo(Vector2 newPos) {
         lastPosition = position;
         position = newPos;
@@ -39,7 +39,7 @@ public:
         updateFacing();
     }
 
-    void moveBy(float x, float y) { moveBy(Vector2(x, y)); }
+    void moveBy(float x, float y) { moveBy({x,y}); }
     void moveBy(Vector2 amount) {
         lastPosition = position;
         position += amount;
