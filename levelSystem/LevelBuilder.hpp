@@ -62,7 +62,7 @@ public:
                         placeWall(x, y, level.theme, ago, window);
                         break;
                     //case '0':
-                    //    //blank wall code
+                    //    //blank wall code so basically floor but with collision
                     //    break;
                     case ' ':
                         //place floor (to back)
