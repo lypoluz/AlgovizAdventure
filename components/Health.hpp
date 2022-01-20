@@ -1,6 +1,4 @@
-//
 // Created by annika on 15.01.2022.
-//
 
 #ifndef ALGOVIZADVENTURE_HEALTH_HPP
 #define ALGOVIZADVENTURE_HEALTH_HPP
