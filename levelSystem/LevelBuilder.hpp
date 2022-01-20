@@ -56,25 +56,29 @@ public:
 
                 switch (levelArray[x][y]) {
                     case '#':
-                        //wall code
+                        // wall code
+                        // todo amend wall code to look around each block to place correct wall
+                        // make switch case
                         placeWall(x, y, level.theme, ago, window);
                         break;
-
+                    //case '0':
+                    //    //blank wall code
+                    //    break;
                     case ' ':
-                        //empty code
+                        //place floor (to back)
                         break;
 
                     case 'C':
-                        //crystal code
+                        // crystal code
                         break;
 
                     case 'S':
-                        //player code
+                        // player code
                         break;
 
                     default:
-                        //special symbol code
-                        //find thing in special symbol map by character using the find function then place thing there
+                        // special symbol code
+                        // find thing in special symbol map by character using the find function then place thing there
                         break;
                 }
             }
