@@ -116,6 +116,7 @@ public:
         spriteChanger->setLeftSprite("sprites/default/player_left.svg");
         spriteChanger->setRightSprite("sprites/default/player_right.svg");
         spriteChanger->setUpSprite("sprites/default/player_up.svg");
+        player->addComponent(spriteChanger);
     }
 
     void loadItems() {
