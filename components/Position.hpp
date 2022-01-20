@@ -14,7 +14,6 @@ class Position : public GameComponent {
 
 public:
     explicit Position(ObjectStructure *os) : GameComponent(os) {
-        lastPosition = Vector2::zero();
         position = Vector2::zero();
         rotation = 0;
     }
@@ -23,31 +22,26 @@ public:
 
     std::string getName() override { return "Position"; }
 
-    Vector2 getLastMoveVector() { return position - lastPosition; }
-
+    Vector2 facing() { return (position - lastPosition).normalized();}
     Vector2 getPosition() { return position; }
-
     float x() { return position.x(); }
-
     float y() { return position.y(); }
+    float getRotation() { return rotation; }
 
-    int getRotation() { return rotation; }
 
+    void moveTo(float x, float y) { moveTo(Vector2(x, y)); }
     void moveTo(Vector2 newPos) {
         lastPosition = position;
         position = newPos;
         dirty = true;
     }
 
-    void moveTo(float x, float y) { moveTo(Vector2(x, y)); }
-
+    void moveBy(float x, float y) { moveBy(Vector2(x, y)); }
     void moveBy(Vector2 amount) {
         lastPosition = position;
         position += amount;
         dirty = true;
     }
-
-    void moveBy(float x, float y) { moveBy(Vector2(x, y)); }
 
     void rotateTo(float angle) {
         rotation = angle;
