@@ -61,9 +61,9 @@ public:
                         // make switch case
                         placeWall(x, y, level.theme, ago, window);
                         break;
-                    //case '0':
-                    //    //blank wall code so basically floor but with collision
-                    //    break;
+                    case '0':
+                        //blank wall code so basically floor but with collision
+                        break;
                     case ' ':
                         //place floor (to back)
                         break;
@@ -74,6 +74,7 @@ public:
 
                     case 'S':
                         // player code
+                        ((GameObject*)(Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
                         break;
 
                     default:
