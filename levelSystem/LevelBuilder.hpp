@@ -12,6 +12,8 @@
 #include "../components/SpriteRenderer.hpp"
 #include "../Logger.hpp"
 #include <string>
+#include <map>
+#include "SpecialLevelSymbols.hpp"
 
 
 class LevelBuilder{
@@ -144,6 +146,7 @@ public:
                     default:
                         // special symbol code
                         // find thing in special symbol map by character using the find function then place thing there
+                        SpecialLevelSymbols::interpretSymbol(level.specialSymbols[levelArray[x][y]]);
                         break;
                 }
             }
