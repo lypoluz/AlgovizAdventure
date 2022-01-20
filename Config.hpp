@@ -10,5 +10,7 @@ struct Config {
     int windowFrameSizeFactor = 24;
     float playerSpeed = 2;
     bool funnyEnemies = false;
+    bool buildStartLevel = true;
+    bool levelBorder = true;
 };
 #endif //ALGOVIZADVENTURE_CONFIG_HPP

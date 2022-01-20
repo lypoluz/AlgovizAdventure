@@ -116,7 +116,7 @@ public:
                         for (int i = -1; i <= 1; ++i) {
                             for (int j = -1; j <= 1; ++j) {
                                 if (x+j < 0 || x+j >= 30 || y+i < 0 || y+i >= 30){
-                                    wallSurroundings[j+1][i+1] = false;
+                                    wallSurroundings[j+1][i+1] = !Engine::getInstance()->getConfig()->levelBorder;
                                 }else {
                                     wallSurroundings[j + 1][i + 1] = levelArray[x + j][y + i] == '#';
                                 }

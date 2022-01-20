@@ -43,6 +43,8 @@ public:
         config.windowFrameSizeFactor = cp.stringToIntOrDefault("windowFrameSizeFactor", config.windowFrameSizeFactor);
         config.playerSpeed = cp.stringToFloatOrDefault("playerSpeed", config.playerSpeed);
         config.funnyEnemies = cp.stringToBoolOrDefault("funnyEnemies", config.funnyEnemies);
+        config.buildStartLevel = cp.stringToBoolOrDefault("buildStartLevel", config.buildStartLevel);
+        config.levelBorder = cp.stringToBoolOrDefault("levelBorder", config.levelBorder);
     }
 
 

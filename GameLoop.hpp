@@ -31,6 +31,7 @@ class GameLoop {
     }
 
     void buildStartLevel() {
+        if(not Engine::getInstance()->getConfig()->buildStartLevel) return;
         Logger::log("Build start level");
         AlgoWrapper::draw();
         LevelBuilder::build(startLevel);
