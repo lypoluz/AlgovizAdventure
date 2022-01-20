@@ -69,6 +69,7 @@ public:
     void setAttackSprites(std::string s1, std::string s2, std::string s3) {as1=std::move(s1);as2=std::move(s2);as3=std::move(s3);}
 
     void startAnimation() {
+        if(timer <= attackTime) return;
         timer = 0;
         attackRenderer->setPositionOffset(position->facing());
         if (position->facing() == Vector2::up()) { attackRenderer->setRotationOffset(0); psa = psaup;}
