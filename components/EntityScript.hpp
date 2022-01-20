@@ -8,13 +8,13 @@
 #include "../engine/GameComponent.hpp"
 #include "PlayerInputController.hpp"
 #include "Movement.hpp"
-#include "abstract/Weapon.hpp"
+#include "AttackAnimator.hpp"
 
 
 class EntityScript : public GameComponent {
     EntityController* inputController;
     Movement* movement;
-    Weapon* currentWeapon;
+    AttackAnimator* attackAnimator;
     /*Inventory* inventory;
     float pickUpRadius = 1;
 
@@ -25,9 +25,10 @@ class EntityScript : public GameComponent {
     }*/
 
 public:
-    EntityScript(ObjectStructure* os, EntityController* ec, Movement* m/*, Inventory* i*/) : GameComponent(os) {
+    EntityScript(ObjectStructure* os, EntityController* ec, Movement* m, AttackAnimator* aa/*, Inventory* i*/) : GameComponent(os) {
         inputController = ec;
         movement = m;
+        attackAnimator = aa;
         //inventory = i;
     }
 
@@ -36,8 +37,8 @@ public:
         movement->MoveInDirection(inputController->getMoveVector());
 
         // attack
-        if (inputController->isAttacking() && currentWeapon)
-            currentWeapon->performAttack();
+        if (inputController->isAttacking())
+            attackAnimator->startAnimation();
 
         /*/ pickup
         if(inputController->isPickingUp()) {
