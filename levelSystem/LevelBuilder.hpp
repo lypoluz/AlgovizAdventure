@@ -13,7 +13,7 @@
 #include "../Logger.hpp"
 #include <string>
 #include <map>
-#include "levelSystem/SpecialLevelSymbols.hpp"
+#include "SpecialLevelSymbols.hpp"
 
 
 class LevelBuilder{
