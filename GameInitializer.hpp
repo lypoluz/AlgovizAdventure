@@ -92,6 +92,40 @@ public:
         player->addPosition(position);
         player->position->moveTo(Vector2(config.windowSize/32, config.windowSize/32));
 
+        // renderer
+        auto* renderer = new SpriteRenderer(player, &window);
+        renderer->setSprite("sprites/player/player_down.svg");
+        renderer->setSize({16,16});
+        player->addComponent(renderer);
+
+        // attack renderer
+        auto* aRenderer = new SpriteRenderer(player, &window);
+        aRenderer->setSprite("sprites/empty.svg");
+        aRenderer->setSize({16, 16});
+        player->addComponent(aRenderer);
+
+        // changeSpriteOnMove
+        auto* spriteChanger = new ChangeSpriteOnMove(player, renderer);
+        spriteChanger->setDownSprite("sprites/player/player_down.svg");
+        spriteChanger->setLeftSprite("sprites/player/player_left.svg");
+        spriteChanger->setRightSprite("sprites/player/player_right.svg");
+        spriteChanger->setUpSprite("sprites/player/player_up.svg");
+        player->addComponent(spriteChanger);
+
+        // attack animator
+        auto* attackAnimator = new AttackAnimator(player, renderer, aRenderer);
+        attackAnimator->setPlayerAttackSprite(
+                "sprites/player/player_up_attacking.svg",
+                "sprites/player/player_down_attacking.svg",
+                "sprites/player/player_left_attacking.svg",
+                "sprites/player/player_right_attacking.svg");
+        attackAnimator->setAttackSprites(
+                "sprites/player/sword_attack1.svg",
+                "sprites/player/sword_attack2.svg",
+                "sprites/player/sword_attack3.svg");
+        attackAnimator->setAttackTime(.7);
+        player->addComponent(attackAnimator);
+
         // movement
         auto* movement = new Movement(player);
         movement->setSpeed(config.playerSpeed);
@@ -102,23 +136,8 @@ public:
         player->addComponent(playerInputController);
 
         // player script
-        auto* playerScript = new EntityScript(player, playerInputController, movement);
+        auto* playerScript = new EntityScript(player, playerInputController, movement, attackAnimator);
         player->addComponent(playerScript);
-
-
-        // renderer
-        auto* renderer = new SpriteRenderer(player, &window);
-        renderer->setSprite("sprites/player/player_down.svg");
-        renderer->setSize({16,16});
-        player->addComponent(renderer);
-
-        // changeSpriteOnMove
-        auto* spriteChanger = new ChangeSpriteOnMove(player, renderer);
-        spriteChanger->setDownSprite("sprites/player/player_down.svg");
-        spriteChanger->setLeftSprite("sprites/player/player_left.svg");
-        spriteChanger->setRightSprite("sprites/player/player_right.svg");
-        spriteChanger->setUpSprite("sprites/player/player_up.svg");
-        player->addComponent(spriteChanger);
     }
 
     void loadItems() {

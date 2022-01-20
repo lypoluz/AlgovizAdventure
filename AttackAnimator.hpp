@@ -16,9 +16,13 @@ class AttackAnimator : public GameComponent {
     Position* position{};
     GTime* gTime{};
 
-    float attackTime = .7;
+    float attackTime = .6;
     float timer{};
     std::string psd;
+    std::string psaup;
+    std::string psadown;
+    std::string psaleft;
+    std::string psaright;
     std::string psa;
     std::string asd;
     std::string as1;
@@ -31,6 +35,7 @@ public:
     AttackAnimator(ObjectStructure* os, SpriteRenderer* psr, SpriteRenderer* asr) : GameComponent(os) {
         playerRenderer = psr;
         attackRenderer = asr;
+        timer = attackTime * 2;
     }
 
     void onStart() override {
@@ -57,20 +62,19 @@ public:
         }
     }
 
-    void setPlayerAttackSprite(std::string s) {psa = std::move(s);}
+    void setAttackTime(float at) {attackTime = at;}
+
+    void setPlayerAttackSprites(std::string sU, std::string sD, std::string sL, std::string sR) {
+        psaup = std::move(sU);psadown = std::move(sD);psaleft = std::move(sL);psaright = std::move(sR);}
     void setAttackSprites(std::string s1, std::string s2, std::string s3) {as1=std::move(s1);as2=std::move(s2);as3=std::move(s3);}
 
     void startAnimation() {
         timer = 0;
         attackRenderer->setPositionOffset(position->facing());
-        if(position->facing() == Vector2::up())
-            attackRenderer->setRotationOffset(0);
-        else if(position->facing() == Vector2::down())
-            attackRenderer->setRotationOffset(180);
-        else if(position->facing() == Vector2::left())
-            attackRenderer->setRotationOffset(270);
-        else if(position->facing() == Vector2::right())
-            attackRenderer->setRotationOffset(90);
+        if (position->facing() == Vector2::up()) { attackRenderer->setRotationOffset(0); psa = psaup;}
+        else if (position->facing() == Vector2::down()) { attackRenderer->setRotationOffset(180); psa = psadown;}
+        else if (position->facing() == Vector2::left()) { attackRenderer->setRotationOffset(270); psa = psaleft;}
+        else if (position->facing() == Vector2::right()) { attackRenderer->setRotationOffset(90); psa = psaright;}
     }
 };
 
