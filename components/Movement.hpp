@@ -11,6 +11,7 @@
 #include "../GameLoop.hpp"
 #include "../AlgoWrapper.hpp"
 #include "../engine/Engine.hpp"
+#include "Ease.hpp"
 
 class Movement : public GameComponent {
 
@@ -55,7 +56,10 @@ public:
             timeKeeper += gTime->deltaTime();
         }
         if(not movable) {
-            position->moveTo(Vector2::lerp(startPosition, targetPosition, std::min(timeKeeper*speed, 1.0f)));
+            // easing function
+            float x = Ease::InOutQuart(std::min(timeKeeper*speed, 1.0f));
+            // calculation a point between start end target based on x
+            position->moveTo(Vector2::lerp(startPosition, targetPosition, x));
         }
     }
 
