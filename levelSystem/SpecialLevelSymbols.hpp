@@ -29,7 +29,7 @@ public:
             // item code
             return "";
         }
-        return "";
+        return "nope";
 
     }
 

@@ -213,7 +213,7 @@ public:
                         try {
                             std::string symbolSprite;
                             symbolSprite = SpecialLevelSymbols::interpretSymbol(level.specialSymbols[levelArray[x][y]]);
-                            if (symbolSprite=="spawnPoint"){
+                            if (symbolSprite=="spawnPoint" || symbolSprite == "nope"){
                                 placeFloor(x,y, level.theme, ago, window);
                             }
                         }
