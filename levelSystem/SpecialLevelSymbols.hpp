@@ -12,7 +12,7 @@ class SpecialLevelSymbols{
 
 public:
 
-    static void interpretSymbol(std::string symbol) {
+    static void interpretSymbol(int x, int y, std::string symbol) {
         //place symbol here
     }
 
