@@ -15,17 +15,17 @@ public:
 
     static std::string interpretSymbol(std::string symbol) {
         //place symbol here
-        Logger::logToNew(symbol.substr(0, (symbol.find(' ')-1)), "small_test_log");
-        if (symbol.substr(0, (symbol.find(' ')-1) ) == "enemy") {
+        Logger::logToNew(symbol.substr(0, symbol.find(' ')), "small_test_log");
+        if (symbol.substr(0, symbol.find(' ') ) == "enemy") {
             // enemy code
             return "";
-        }else if (symbol.substr(0, (symbol.find(' ')-1) ) == "roomlink") {
+        }else if (symbol.substr(0, symbol.find(' ') ) == "roomlink") {
             // roomlink code
             return "";
-        }else if (symbol.substr(0, (symbol.find(' ')-1) ) == "spawnPoint" ){
+        }else if (symbol.substr(0, symbol.find(' ') ) == "spawnPoint" ){
             // place floor
             return "b";
-        }else if (symbol.substr(0, (symbol.find(' ')-1) ) == "item"){
+        }else if (symbol.substr(0, symbol.find(' ') ) == "item"){
             // item code
             return "";
         }
