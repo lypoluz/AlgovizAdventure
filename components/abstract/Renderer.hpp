@@ -26,7 +26,7 @@ protected:
     void updateView() {
         auto* go = (GameObject*) gameObject;
         Logger::log("setting " + go->getName() + std::to_string(go->getId()) + " to " + ((position->getPosition() + positionOffset) * 16).toString());
-        element->moveTo((position->getPosition() + positionOffset) * 16);
+        element->moveTo((position->getPosition() + positionOffset + Vector2(.5, .5)) * 16);
         element->rotateTo(position->getRotation() + rotationOffset);
     }
 
