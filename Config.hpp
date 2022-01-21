@@ -12,5 +12,6 @@ struct Config {
     bool funnyEnemies = false;
     bool buildStartLevel = true;
     bool levelBorder = true;
+    bool displayFps = false;
 };
 #endif //ALGOVIZADVENTURE_CONFIG_HPP

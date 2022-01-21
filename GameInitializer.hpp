@@ -48,6 +48,7 @@ public:
         config.funnyEnemies = cp.stringToBoolOrDefault("funnyEnemies", config.funnyEnemies);
         config.buildStartLevel = cp.stringToBoolOrDefault("buildStartLevel", config.buildStartLevel);
         config.levelBorder = cp.stringToBoolOrDefault("levelBorder", config.levelBorder);
+        config.displayFps = cp.stringToBoolOrDefault("displayFps", config.displayFps);
     }
 
 
