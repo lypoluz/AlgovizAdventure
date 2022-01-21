@@ -30,8 +30,7 @@ protected:
                     "_" + std::to_string(go->getId()) +
                     " at " + viewPosition.toString() +
                     " with position " + position->getPosition().toString() +
-                    " + offset " + positionOffset.toString() +
-                    " * 16"
+                    " + offset " + positionOffset.toString()
         );
         element->moveTo(viewPosition);
         element->rotateTo(position->getRotation() + rotationOffset);
