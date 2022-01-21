@@ -54,6 +54,7 @@ public:
 
     void rotateBy(float angle) { rotation += angle; }
 
+    void setDirty() {dirty = true;}
     bool isDirty() const { return dirty; }
 };
 
