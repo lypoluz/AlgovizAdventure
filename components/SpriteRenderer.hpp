@@ -15,13 +15,14 @@ class SpriteRenderer : public Renderer {
     std::string currentSprite;
 
 public:
-    SpriteRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {dimension = Vector2::one(); }
+    SpriteRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {
+        dimension = Vector2::one();
+        sprite = AlgoWrapper::Sprite("sprites/empty.svg", position->getPosition() * 16, dimension, window);
+    }
 
     void setSprite(const std::string& pathToSprite) {
         currentSprite = pathToSprite;
-        sprite = AlgoWrapper::Sprite(pathToSprite, position->getPosition() * 16, dimension, window);
-        sprite.setAttribute("image-rendering", "crisp-edges");
-        sprite.setAttribute("shape-rendering", "crispEdges");
+        sprite->changeSprite(pathToSprite);
         element = &sprite;
     }
 
