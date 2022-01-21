@@ -39,12 +39,16 @@ public:
 
     // if movement is enabled and movement is more than zero, move 1
     void MoveInDirection(Vector2 direction) {
-        if(movable && (direction != Vector2::zero())) {
-            startPosition = position->getPosition();
-            targetPosition = startPosition + direction.normalized();
-            movable = false;
-            timer = 0;
-        }
+        if(not movable) return;
+        if(direction == Vector2::zero()) return;
+        Vector2 newPos = position->getPosition() + direction.normalized();
+        if(newPos.x() < 0 or newPos.x() > 30 or newPos.y() < 0 or newPos.y() > 30) return;
+        if(Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()]) return;
+
+        startPosition = position->getPosition();
+        targetPosition = newPos;
+        movable = false;
+        timer = 0;
     }
 
     // adds the time passed and enables movement if enough time has passed
