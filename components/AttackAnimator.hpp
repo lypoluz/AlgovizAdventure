@@ -53,18 +53,22 @@ public:
                 (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as1)) {
                 playerRenderer->setSprite(psa);
                 attackRenderer->setSprite(as1);
+                Logger::log("attack stage 1");
             } else if (timer <= attackTime * 2 / 3 and
                        (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as2)) {
                 playerRenderer->setSprite(psa);
                 attackRenderer->setSprite(as2);
+                Logger::log("attack stage 2");
             } else if (timer <= attackTime and
                        (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as3)) {
                 playerRenderer->setSprite(psa);
                 attackRenderer->setSprite(as3);
+                Logger::log("attack stage 3");
             } else if (playerRenderer->getSpritePath() != psd or attackRenderer->getSpritePath() != asd) {
                 playerRenderer->setSprite(psd);
                 attackRenderer->setSprite(asd);
                 inAttack = false;
+                Logger::log("attack stage end");
             }
         }
 
