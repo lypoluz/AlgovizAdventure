@@ -10,7 +10,7 @@
 #include "ActiveGameObjects.hpp"
 #include "../AlgoWrapper.hpp"
 #include "../Config.hpp"
-#include "Level.hpp"
+#include "../levelSystem/Level.hpp"
 
 class Engine {
     GTime* gTime{};
