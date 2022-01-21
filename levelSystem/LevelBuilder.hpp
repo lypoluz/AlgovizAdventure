@@ -95,6 +95,30 @@ class LevelBuilder{
         wall->addComponent(renderer);
     }
 
+    static void placeFloor(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window){
+        auto* floor = new GameObject("floor" + std::to_string(x) + std::to_string(y));
+        ago->add(floor);
+
+        //instantiate position component
+        auto* position = new Position(floor);
+
+        //set position to value
+        position->moveTo(x, y);
+
+        //game object gets its position
+        floor->addPosition(position);
+
+        auto* floorComp = new WallComponent(floor);
+        floor->addComponent(floorComp);
+
+        auto* renderer = new SpriteRenderer(floor, window);
+        renderer->setSize({16,16});
+        renderer->setSprite("sprites/" + theme + "/" + "floor1"+ ".svg");
+        floor->addComponent(renderer);
+    }
+
+
+
 public:
     static void build(Level level) {
         Logger::log("parsing level: " + level.name);
@@ -126,11 +150,14 @@ public:
                         }
                         placeWall(x, y, level.theme, ago, window, wallSurroundings);
                         break;
-                    case '0':
-                        //blank wall code so basically floor but with collision
-                        break;
-                    case ' ':
+
+                    case '1':
                         //place floor (to back)
+                        placeFloor(x, y, level.theme, ago, window);
+                        break;
+
+                    case 'B':
+                        //place black floor
                         break;
 
                     case 'C':
