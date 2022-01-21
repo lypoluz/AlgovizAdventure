@@ -31,7 +31,8 @@ public:
     }
     void postUpdate() override {
         if (position->isDirty()) {
-            Logger::log("setting " + gameObject->getName() + " to " + ((position->getPosition() + positionOffset) * 16).toString());
+            auto* go = (GameObject*) gameObject;
+            Logger::log("setting " + go->getName() + std::to_string(go->getId()) + " to " + ((position->getPosition() + positionOffset) * 16).toString());
             element->moveTo((position->getPosition() + positionOffset) * 16);
             element->rotateTo(position->getRotation() + rotationOffset);
         }

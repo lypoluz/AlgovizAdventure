@@ -14,19 +14,22 @@
 class GameObject : public ObjectStructure {
     std::vector<ObjectStructure *> components;
     std::string name{};
+    static int lastId;
+    int id;
 
 public:
     Position* position{}; // required component
 
 
-    GameObject(std::string name) {
-        this->name = name;
+    explicit GameObject(std::string name) {
+        this->name = std::move(name);
+        id = lastId;
+        lastId++;
     }
 
 
-    std::string getName() override {
-        return name;
-    }
+    std::string getName() override {return name;}
+    int getId() const {return id;}
 
 
     void addComponent(ObjectStructure* component) override {
