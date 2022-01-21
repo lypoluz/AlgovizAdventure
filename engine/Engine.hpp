@@ -3,18 +3,22 @@
 #ifndef ALGOVIZADVENTURE_ENGINE_HPP
 #define ALGOVIZADVENTURE_ENGINE_HPP
 
+#include <utility>
+
 #include "GTime.hpp"
 #include "ObjectStructure.hpp"
 #include "ActiveGameObjects.hpp"
 #include "../AlgoWrapper.hpp"
 #include "../Config.hpp"
+#include "Level.hpp"
 
 class Engine {
     GTime* gTime{};
     ObjectStructure* player{};
-    ActiveGameObjects* ago;
+    ActiveGameObjects* ago{};
     AlgoWrapper::Window* gameWindow{};
-    Config* config;
+    Config* config{};
+    Level currentLevel;
     // Audio* audio;
 
     Engine() = default;
@@ -39,6 +43,9 @@ public:
 
     void setConfig(Config* c) {config = c;}
     Config* getConfig() {return config;}
+
+    void setCurrentLevel(Level l) {currentLevel = std::move(l);}
+    Level getCurrentLevel() {return currentLevel;}
 };
 
 #endif //ALGOVIZADVENTURE_ENGINE_HPP
