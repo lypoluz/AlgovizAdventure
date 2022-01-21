@@ -5,6 +5,7 @@
 
 #include "../engine/GameComponent.hpp"
 #include "../Vector2.hpp"
+#include "../Logger.hpp"
 
 class Position : public GameComponent {
     Vector2 lastPosition;
@@ -33,6 +34,8 @@ public:
 
     void moveTo(float x, float y) { moveTo({x,y}); }
     void moveTo(Vector2 newPos) {
+        if(gameObject->getName() == "Player")
+            Logger::logln("[POS] moving Player to " + newPos.toString());
         lastPosition = position;
         position = newPos;
         dirty = true;
@@ -40,20 +43,14 @@ public:
     }
 
     void moveBy(float x, float y) { moveBy({x,y}); }
-    void moveBy(Vector2 amount) {
-        lastPosition = position;
-        position += amount;
-        dirty = true;
-        updateFacing();
-    }
+    void moveBy(Vector2 amount) {moveTo(position+amount);}
 
+    void setFacing(Vector2 direction) {lastFacing = direction.normalized();}
+    void rotateBy(float angle) { rotateTo(rotation+angle); }
     void rotateTo(float angle) {
         rotation = angle;
         dirty = true;
     }
-
-    void rotateBy(float angle) { rotation += angle; }
-    void setFacing(Vector2 direction) {lastFacing = direction.normalized();}
 
     void setDirty() {dirty = true;}
     bool isDirty() const { return dirty; }
