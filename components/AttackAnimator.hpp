@@ -60,6 +60,9 @@ public:
             playerRenderer->setSprite(psd);
             attackRenderer->setSprite(asd);
         }
+
+        if(timer <= attackTime)
+            position->setDirty();
     }
 
     void setAttackTime(float at) {attackTime = at;}
