@@ -18,7 +18,7 @@ class AttackAnimator : public GameComponent {
 
     float attackTime = .6;
     float timer{};
-    bool inAttack;
+    bool inAttack{};
     std::string psd;
     std::string psaup;
     std::string psadown;
@@ -49,26 +49,25 @@ public:
     void update() override {
         timer += gTime->deltaTime();
         if(inAttack) {
-            if (timer <= attackTime / 3 and
-                (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as1)) {
-                playerRenderer->setSprite(psa);
-                attackRenderer->setSprite(as1);
-                Logger::log("attack stage 1");
-            } else if (timer <= attackTime * 2 / 3 and
-                       (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as2)) {
-                playerRenderer->setSprite(psa);
-                attackRenderer->setSprite(as2);
-                Logger::log("attack stage 2");
-            } else if (timer <= attackTime and
-                       (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as3)) {
-                playerRenderer->setSprite(psa);
-                attackRenderer->setSprite(as3);
-                Logger::log("attack stage 3");
+            if (timer <= attackTime / 3) {
+                if (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as1) {
+                    playerRenderer->setSprite(psa);
+                    attackRenderer->setSprite(as1);
+                }
+            } else if (timer <= attackTime * 2 / 3) {
+                if (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as2) {
+                    playerRenderer->setSprite(psa);
+                    attackRenderer->setSprite(as2);
+                }
+            } else if (timer <= attackTime) {
+                if (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as3)) {
+                    playerRenderer->setSprite(psa);
+                    attackRenderer->setSprite(as3);
+                }
             } else if (playerRenderer->getSpritePath() != psd or attackRenderer->getSpritePath() != asd) {
                 playerRenderer->setSprite(psd);
                 attackRenderer->setSprite(asd);
                 inAttack = false;
-                Logger::log("attack stage end");
             }
         }
 
