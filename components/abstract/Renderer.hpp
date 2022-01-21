@@ -26,21 +26,12 @@ protected:
     void updateView() {
         auto* go = (GameObject*) gameObject;
         Vector2 viewPosition = (position->getPosition() + positionOffset + Vector2(.5, .5)) * 16;
-        Logger::log("[" + debugName + "] rendering " + go->getName() +
-                    "_" + std::to_string(go->getId()) +
-                    " at " + viewPosition.toString() +
-                    " with position " + position->getPosition().toString() +
-                    " + offset " + positionOffset.toString()
-        );
         element->moveTo(viewPosition);
         element->rotateTo(position->getRotation() + rotationOffset);
     }
 
 
 public:
-
-    std::string debugName = "Renderer";
-
     void onStart() override {
         updateView();
     }
