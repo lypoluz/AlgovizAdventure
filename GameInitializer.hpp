@@ -33,6 +33,7 @@ public:
 
     explicit GameInitializer(const std::map<std::string, std::string>& configMap) {
         ConfigParser cp(&configMap);
+        if(cp.stringToBoolOrDefault("clearLog", true)) Logger::clearFile();
 
         config.expandAlgoViz = cp.stringToBoolOrDefault("expandAlgoViz", config.expandAlgoViz);
         config.fullscreen = cp.stringToBoolOrDefault("fullscreen", config.fullscreen);

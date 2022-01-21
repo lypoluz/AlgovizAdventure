@@ -10,23 +10,27 @@
 #include "ObjectStructure.hpp"
 #include "../utils.cpp"
 
+int lastGoId = 0;
 
 class GameObject : public ObjectStructure {
     std::vector<ObjectStructure *> components;
     std::string name{};
 
+    int id;
+
 public:
     Position* position{}; // required component
 
 
-    GameObject(std::string name) {
-        this->name = name;
+    explicit GameObject(std::string name) {
+        this->name = std::move(name);
+        id = lastGoId;
+        lastGoId++;
     }
 
 
-    std::string getName() override {
-        return name;
-    }
+    std::string getName() override {return name;}
+    int getId() const {return id;}
 
 
     void addComponent(ObjectStructure* component) override {

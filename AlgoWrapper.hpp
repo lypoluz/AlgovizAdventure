@@ -89,9 +89,8 @@ public:
 
         int getX() override {return image.getX();}
         int getY() override {return image.getY();}
-        void moveTo(int x, int y) {image.moveTo(x, y);}
-        void moveTo(Vector2 pos) override { moveTo(pos.x(), pos.y());}
-        void moveBy(Vector2 amount) override {image.moveBy(amount.x(), amount.y());}
+        void moveTo(Vector2 pos) override { image.moveTo((int)pos.x(), (int)pos.y());}
+        void moveBy(Vector2 amount) override {image.moveBy((int)amount.x(), (int)amount.y());}
         void rotateTo(int alpha) override {image.rotateTo(alpha);}
         void toFront() override {image.toFront();}
         void hide() override {image.hide();}

@@ -23,18 +23,21 @@ protected:
         rotationOffset = 0;
     }
 
+    void updateView() {
+        auto* go = (GameObject*) gameObject;
+        Vector2 viewPosition = (position->getPosition() + positionOffset + Vector2(.5, .5)) * 16;
+        Logger::log("rendering " + go->getName() + "_" + std::to_string(go->getId()) + " at " + viewPosition.toString());
+        element->moveTo(viewPosition);
+        element->rotateTo(position->getRotation() + rotationOffset);
+    }
+
 
 public:
     void onStart() override {
-        element->moveTo((position->getPosition() + positionOffset) * 16);
-        element->rotateTo(position->getRotation() + rotationOffset);
+        updateView();
     }
     void postUpdate() override {
-        if (position->isDirty()) {
-            Logger::log("setting " + gameObject->getName() + " to " + ((position->getPosition() + positionOffset) * 16).toString());
-            element->moveTo((position->getPosition() + positionOffset) * 16);
-            element->rotateTo(position->getRotation() + rotationOffset);
-        }
+        if (position->isDirty()) updateView();
     }
 
     void onDestroy() override {
