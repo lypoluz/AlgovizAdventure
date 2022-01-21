@@ -41,17 +41,24 @@ public:
     void MoveInDirection(Vector2 direction) {
         if(not movable) return;
         if(direction == Vector2::zero()) return;
-        Vector2 newPos = position->getPosition() + direction.normalized();
+        direction = direction.normalized();
+        Vector2 newPos = position->getPosition() + direction;
         if(newPos.x() < 0 or newPos.x() > 30 or newPos.y() < 0 or newPos.y() > 30 or
             Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()]) {
             position->setFacing(direction);
             return;
         }
+        if(position->facing() != direction) {
+            newPos = targetPosition;
+            position->setFacing(direction);
+            timer = 1 / speed / 2;
+        } else {
+            timer = 0;
+        }
 
         startPosition = position->getPosition();
         targetPosition = newPos;
         movable = false;
-        timer = 0;
     }
 
     // adds the time passed and enables movement if enough time has passed
