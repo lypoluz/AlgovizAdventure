@@ -3,9 +3,11 @@ test_level_1
 T:
 default
 A:
-2
+4
 a enemy enemy_testEnemy
-b roomlink link_test_level_01_right link_test_level_02_left
+b spawnPoint thisismytgesdfsdf
+c spawnPoint wjateverrrrrr
+d asdfa asd fasf
 L:
 ##############################
 ###111##11####11##111#####11##
