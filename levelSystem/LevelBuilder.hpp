@@ -203,7 +203,7 @@ public:
 
                     case 'S':
                         // player code
-                        Logger::logln("setting player to " + Vector2(x, y).toString());
+                        Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
                         ((GameObject*)(Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
                         break;
 
