@@ -53,6 +53,7 @@ public:
     }
 
     void rotateBy(float angle) { rotation += angle; }
+    void setFacing(Vector2 direction) {lastFacing = direction.normalized();}
 
     void setDirty() {dirty = true;}
     bool isDirty() const { return dirty; }
