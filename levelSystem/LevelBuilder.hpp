@@ -213,6 +213,11 @@ public:
                         try {
                             std::string symbolSprite;
                             symbolSprite = SpecialLevelSymbols::interpretSymbol(level.specialSymbols[levelArray[x][y]]);
+                            if (symbolSprite=="b"){
+                                placeFloor(x,y, level.theme, ago, window);
+                            } else if (symbolSprite == "a"){
+                                placeCorridor(x,y,level.theme,ago,window);
+                            }
                         }
                         catch(int e) {
                             //place floor

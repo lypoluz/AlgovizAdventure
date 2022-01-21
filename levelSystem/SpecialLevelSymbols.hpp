@@ -22,12 +22,12 @@ public:
             return "";
         }else if (symbol.substr(0, (symbol.find(' ')-1) ) == "spawnPoint" ){
             // place floor
-            return "";
+            return "b";
         }else if (symbol.substr(0, (symbol.find(' ')-1) ) == "item"){
             // item code
             return "";
         }
-        return "";
+        return "a";
 
     }
 
