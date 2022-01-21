@@ -101,8 +101,10 @@ public:
         void setStrokeWidth (int width) override {image.setStrokeWidth(width);};
         void setAttribute(std::string attr, std::string val) override {image.setAttribute(attr,val);}
 
+
         void setSize(int w, int h) {image.setSize(w, h);}
         void setSize(Vector2 dim) { setSize(dim.x(), dim.y());}
+        void changeSprite(const std::string& path) { setAttribute("href", path);}
     };
 
     // wrapper for circle
