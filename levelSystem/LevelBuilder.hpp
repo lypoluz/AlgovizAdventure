@@ -95,7 +95,7 @@ class LevelBuilder{
         renderer->setSprite("sprites/" + theme + "/" + wallType + ".svg");
         wall->addComponent(renderer);
     }
-
+public:
     static void placeFloor(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window){
         auto* floor = new GameObject("floor" + std::to_string(x) + std::to_string(y));
         ago->add(floor);
@@ -155,7 +155,7 @@ class LevelBuilder{
 
 
 
-public:
+
     static void build(Level level) {
         Logger::log("parsing level: " + level.name);
         char levelArray[30][30];
@@ -211,7 +211,7 @@ public:
                         // special symbol code
                         // find thing in special symbol map by character using the find function then place thing there
                         try {
-                            SpecialLevelSymbols::interpretSymbol(x, y, level.specialSymbols[levelArray[x][y]]);
+                            SpecialLevelSymbols::interpretSymbol(x, y, level.theme, ago, window, level.specialSymbols[levelArray[x][y]]);
                         }
                         catch(int e) {
                             //place floor
