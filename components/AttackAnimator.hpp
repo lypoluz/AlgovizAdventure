@@ -60,7 +60,7 @@ public:
                     attackRenderer->setSprite(as2);
                 }
             } else if (timer <= attackTime) {
-                if (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as3)) {
+                if (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as3) {
                     playerRenderer->setSprite(psa);
                     attackRenderer->setSprite(as3);
                 }
