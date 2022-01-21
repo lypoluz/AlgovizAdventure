@@ -116,11 +116,11 @@ class LevelBuilder{
 
         int randomInt = rand() % 100;
 
-        if (randomInt > 90) {
+        if (randomInt > 95) {
             floorType = "floor3";
         } else if (randomInt > 80) {
             floorType = "floor4";
-        } else if (randomInt > 30) {
+        } else if (randomInt > 50) {
             floorType = "floor2";
         }
 
