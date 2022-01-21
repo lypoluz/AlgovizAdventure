@@ -63,6 +63,7 @@ public:
         for (GameObject* obj : ago->getActive())
             obj->onStart();
 
+        Logger::logln("[GL] actually starting game loop");
         gTime->setStart();
         while (true) {
             AlgoWrapper::draw();
