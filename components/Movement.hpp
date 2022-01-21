@@ -43,6 +43,7 @@ public:
         if(direction == Vector2::zero()) return;
         Vector2 newPos = position->getPosition() + direction.normalized();
         if(newPos.x() < 0 or newPos.x() > 30 or newPos.y() < 0 or newPos.y() > 30) return;
+        Logger::log("[PM] newPos " + newPos.toString() + " wallArray " + ((Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()])?"true":"false"));
         if(Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()]) return;
 
         startPosition = position->getPosition();
