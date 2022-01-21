@@ -32,7 +32,11 @@ public:
         targetPosition = Vector2::zero();
     }
 
-    void onStart() override{gTime = Engine::getInstance()->getGTime();}
+    void onStart() override {
+        gTime = Engine::getInstance()->getGTime();
+        timer = 10/speed;
+        movable = true;
+    }
 
     void setSpeed(float newSpeed) {speed = newSpeed;}
     bool canMove() {return movable;};
