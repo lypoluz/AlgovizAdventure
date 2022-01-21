@@ -21,7 +21,7 @@ public:
     static Level readFile(std::string pathToLevel) {
         std::string pathPrefix = "level/";
         pathToLevel = pathPrefix + pathToLevel;
-        Logger::log(pathToLevel);
+        Logger::logln(pathToLevel);
         // Informationen für das Level
         std::string name;
         std::string theme = "default";

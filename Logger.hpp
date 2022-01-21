@@ -10,9 +10,13 @@
 
 struct Logger{
 
+    static void logln(std::string input){
+        log(input + "\n");
+    }
+
     static void log(std::string input){
         std::ofstream file("logfile.txt", std::ios::app);
-        file << input << "\n";
+        file << input;
         file.close();
     }
 

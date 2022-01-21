@@ -32,7 +32,13 @@ public:
         targetPosition = Vector2::zero();
     }
 
-    void onStart() override{gTime = Engine::getInstance()->getGTime();}
+    void onStart() override{gTime = Engine::getInstance()->getGTime();
+        for (int x = 0; x < 30; ++x) {
+            for (int y = 0; y < 30; ++y) {
+                Logger::logln((Engine::getInstance()->getCurrentLevel().wallArray[x][y]) ? "T" : "F");
+            }
+        }
+    }
 
     void setSpeed(float newSpeed) {speed = newSpeed;}
     bool canMove() {return movable;};
@@ -43,7 +49,9 @@ public:
         if(direction == Vector2::zero()) return;
         Vector2 newPos = position->getPosition() + direction.normalized();
         if(newPos.x() < 0 or newPos.x() > 30 or newPos.y() < 0 or newPos.y() > 30) return;
-        Logger::log("[PM] newPos " + newPos.toString() + " wallArray " + ((Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()])?"true":"false"));
+        Logger::logln("[PM] newPos " + newPos.toString() + " wallArray " +
+                      ((Engine::getInstance()->getCurrentLevel().wallArray[(int) newPos.x()][(int) newPos.y()]) ? "true"
+                                                                                                                : "false"));
         if(Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()]) return;
 
         startPosition = position->getPosition();

@@ -157,7 +157,7 @@ class LevelBuilder{
 
 public:
     static void build(Level level) {
-        Logger::log("parsing level: " + level.name);
+        Logger::logln("parsing level: " + level.name);
         char levelArray[30][30];
         ActiveGameObjects* ago = Engine::getInstance()->getAGO();
         AlgoWrapper::Window* window = Engine::getInstance()->getGameWindow();
@@ -204,7 +204,7 @@ public:
 
                     case 'S':
                         // player code
-                        Logger::log("setting player to " + Vector2(x,y).toString());
+                        Logger::logln("setting player to " + Vector2(x, y).toString());
                         ((GameObject*)(Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
                         break;
 

@@ -74,7 +74,7 @@ public:
         if(config.fullscreen)
             AlgoWrapper::enterFullscreen();
         AlgoWrapper::clear();
-        Logger::log("window creation");
+        Logger::logln("window creation");
         window = AlgoWrapper::Window(config.windowSize,
                                      config.windowSize,
                                      config.windowFrameSizeFactor,
@@ -85,7 +85,7 @@ public:
 
 
     void createPlayerInstance() {
-        Logger::log("create player");
+        Logger::logln("create player");
 
         // create player instance
         player = new GameObject("Player");
@@ -145,22 +145,22 @@ public:
     }
 
     void loadItems() {
-        Logger::log("load items");
+        Logger::logln("load items");
 
     }
 
     void loadEnemies() {
-        Logger::log("load enemies");
+        Logger::logln("load enemies");
 
     }
 
     void loadLevel() {
-        Logger::log("load level");
+        Logger::logln("load level");
         startLevel = LevelParser::readFile("test_01.level");
     }
 
     void startGameLoop() {
-        Logger::log("start game loop");
+        Logger::logln("start game loop");
 
         Engine* engine = Engine::getInstance();
         engine->setPlayer(player);
