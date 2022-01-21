@@ -118,9 +118,9 @@ class LevelBuilder{
 
         if (randomInt > 95) {
             floorType = "floor3";
-        } else if (randomInt > 80) {
+        } else if (randomInt > 90) {
             floorType = "floor4";
-        } else if (randomInt > 50) {
+        } else if (randomInt > 60) {
             floorType = "floor2";
         }
 
