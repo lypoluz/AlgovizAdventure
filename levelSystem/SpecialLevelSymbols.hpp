@@ -6,6 +6,7 @@
 #define ALGOVIZADVENTURE_SPECIALLEVELSYMBOLS_HPP
 
 #include <string>
+#include "../Logger.hpp"
 
 class SpecialLevelSymbols{
 
@@ -14,6 +15,7 @@ public:
 
     static std::string interpretSymbol(std::string symbol) {
         //place symbol here
+        Logger::logToNew(symbol.substr(0, (symbol.find(' ')-1)), "small_test_log");
         if (symbol.substr(0, (symbol.find(' ')-1) ) == "enemy") {
             // enemy code
             return "";
