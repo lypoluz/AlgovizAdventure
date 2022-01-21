@@ -42,8 +42,8 @@ public:
         if(not movable) return;
         if(direction == Vector2::zero()) return;
         Vector2 newPos = position->getPosition() + direction.normalized();
-        if(newPos.x() < 0 or newPos.x() > 30 or newPos.y() < 0 or newPos.y() > 30) return;
-        if(Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()]) {
+        if(newPos.x() < 0 or newPos.x() > 30 or newPos.y() < 0 or newPos.y() > 30 or
+            Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()]) {
             position->setFacing(direction);
             return;
         }
