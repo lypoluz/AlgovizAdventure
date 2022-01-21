@@ -116,11 +116,11 @@ class LevelBuilder{
 
         int randomInt = rand() % 100;
 
-        if (randomInt > 90) {
+        if (randomInt > 95) {
             floorType = "floor3";
         } else if (randomInt > 80) {
             floorType = "floor4";
-        } else if (randomInt > 30) {
+        } else if (randomInt > 50) {
             floorType = "floor2";
         }
 
@@ -128,6 +128,29 @@ class LevelBuilder{
         renderer->setSize({16,16});
         renderer->setSprite("sprites/" + theme + "/" + floorType + ".svg");
         floor->addComponent(renderer);
+    }
+
+    static void placeCorridor(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window){
+        auto* block = new GameObject("block" + std::to_string(x) + std::to_string(y));
+        ago->add(block);
+
+        //instantiate position component
+        auto* position = new Position(block);
+
+        //set position to value
+        position->moveTo(x, y);
+
+        //game object gets its position
+        block->addPosition(position);
+
+        auto* blockComp = new WallComponent(block);
+        block->addComponent(blockComp);
+
+
+        auto* renderer = new SpriteRenderer(block, window);
+        renderer->setSize({16,16});
+        renderer->setSprite("sprites/" + theme + "/corridor.svg");
+        block->addComponent(renderer);
     }
 
 
@@ -171,6 +194,7 @@ public:
 
                     case 'B':
                         //place black floor
+                        placeCorridor(x, y, level.theme, ago, window);
                         break;
 
                     case 'C':
