@@ -18,6 +18,7 @@ class AttackAnimator : public GameComponent {
 
     float attackTime = .6;
     float timer{};
+    bool inAttack;
     std::string psd;
     std::string psaup;
     std::string psadown;
@@ -47,18 +48,24 @@ public:
 
     void update() override {
         timer += gTime->deltaTime();
-        if (timer <= attackTime / 3 and (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as1)) {
-            playerRenderer->setSprite(psa);
-            attackRenderer->setSprite(as1);
-        } else if (timer <= attackTime * 2/3 and (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as2)) {
-            playerRenderer->setSprite(psa);
-            attackRenderer->setSprite(as2);
-        } else if (timer <= attackTime and (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as3)) {
-            playerRenderer->setSprite(psa);
-            attackRenderer->setSprite(as3);
-        } else if (playerRenderer->getSpritePath() != psd or attackRenderer->getSpritePath() != asd) {
-            playerRenderer->setSprite(psd);
-            attackRenderer->setSprite(asd);
+        if(inAttack) {
+            if (timer <= attackTime / 3 and
+                (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as1)) {
+                playerRenderer->setSprite(psa);
+                attackRenderer->setSprite(as1);
+            } else if (timer <= attackTime * 2 / 3 and
+                       (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as2)) {
+                playerRenderer->setSprite(psa);
+                attackRenderer->setSprite(as2);
+            } else if (timer <= attackTime and
+                       (playerRenderer->getSpritePath() != psa or attackRenderer->getSpritePath() != as3)) {
+                playerRenderer->setSprite(psa);
+                attackRenderer->setSprite(as3);
+            } else if (playerRenderer->getSpritePath() != psd or attackRenderer->getSpritePath() != asd) {
+                playerRenderer->setSprite(psd);
+                attackRenderer->setSprite(asd);
+                inAttack = false;
+            }
         }
 
         if(timer <= attackTime)
@@ -74,6 +81,7 @@ public:
     void startAnimation() {
         if(timer <= attackTime) return;
         timer = 0;
+        inAttack = true;
         psd = playerRenderer->getSpritePath();
         asd = attackRenderer->getSpritePath();
         attackRenderer->setPositionOffset(position->facing());
