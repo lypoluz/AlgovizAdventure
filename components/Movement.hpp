@@ -35,8 +35,9 @@ public:
     void onStart() override{gTime = Engine::getInstance()->getGTime();
         for (int x = 0; x < 30; ++x) {
             for (int y = 0; y < 30; ++y) {
-                Logger::logln((Engine::getInstance()->getCurrentLevel().wallArray[x][y]) ? "T" : "F");
+                Logger::log((Engine::getInstance()->getCurrentLevel().wallArray[x][y]) ? "T" : "F");
             }
+            Logger::logln("");
         }
     }
 
