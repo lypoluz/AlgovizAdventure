@@ -48,7 +48,7 @@ public:
 
     // adds the time passed and enables movement if enough time has passed
     void update() override{
-        if (timeKeeper >= 1/speed){
+        if (timeKeeper >= 1/speed and not movable){
             timeKeeper = 0;
             movable = true;
             position->moveTo(targetPosition);
