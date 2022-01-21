@@ -168,7 +168,7 @@ public:
         engine->setGameWindow(&window);
 
         GameLoop gameLoop(&ago);
-        gameLoop.setPlayerRenderer(pRenderer);
+        gameLoop.setPlayerRenderer((Renderer*)pRenderer);
         gameLoop.setGTime(gTime);
         gameLoop.setStartLevel(startLevel);
         gameLoop.startGameLoop();

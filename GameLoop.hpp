@@ -15,7 +15,7 @@
 
 class GameLoop {
     ActiveGameObjects* ago;
-    SpriteRenderer* playerRenderer;
+    Renderer* playerRenderer;
     GTime* gTime;
     Level startLevel{};
 
