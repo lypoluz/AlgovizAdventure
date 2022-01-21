@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
 #include <vector>
 #include "Roomlink.hpp"
 #include <map>
@@ -16,15 +17,20 @@ struct Level {
     std::string theme{};
     std::vector <std::vector<char>> levelVector{};
     std::map<char, std::string> specialSymbols{};
+    bool wallArray[30][30];
     // maybe Add roomlink map
 
 
     Level() = default;
     Level(std::string name,std::string theme, std::map<char, std::string> specialSymbols, std::vector <std::vector<char>> levelVector) {
-        this->name = name;
-        this->theme = theme;
+        this->name = std::move(name);
+        this->theme = std::move(theme);
         this->levelVector = levelVector;
-        this->specialSymbols = specialSymbols;
+        this->specialSymbols = std::move(specialSymbols);
+
+        for(int x=0; x<30; ++x)
+            for(int y=0; y<30; ++y)
+                wallArray[x][y] = levelVector[y][x] == '#';
     }
 
     // Gibt einen Character an der gewünschten Position zurück

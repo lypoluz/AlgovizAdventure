@@ -168,6 +168,7 @@ public:
             }
         }
 
+
         for (int y = 0; y < 30; ++y) {
             for (int x = 0; x < 30; ++x) {
 
@@ -180,7 +181,7 @@ public:
                                 if (x+j < 0 || x+j >= 30 || y+i < 0 || y+i >= 30){
                                     wallSurroundings[j+1][i+1] = !Engine::getInstance()->getConfig()->levelBorder;
                                 }else {
-                                    wallSurroundings[j + 1][i + 1] = levelArray[x + j][y + i] == '#';
+                                    wallSurroundings[j + 1][i + 1] = level.wallArray[x + j][y + i];
                                 }
                             }
                         }
