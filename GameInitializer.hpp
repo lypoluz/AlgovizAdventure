@@ -25,6 +25,7 @@ class GameInitializer {
     ActiveGameObjects ago{};
     AlgoWrapper::Window window{};
     GameObject* player{};
+    SpriteRenderer* pRenderer;
     GTime* gTime{};
     Config config;
     Level startLevel;
@@ -94,10 +95,10 @@ public:
         player->position->moveTo(Vector2(config.windowSize/32, config.windowSize/32));
 
         // renderer
-        auto* renderer = new SpriteRenderer(player, &window);
-        renderer->setSprite("sprites/player/player_down.svg");
-        renderer->setSize({16,16});
-        player->addComponent(renderer);
+        pRenderer = new SpriteRenderer(player, &window);
+        pRenderer->setSprite("sprites/player/player_down.svg");
+        pRenderer->setSize({16,16});
+        player->addComponent(pRenderer);
 
         // attack renderer
         auto* aRenderer = new SpriteRenderer(player, &window);
@@ -106,7 +107,7 @@ public:
         player->addComponent(aRenderer);
 
         // changeSpriteOnMove
-        auto* spriteChanger = new ChangeSpriteOnMove(player, renderer);
+        auto* spriteChanger = new ChangeSpriteOnMove(player, pRenderer);
         spriteChanger->setDownSprite("sprites/player/player_down.svg");
         spriteChanger->setLeftSprite("sprites/player/player_left.svg");
         spriteChanger->setRightSprite("sprites/player/player_right.svg");
@@ -114,7 +115,7 @@ public:
         player->addComponent(spriteChanger);
 
         // attack animator
-        auto* attackAnimator = new AttackAnimator(player, renderer, aRenderer);
+        auto* attackAnimator = new AttackAnimator(player, pRenderer, aRenderer);
         attackAnimator->setPlayerAttackSprites(
                 "sprites/player/player_up_attacking.svg",
                 "sprites/player/player_down_attacking.svg",
@@ -167,7 +168,7 @@ public:
         engine->setGameWindow(&window);
 
         GameLoop gameLoop(&ago);
-        gameLoop.setPlayer(player);
+        gameLoop.setPlayerRenderer(pRenderer);
         gameLoop.setGTime(gTime);
         gameLoop.setStartLevel(startLevel);
         gameLoop.startGameLoop();
