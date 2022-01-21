@@ -14,6 +14,7 @@
 #include <string>
 #include <map>
 #include "SpecialLevelSymbols.hpp"
+#include <cstdlib>
 
 
 class LevelBuilder{
@@ -111,9 +112,21 @@ class LevelBuilder{
         auto* floorComp = new WallComponent(floor);
         floor->addComponent(floorComp);
 
+        std::string floorType ="floor1";
+
+        int randomInt = rand() % 100;
+
+        if (randomInt > 80) {
+            floorType = "floor3";
+        } else if (randomInt > 60) {
+            floorType = "floor4";
+        } else if (randomInt > 20) {
+            floorType = "floor2";
+        }
+
         auto* renderer = new SpriteRenderer(floor, window);
         renderer->setSize({16,16});
-        renderer->setSprite("sprites/" + theme + "/" + "floor1"+ ".svg");
+        renderer->setSprite("sprites/" + theme + "/" + floorType + ".svg");
         floor->addComponent(renderer);
     }
 
