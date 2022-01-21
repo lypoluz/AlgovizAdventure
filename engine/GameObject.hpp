@@ -10,11 +10,12 @@
 #include "ObjectStructure.hpp"
 #include "../utils.cpp"
 
+int lastGoId = 0;
 
 class GameObject : public ObjectStructure {
     std::vector<ObjectStructure *> components;
     std::string name{};
-    static int lastId;
+
     int id;
 
 public:
@@ -23,8 +24,8 @@ public:
 
     explicit GameObject(std::string name) {
         this->name = std::move(name);
-        id = lastId;
-        lastId++;
+        id = lastGoId;
+        lastGoId++;
     }
 
 
