@@ -48,6 +48,7 @@ public:
         else if(moveVec == Vector2::up()){
             spriteRend -> setSprite(upSprite);
         }
+        lastMoveVec = moveVec;
     }
 };
 
