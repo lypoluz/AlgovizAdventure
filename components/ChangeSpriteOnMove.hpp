@@ -35,7 +35,6 @@ public:
 
     void postUpdate() override {
         Vector2 moveVec = position->facing();
-        Logger::log("CSOM: " + moveVec.toString() + " " + lastMoveVec.toString());
         if(moveVec == lastMoveVec)
             return;
         else if(moveVec == Vector2::down())
