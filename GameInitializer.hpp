@@ -95,12 +95,14 @@ public:
 
         // renderer
         auto* renderer = new SpriteRenderer(player, &window);
+        renderer->debugName = "player Renderer";
         renderer->setSprite("sprites/player/player_down.svg");
         renderer->setSize({16,16});
         player->addComponent(renderer);
 
         // attack renderer
         auto* aRenderer = new SpriteRenderer(player, &window);
+        aRenderer->debugName = "attack Renderer";
         aRenderer->setSprite("sprites/empty.svg");
         aRenderer->setSize({16, 16});
         player->addComponent(aRenderer);
