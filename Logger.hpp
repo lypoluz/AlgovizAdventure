@@ -23,6 +23,12 @@ struct Logger{
         file.close();
     }
 
+    static void clearFile(){
+        std::ofstream file("logfile.txt");
+        file << "";
+        file.close();
+    }
+
 };
 
 #endif //ALGOVIZADVENTURE_LOGGER_HPP
