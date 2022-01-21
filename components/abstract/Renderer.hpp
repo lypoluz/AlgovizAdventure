@@ -26,7 +26,14 @@ protected:
     void updateView() {
         auto* go = (GameObject*) gameObject;
         Vector2 viewPosition = (position->getPosition() + positionOffset + Vector2(.5, .5)) * 16;
-        Logger::log("rendering " + go->getName() + "_" + std::to_string(go->getId()) + " at " + viewPosition.toString());
+        Logger::log("rendering " + go->getName() +
+                    "_" + std::to_string(go->getId()) +
+                    " at " + viewPosition.toString() +
+                    " with position " + position->getPosition().toString() +
+                    " offset " + positionOffset.toString() +
+                    " *16 position " + (position->getPosition()*16).toString() +
+                    " offset " + (positionOffset*16).toString()
+        );
         element->moveTo(viewPosition);
         element->rotateTo(position->getRotation() + rotationOffset);
     }
