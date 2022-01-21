@@ -32,7 +32,7 @@ public:
     void postUpdate() override {
         if (position->isDirty()) {
             Logger::log("setting " + gameObject->getName() + " to " + ((position->getPosition() + positionOffset) * 16).toString());
-            element->moveTo((position->getPosition() + positionOffset + Vector2(.5, .5)) * 16);
+            element->moveTo((position->getPosition() + positionOffset) * 16);
             element->rotateTo(position->getRotation() + rotationOffset);
         }
     }
