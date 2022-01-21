@@ -74,6 +74,8 @@ public:
     void startAnimation() {
         if(timer <= attackTime) return;
         timer = 0;
+        psd = playerRenderer->getSpritePath();
+        asd = attackRenderer->getSpritePath();
         attackRenderer->setPositionOffset(position->facing());
         if (position->facing() == Vector2::up()) { attackRenderer->setRotationOffset(0); psa = psaup;}
         else if (position->facing() == Vector2::down()) { attackRenderer->setRotationOffset(180); psa = psadown;}
