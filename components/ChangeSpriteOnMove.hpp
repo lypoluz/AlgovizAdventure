@@ -35,19 +35,16 @@ public:
 
     void postUpdate() override {
         Vector2 moveVec = position->facing();
-        if(moveVec == lastMoveVec) return;
-        if(moveVec == Vector2::down()){
+        if(moveVec == lastMoveVec)
+            return;
+        else if(moveVec == Vector2::down())
             spriteRend -> setSprite(downSprite);
-        }
-        else if(moveVec == Vector2::left()){
+        else if(moveVec == Vector2::left())
             spriteRend -> setSprite(leftSprite);
-        }
-        else if(moveVec == Vector2::right()){
+        else if(moveVec == Vector2::right())
             spriteRend -> setSprite(rightSprite);
-        }
-        else if(moveVec == Vector2::up()){
+        else if(moveVec == Vector2::up())
             spriteRend -> setSprite(upSprite);
-        }
         lastMoveVec = moveVec;
     }
 };
