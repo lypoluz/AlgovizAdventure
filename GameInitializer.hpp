@@ -26,6 +26,7 @@ class GameInitializer {
     AlgoWrapper::Window window{};
     GameObject* player{};
     SpriteRenderer* pRenderer;
+    SpriteRenderer* aRenderer;
     GTime* gTime{};
     Config config;
     Level startLevel;
@@ -101,7 +102,7 @@ public:
         player->addComponent(pRenderer);
 
         // attack renderer
-        auto* aRenderer = new SpriteRenderer(player, &window);
+        aRenderer = new SpriteRenderer(player, &window);
         aRenderer->setSprite("sprites/empty.svg");
         aRenderer->setSize({16, 16});
         player->addComponent(aRenderer);
@@ -168,7 +169,8 @@ public:
         engine->setGameWindow(&window);
 
         GameLoop gameLoop(&ago);
-        gameLoop.setPlayerRenderer((Renderer*)pRenderer);
+        gameLoop.addToFrontRenderer((Renderer*)pRenderer);
+        gameLoop.addToFrontRenderer((Renderer*)aRenderer);
         gameLoop.setGTime(gTime);
         gameLoop.setStartLevel(startLevel);
         gameLoop.startGameLoop();

@@ -15,7 +15,7 @@
 
 class GameLoop {
     ActiveGameObjects* ago;
-    Renderer* playerRenderer;
+    std::vector<Renderer*> toFrontRenderer;
     GTime* gTime;
     Level startLevel{};
 
@@ -35,7 +35,11 @@ class GameLoop {
         Logger::log("Build start level");
         AlgoWrapper::draw();
         LevelBuilder::build(startLevel);
-        playerRenderer->toFront();
+    }
+
+    void toFront() {
+        for (Renderer* r : toFrontRenderer)
+            r->toFront();
     }
 
 public:
@@ -44,12 +48,14 @@ public:
         this->ago = ago;
     }
 
-    void setPlayerRenderer(Renderer* pr) {playerRenderer = pr;}
+    void addToFrontRenderer(Renderer* pr) {toFrontRenderer.push_back(pr);}
     void setGTime(GTime *pTime) {gTime = pTime;}
     void setStartLevel(Level level) {startLevel = std::move(level);}
 
     [[noreturn]] void startGameLoop() {
         buildStartLevel();
+        toFront();
+
         for (GameObject* obj : ago->getActive())
             obj->onStart();
 
