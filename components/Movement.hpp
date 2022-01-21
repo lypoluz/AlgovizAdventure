@@ -36,6 +36,8 @@ public:
         gTime = Engine::getInstance()->getGTime();
         timer = 10/speed;
         movable = true;
+        startPosition = position->getPosition();
+        targetPosition = startPosition;
     }
 
     void setSpeed(float newSpeed) {speed = newSpeed;}
