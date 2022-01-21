@@ -211,7 +211,8 @@ public:
                         // special symbol code
                         // find thing in special symbol map by character using the find function then place thing there
                         try {
-                            SpecialLevelSymbols::interpretSymbol(x, y, level.specialSymbols[levelArray[x][y]]);
+                            std::string symbolSprite;
+                            symbolSprite = SpecialLevelSymbols::interpretSymbol(level.specialSymbols[levelArray[x][y]]);
                         }
                         catch(int e) {
                             //place floor
