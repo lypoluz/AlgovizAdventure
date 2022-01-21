@@ -18,6 +18,8 @@ class GameLoop {
     std::vector<Renderer*> toFrontRenderer;
     GTime* gTime;
     Level startLevel{};
+    bool displayFps;
+
 
     GameLoop() = delete;
 
@@ -46,6 +48,7 @@ public:
 
     explicit GameLoop(ActiveGameObjects* ago){
         this->ago = ago;
+        displayFps = Engine::getInstance()->getConfig()->displayFps;
     }
 
     void addToFrontRenderer(Renderer* pr) {toFrontRenderer.push_back(pr);}
@@ -65,7 +68,8 @@ public:
             gTime->setDelta();
 
             update();
-            //AlgoWrapper::algoText(std::to_string(1/(gTime->deltaTime())));
+            if(displayFps)
+                AlgoWrapper::algoText(std::to_string(1/(gTime->deltaTime())));
         }
     }
 
