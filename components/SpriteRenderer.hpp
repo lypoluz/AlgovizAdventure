@@ -22,7 +22,7 @@ public:
 
     void setSprite(const std::string& pathToSprite) {
         currentSprite = pathToSprite;
-        sprite->changeSprite(pathToSprite);
+        sprite.changeSprite(pathToSprite);
         element = &sprite;
     }
 
