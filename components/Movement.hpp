@@ -17,7 +17,7 @@ class Movement : public GameComponent {
 
     Position* position;
     float speed = 1;
-    float timeKeeper;
+    float timer;
     bool movable = true;
     Vector2 startPosition;
     Vector2 targetPosition;
@@ -41,25 +41,25 @@ public:
     void MoveInDirection(Vector2 direction) {
         if(movable && (direction != Vector2::zero())) {
             startPosition = position->getPosition();
-            targetPosition = position->getPosition() + direction.normalized();
+            targetPosition = startPosition + direction.normalized();
             movable = false;
+            timer = 0;
         }
     }
 
     // adds the time passed and enables movement if enough time has passed
     void update() override{
-        if (timeKeeper >= 1/speed and not movable){
-            timeKeeper = 0;
-            movable = true;
-            position->moveTo(targetPosition);
-        } else {
-            timeKeeper += gTime->deltaTime();
-        }
+        timer += gTime->deltaTime();
         if(not movable) {
-            // easing function
-            float x = Ease::InOutQuart(std::min(timeKeeper*speed, 1.0f));
-            // calculation a point between start end target based on x
-            position->moveTo(Vector2::lerp(startPosition, targetPosition, x));
+            if (timer >= 1 / speed) {
+                movable = true;
+                position->moveTo(targetPosition);
+            } else {
+                // easing function
+                float x = Ease::InOutQuart(std::min(timer * speed, 1.0f));
+                // calculation a point between start end target based on x
+                position->moveTo(Vector2::lerp(startPosition, targetPosition, x));
+            }
         }
     }
 
