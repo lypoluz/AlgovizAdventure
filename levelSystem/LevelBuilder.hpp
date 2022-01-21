@@ -205,6 +205,7 @@ public:
                         // player code
                         Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
                         ((GameObject*)(Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
+                        placeFloor(x, y, level.theme, ago, window);
                         break;
 
                     default:
