@@ -16,6 +16,13 @@ struct Logger{
         file.close();
     }
 
+    //puts logs into new file
+    static void logToNew(std::string input, std::string newName) {
+        std::ofstream file(newName+".txt");
+        file << input << "\n";
+        file.close();
+    }
+
 };
 
 #endif //ALGOVIZADVENTURE_LOGGER_HPP
