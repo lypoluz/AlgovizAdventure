@@ -49,7 +49,7 @@ public:
         if(direction == Vector2::zero()) return;
         direction = direction.normalized();
         Vector2 newPos = position->getPosition() + direction;
-        if(newPos.x() < 0 or newPos.x() > 30 or newPos.y() < 0 or newPos.y() > 30 or
+        if(newPos.x() < 0 or newPos.x() >= 30 or newPos.y() < 0 or newPos.y() >= 30 or
             Engine::getInstance()->getCurrentLevel().wallArray[(int)newPos.x()][(int)newPos.y()]) {
             position->setFacing(direction);
             return;
