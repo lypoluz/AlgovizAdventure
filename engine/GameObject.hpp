@@ -72,8 +72,6 @@ public:
     void onDestroy() override {
         for (ObjectStructure* component : components)
             component->onDestroy();
-        for (ObjectStructure* component : components)
-            delete component;
     }
 
 };
