@@ -235,10 +235,12 @@ public:
                             sr->forceToFront();
                             enemy->addComponent(sr);
                             auto *pr = new PathRenderer(enemy, window);
-                            pr->setWidth(4);
-                            pr->forceToFront();
-                            pr->setColor(255, 60, 0);
-                            enemy->addComponent(pr);
+                            if(Engine::getInstance()->getConfig()->pathFinderPaths) {
+                                pr->setWidth(4);
+                                pr->forceToFront();
+                                pr->setColor(255, 60, 0);
+                                enemy->addComponent(pr);
+                            } else pr = nullptr;
                             auto *m = new Movement(enemy);
                             m->setSpeed(2);
                             enemy->addComponent(m);

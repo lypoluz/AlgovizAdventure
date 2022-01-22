@@ -13,5 +13,6 @@ struct Config {
     bool buildStartLevel = true;
     bool levelBorder = true;
     bool displayFps = false;
+    bool pathFinderPaths = false;
 };
 #endif //ALGOVIZADVENTURE_CONFIG_HPP
