@@ -22,7 +22,7 @@ public:
     void setPath(std::string p) {
         path = std::move(p);
         svgpath.setPath(p);
-        Logger::logln(&"[PR] " [ p.at(0)]);
+        Logger::logln("[PR] " + );
     }
 
     void setWidth(int width) {svgpath.setStrokeWidth(width);}
