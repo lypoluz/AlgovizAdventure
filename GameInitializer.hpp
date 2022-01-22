@@ -171,6 +171,7 @@ public:
         engine->setGTime(gTime);
         engine->setConfig(&config);
         engine->setGameWindow(&window);
+        engine->setLinkPointName("");
 
         GameLoop gameLoop(&ago);
         gameLoop.addToFrontRenderer((Renderer*)pRenderer);

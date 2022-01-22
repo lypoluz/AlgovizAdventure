@@ -39,7 +39,11 @@ class GameLoop {
         Engine::getInstance()->setCurrentLevel(currentLevel);
         Logger::logln("Build level " + currentLevel.name);
         AlgoWrapper::draw();
-        LevelBuilder::build(currentLevel);
+        if(e->getLinkPoint() == "")
+            LevelBuilder::build(currentLevel);
+        else
+            LevelBuilder::build(currentLevel, e->getLinkPoint());
+        e->setLinkPointName("");
     }
 
     void toFront() {
@@ -84,7 +88,6 @@ public:
 
         e->getGameWindow()->clear();
         currentLevel = LevelParser::readFile(e->getNextLevelName());
-        LevelBuilder::build(currentLevel, e->getLinkPoint());
         startGameLoop();
     }
 
