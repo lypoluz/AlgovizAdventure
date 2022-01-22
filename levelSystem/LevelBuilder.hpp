@@ -259,6 +259,10 @@ public:
                             placeFloor(x,y, level.theme, ago, window);
                             //get linkPoint from new levelBuilder parameter check if they're equal then place player
                             //player code
+                            if (newPlayerLocation == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
+                                Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
+                                ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
+                            }
                         }else if (symbol == "enemy") {
                             //enemy code
                             placeFloor(x,y, level.theme, ago, window);
