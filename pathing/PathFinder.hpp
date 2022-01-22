@@ -70,8 +70,10 @@ public:
             for(int x=0; x < 30; ++x) {
                 for (int y = 0; y < 30; ++y) {
                     if(nodeMatrix[x][y].state == 1) {
-                        if(nodeMatrix[x][y].fCost() <= current->fCost())
+                        if (nodeMatrix[x][y].fCost() <= current->fCost()) {
                             current = &nodeMatrix[x][y];
+                            Logger::logln("new current");
+                        }
                     }
                 }
             }
