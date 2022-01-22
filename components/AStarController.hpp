@@ -7,8 +7,8 @@
 
 #include "EntityController.hpp"
 #include "PathRenderer.hpp"
-#include "pathing/PathFinder.hpp"
-#include "Engine.hpp"
+#include "../pathing/PathFinder.hpp"
+#include "../engine/Engine.hpp"
 
 class AStartController : public EntityController {
 

@@ -3,7 +3,7 @@
 #ifndef ALGOVIZADVENTURE_PATHRENDERER_HPP
 #define ALGOVIZADVENTURE_PATHRENDERER_HPP
 
-#include "Renderer.hpp"
+#include "abstract/Renderer.hpp"
 
 #include <utility>
 

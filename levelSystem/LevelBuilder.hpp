@@ -10,14 +10,14 @@
 #include "../engine/Engine.hpp"
 #include "../components/WallComponent.hpp"
 #include "../components/SpriteRenderer.hpp"
+#include "../components/PathRenderer.hpp"
+#include "../components/Movement.hpp"
 #include "../Logger.hpp"
+#include "../components/AStarController.hpp"
+#include "../components/EntityScript.hpp"
+#include "SpecialLevelSymbols.hpp"
 #include <string>
 #include <map>
-#include "SpecialLevelSymbols.hpp"
-#include "PathRenderer.hpp"
-#include "Movement.hpp"
-#include "AStarController.hpp"
-#include "EntityScript.hpp"
 #include <cstdlib>
 
 
