@@ -16,7 +16,6 @@
 #include "../components/AStarController.hpp"
 #include "../components/EntityScript.hpp"
 #include "../components/Movement.hpp"
-#include "SpecialLevelSymbols.hpp"
 #include <string>
 #include <map>
 #include <cstdlib>
@@ -247,16 +246,20 @@ public:
                     default:
                         // special symbol code
                         // find thing in special symbol map by character using the find function then place thing there
-                        try {
-                            std::string symbolSprite;
-                            symbolSprite = SpecialLevelSymbols::interpretSymbol(level.specialSymbols[levelArray[x][y]]);
-                            if (symbolSprite=="spawnPoint" || symbolSprite == "nope"){
-                                placeFloor(x,y, level.theme, ago, window);
-                            }
+
+                        std::string symbol = level.specialSymbols[levelArray[x][y]].substr(0, level.specialSymbols[levelArray[x][y]].find(' ') );
+
+                        if (symbol == "roomLink") {
+                            //roomLink code
+                        }else if (symbol == "linkPoint") {
+                            //linkPoint code
+                            placeFloor(x,y, level.theme, ago, window);
+                        }else if (symbol == "enemy") {
+                            //enemy code
+                        }else if (symbol == "item") {
+                            //item code
                         }
-                        catch(int e) {
-                            //place floor
-                        }
+
                         break;
                 }
             }
