@@ -9,7 +9,7 @@
 #include <utility>
 
 class PathRenderer : public Renderer {
-    AlgoWrapper::svgPath svgpath;
+    AlgoWrapper::svgPath svgpath{};
     std::string path{};
 
 public:
