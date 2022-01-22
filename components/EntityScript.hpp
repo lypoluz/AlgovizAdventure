@@ -9,7 +9,7 @@
 #include "PlayerInputController.hpp"
 #include "Movement.hpp"
 #include "AttackAnimator.hpp"
-#include "pathing/PathFinder.hpp"
+#include "../pathing/PathFinder.hpp"
 
 
 class EntityScript : public GameComponent {
