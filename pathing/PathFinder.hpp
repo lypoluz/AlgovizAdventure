@@ -62,11 +62,13 @@ public:
                 Node n(x, y, !obstacleArray[x][y]);
                 nodeMatrix[x][y] = n;
                 Vector2 pos(x,y);
+                Logger::log(((pos-startPos).magnitude() < .5)?"T":"F");
+                Logger::logln(((pos-startPos).magnitude() < .5f)?"T":"F");
                 if ((pos-startPos).magnitude() < .5) {startNode = &n; Logger::logln("sn");}
                 if ((pos-endPos).magnitude() < .5) {endNode = &n; Logger::logln("en");}
             }
         }
-        Logger::log("start node: " + std::to_string(startNode->x) + " " + std::to_string(startNode->y));
+        Logger::logln("start node: " + std::to_string(startNode->x) + " " + std::to_string(startNode->y));
         nodeMatrix[startNode->x][startNode->y].state = 1;
         //logMatrix();
 
