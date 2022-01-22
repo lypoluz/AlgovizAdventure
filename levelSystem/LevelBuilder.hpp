@@ -231,7 +231,7 @@ public:
                             auto *pr = new PathRenderer(enemy, window);
                             pr->setWidth(4);
                             pr->forceToFront();
-                            pr->setColor(255, 20, 0);
+                            pr->setColor(255, 60, 0);
                             enemy->addComponent(pr);
                             auto *m = new Movement(enemy);
                             m->setSpeed(2);
