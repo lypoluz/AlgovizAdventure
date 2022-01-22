@@ -6,7 +6,6 @@
 
 #include <cmath>
 #include <ostream>
-#include "utils.cpp"
 
 class Vector2 {
     float m_x, m_y;
@@ -22,7 +21,7 @@ public:
     static Vector2 left() {return {-1, 0};}
     static Vector2 right() {return {1, 0};}
 
-    static Vector2 random(float min=0, float max=1) {return {randomFloat(min, max), randomFloat(min, max)};}
+    //static Vector2 random(float min=0, float max=1) {return {randomFloat(min, max), randomFloat(min, max)};}
     static Vector2 lerp(Vector2& start, Vector2& target, float x) {return start + (target-start) * x;}
 
     float x() const {return m_x;}
