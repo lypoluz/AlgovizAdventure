@@ -35,7 +35,8 @@ public:
 
     void update() override {
         // movement
-        movement->MoveInDirection(inputController->getMoveVector());
+        if(movement->canMove())
+            movement->MoveInDirection(inputController->getMoveVector());
 
         // attack
         if (inputController->isAttacking() and attackAnimator != nullptr)
