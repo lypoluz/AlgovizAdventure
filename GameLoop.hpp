@@ -12,7 +12,7 @@
 #include "levelSystem/Level.hpp"
 #include "levelSystem/LevelBuilder.hpp"
 #include "Logger.hpp"
-#include "LevelParser.hpp"
+#include "levelSystem/LevelParser.hpp"
 
 class GameLoop {
     ActiveGameObjects* ago;
