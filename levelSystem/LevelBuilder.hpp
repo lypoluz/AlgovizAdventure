@@ -259,8 +259,10 @@ public:
                             //player code
                         }else if (symbol == "enemy") {
                             //enemy code
+                            placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "item") {
                             //item code
+                            placeFloor(x,y, level.theme, ago, window);
                         }
 
                         break;
