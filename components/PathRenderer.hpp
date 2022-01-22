@@ -21,7 +21,6 @@ public:
 
     void setPath(std::string p) {
         path = std::move(p);
-        Logger::logln("[PR] " + path);
         svgpath.setPath(path);
     }
 

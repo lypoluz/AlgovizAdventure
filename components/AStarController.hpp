@@ -44,7 +44,6 @@ public:
         std::vector<Vector2> path = pf.tracePath();
         if (pathRenderer != nullptr) {
             std::string d = SVGPathFromVector2Vector(path, 16);
-            Logger::logln("[A*] " + d);
             pathRenderer->setPath(d); }
         path.erase(path.begin());
         Vector2 direction = (path[0] - position->getPosition()).normalized();
