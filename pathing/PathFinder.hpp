@@ -5,7 +5,7 @@
 
 #include "../Vector2.hpp"
 #include "Node.hpp"
-#include "Logger.hpp"
+#include "../Logger.hpp"
 #include <algorithm>
 #include <vector>
 
