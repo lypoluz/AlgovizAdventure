@@ -242,7 +242,7 @@ public:
                                 enemy->addComponent(pr);
                             } else pr = nullptr;
                             auto *m = new Movement(enemy);
-                            m->setSpeed(2);
+                            m->setSpeed(1.5);
                             enemy->addComponent(m);
                             auto *asc = new AStartController(enemy, pr);
                             enemy->addComponent(asc);
