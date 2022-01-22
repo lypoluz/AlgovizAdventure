@@ -161,6 +161,7 @@ class LevelBuilder{
 
 public:
     static void build(Level level, std::string newPlayerLocation = "noLink") {
+        //add algoviz clear?
         Logger::logln("parsing level: " + level.name);
         char levelArray[30][30];
         ActiveGameObjects* ago = Engine::getInstance()->getAGO();
