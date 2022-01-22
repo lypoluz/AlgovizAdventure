@@ -53,7 +53,6 @@ public:
         }
         pathFound = false;
         resetNodeMatrix();
-        Node* startNode;
 
         for (int x = 0; x < 30; ++x) {
             for (int y = 0; y < 30; ++y) {
@@ -67,8 +66,8 @@ public:
         nodeMatrix[startNode->x][startNode->y].state = 1;
 
         while (hasOpen()) {
-            Node* current;
-            for(int x=1; x < 30; ++x) {
+            Node* current = startNode;
+            for(int x=0; x < 30; ++x) {
                 for (int y = 0; y < 30; ++y) {
                     if(nodeMatrix[x][y].state == 1) {
                         if(nodeMatrix[x][y].fCost() <= current->fCost())
