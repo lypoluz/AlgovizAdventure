@@ -141,8 +141,8 @@ public:
 
         int getX() override {return path.getX();}
         int getY() override {return path.getY();}
-        void moveTo(Vector2 pos) override {setAttribute("transform", "");}
-        void moveBy(Vector2 amount) override {setAttribute("transform", "");}
+        void moveTo(Vector2 pos) override {path.moveTo(240,240);}
+        void moveBy(Vector2 amount) override {path.moveTo(240,240);}
         void rotateTo(int alpha) override {path.rotateTo(alpha);}
         void toFront() override {path.toFront();}
         void hide() override {path.hide();}
@@ -153,7 +153,7 @@ public:
         void setStrokeWidth(int width) override {path.setStrokeWidth(width);}
         void setAttribute(std::string attr, std::string val) override {path.setAttribute(attr, val);}
 
-        void setPath(const std::string& p) {path.setPath(p);setAttribute("transform", "");}
+        void setPath(const std::string& p) {path.setPath("M 0 0 M 480 480 " + p);path.moveTo(240,240);}
     };
 
 };
