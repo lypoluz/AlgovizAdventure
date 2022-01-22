@@ -13,25 +13,20 @@
 class Health : public GameComponent {
 
     int health;
-    ObjectStructure* objs;
 
 public:
     explicit Health(ObjectStructure* os) : GameComponent(os) {
-        objs = os;
     }
 
     void setHealth(int newHealth) {health = newHealth;}
 
     void update() override {
         if (health == 0) {
-            if(objs -> getName() == "Player") {
-//                Engine::getCurrentLevel();
-//                game over
-//                GameLoop::buildLevel();
+            if(gameObject -> getName() == "Player") {
+                Engine::getInstance()->needReload();
             }
             else{
-//                entferne enemy
-//                ActiveGameObjects::remove(gameObject);
+                Engine::getInstance()->getAGO()->remove(gameObject->getName());
             }
         }
     }
