@@ -16,9 +16,12 @@
 #include "../components/AStarController.hpp"
 #include "../components/EntityScript.hpp"
 #include "../components/Movement.hpp"
+#include "../components/PlayerCollider.hpp"
+#include "../components/RoomLink.hpp"
 #include <string>
 #include <map>
 #include <cstdlib>
+#include <utility>
 
 
 class LevelBuilder{
@@ -98,6 +101,24 @@ class LevelBuilder{
         renderer->setSize({16,16});
         renderer->setSprite("sprites/" + theme + "/" + wallType + ".svg");
         wall->addComponent(renderer);
+    }
+
+    static void createRoomLink(int x, int y, std::string targetLevel, std::string targetPoint, ActiveGameObjects* ago) {
+        auto* roomLink = new GameObject("RoomLink_" + std::to_string(x) + " " + std::to_string(y));
+        ago->add(roomLink);
+
+        auto* position = new Position(roomLink);
+        position->moveTo(x,y);
+        roomLink->addPosition(position);
+
+        auto* playerCollider = new PlayerCollider(roomLink);
+        roomLink->addComponent(playerCollider);
+
+        auto* rlComp = new RoomLink(roomLink, playerCollider);
+        rlComp->setTargetLevel(std::move(targetLevel));
+        rlComp->setTargetPoint(std::move(targetPoint));
+        roomLink->addComponent(rlComp);
+
     }
 
     static void placeFloor(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window){
