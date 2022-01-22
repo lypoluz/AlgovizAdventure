@@ -44,7 +44,9 @@ public:
         std::vector<Vector2> path = pf.tracePath();
         if(pathRenderer != nullptr)
             pathRenderer->setPath(SVGPathFromVector2Vector(path, 16));
-        return path[0];
+        Vector2 direction = (position->getPosition() - path[0]).normalized();
+        Logger::logln("[A*C] next Node: " + path[0].toString() + " dir: " + direction.toString());
+        return direction;
     }
 
     bool isAttacking() override {
