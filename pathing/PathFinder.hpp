@@ -74,6 +74,8 @@ public:
                 if ((pos-endPos).magnitude() < .5) {endNode = &nodeMatrix[x][y];}
             }
         }
+        Logger::logln("[PF] startNode: " + std::to_string(startPos.x()) + " " + std::to_string(startPos.y()));
+        Logger::logln("[PF] startNode: " + std::to_string(startNode->x) + " " + std::to_string(startNode->y));
         nodeMatrix[startNode->x][startNode->y].state = 1;
         //logMatrix();
 

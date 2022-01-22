@@ -225,6 +225,7 @@ public:
                             auto *sr = new SpriteRenderer(enemy, window);
                             sr->setSprite("sprites/enemy/ghost.png");
                             sr->setSize({16, 16});
+                            sr->forceToFront();
                             enemy->addComponent(sr);
                             auto *pr = new PathRenderer(enemy, window);
                             pr->setWidth(4);
