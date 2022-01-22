@@ -5,7 +5,7 @@
 #ifndef ALGOVIZADVENTURE_ASTARCONTROLLER_HPP
 #define ALGOVIZADVENTURE_ASTARCONTROLLER_HPP
 
-#include "EntityController.hpp"
+#include "abstract/EntityController.hpp"
 #include "PathRenderer.hpp"
 #include "../pathing/PathFinder.hpp"
 #include "../engine/Engine.hpp"

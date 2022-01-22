@@ -4,12 +4,13 @@
 #define ALGOVIZADVENTURE_PATHRENDERER_HPP
 
 #include "abstract/Renderer.hpp"
+#include "../AlgoWrapper.hpp"
 
 #include <utility>
 
 class PathRenderer : public Renderer {
     AlgoWrapper::svgPath svgpath;
-    std::string path;
+    std::string path{};
 
 public:
     PathRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {
