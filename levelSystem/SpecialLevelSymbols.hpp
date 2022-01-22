@@ -22,7 +22,7 @@ public:
         }else if (symbol.substr(0, symbol.find(' ') ) == "roomlink") {
             // roomlink code
             return "";
-        }else if (symbol.substr(0, symbol.find(' ') ) == "spawnPoint" ){
+        }else if (symbol.substr(0, symbol.find(' ') ) == "linkPoint" ){
             // place floor
             return "spawnPoint";
         }else if (symbol.substr(0, symbol.find(' ') ) == "item"){
