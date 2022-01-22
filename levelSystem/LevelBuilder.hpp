@@ -254,6 +254,8 @@ public:
                         }else if (symbol == "linkPoint") {
                             //linkPoint code
                             placeFloor(x,y, level.theme, ago, window);
+                            //get linkPoint from new levelBuilder parameter check if they're equal then place player
+                            //player code
                         }else if (symbol == "enemy") {
                             //enemy code
                         }else if (symbol == "item") {
