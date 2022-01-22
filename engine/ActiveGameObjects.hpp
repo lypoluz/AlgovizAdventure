@@ -18,6 +18,15 @@ public:
         activeObjects.push_back(obj);
     }
 
+    void remove(const std::string& name) {
+        for(GameObject* go : activeObjects) {
+            if(go->getName() == name) {
+                go->onDestroy();
+                delete go;
+            }
+        }
+    }
+
     void clearExceptPlayer() {
         GameObject* player;
         for (GameObject *go: activeObjects) {

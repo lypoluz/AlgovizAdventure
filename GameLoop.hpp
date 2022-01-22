@@ -52,7 +52,7 @@ class GameLoop {
     }
 
     bool newLevel() {
-        return e->getCurrentLevel().name != e->getNextLevelName();
+        return e->getCurrentLevel().name != e->getNextLevelName() or e->needReload();
     }
 
 public:
@@ -87,10 +87,12 @@ public:
         }
 
         e->getGameWindow()->clear();
+        ago->clearExceptPlayer();
         currentLevel = LevelParser::readFile(e->getNextLevelName());
         startGameLoop();
     }
 
 };
+
 
 #endif //ALGOVIZADVENTURE_GAMELOOP_HPP
