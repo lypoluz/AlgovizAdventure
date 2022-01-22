@@ -8,7 +8,6 @@
 #include "Position.hpp"
 #include "../engine/GameObject.hpp"
 #include "../engine/GTime.hpp"
-#include "../GameLoop.hpp"
 #include "../AlgoWrapper.hpp"
 #include "../engine/Engine.hpp"
 #include "../Ease.hpp"
