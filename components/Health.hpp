@@ -7,6 +7,8 @@
 
 #include "../engine/GameComponent.hpp"
 #include "../engine/ActiveGameObjects.hpp"
+#include "../engine/Engine.hpp"
+#include "../GameLoop.hpp"
 
 class Health : public GameComponent {
 
@@ -22,8 +24,10 @@ public:
 
     void update() override {
         if (health == 0) {
-            if(objs ==){
+            if(objs -> getName() == "Player") {
+//                Engine::getCurrentLevel();
 //                game over
+//                GameLoop::buildLevel();
             }
             else{
 //                entferne enemy
