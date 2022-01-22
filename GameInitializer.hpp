@@ -29,6 +29,7 @@ class GameInitializer {
     SpriteRenderer* aRenderer;
     GTime* gTime{};
     Config config;
+    std::string startLevelPath;
     Level startLevel;
 
 public:
@@ -50,6 +51,7 @@ public:
         config.levelBorder = cp.stringToBoolOrDefault("levelBorder", config.levelBorder);
         config.displayFps = cp.stringToBoolOrDefault("displayFps", config.displayFps);
         config.pathFinderPaths = cp.stringToBoolOrDefault("pathFinderPaths", config.pathFinderPaths);
+        startLevelPath = cp.stringToStringOrDefault("startLevelPath", "test_01.level");
     }
 
 
