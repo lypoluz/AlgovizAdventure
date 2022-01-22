@@ -251,6 +251,7 @@ public:
 
                         if (symbol == "roomLink") {
                             //roomLink code
+                            placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "linkPoint") {
                             //linkPoint code
                             placeFloor(x,y, level.theme, ago, window);
