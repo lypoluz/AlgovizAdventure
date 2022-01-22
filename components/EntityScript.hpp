@@ -9,6 +9,7 @@
 #include "PlayerInputController.hpp"
 #include "Movement.hpp"
 #include "AttackAnimator.hpp"
+#include "pathing/PathFinder.hpp"
 
 
 class EntityScript : public GameComponent {
@@ -30,6 +31,22 @@ public:
         movement = m;
         attackAnimator = aa;
         //inventory = i;
+    }
+
+    void onStart() override {
+        PathFinder pf(Engine::getInstance()->getCurrentLevel().wallArray, {4,4}, {25,25});
+        Logger::logln("calc path");
+        pf.calculatePath();
+        if (not pf.hasPath()) {
+            Logger::logln("no path");
+            return;
+        }
+        Logger::logln("tracing path");
+        std::vector<Vector2> path = pf.tracePath();
+        for (Vector2 v : path)
+            Logger::logln(v.toString());
+        Logger::logln(SVGPathFromVector2Vector(path));
+
     }
 
     void update() override {
