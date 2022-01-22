@@ -20,6 +20,7 @@ public:
     }
 
     void setPath(std::string p) {
+        Logger::logln(p);
         path = std::move(p);
         svgpath.setPath(p);
     }
