@@ -44,6 +44,13 @@ public:
     bool hasPath() const {return pathFound;}
 
     void calculatePath() {
+        Logger::logln("OA:");
+        for (auto &rows: obstacleArray) {
+            for (auto &cell: rows) {
+                Logger::log((cell)?"*":" ");
+            }
+            Logger::logln("");
+        }
         pathFound = false;
         resetNodeMatrix();
         Node* startNode;
