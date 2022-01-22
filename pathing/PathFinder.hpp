@@ -107,7 +107,6 @@ public:
                 n->state = 1;
             }
         }
-        Logger::logln("");
     }
 
     // this is not optimized! O(n!)

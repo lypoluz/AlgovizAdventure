@@ -45,7 +45,7 @@ public:
         if(pathRenderer != nullptr)
             pathRenderer->setPath(SVGPathFromVector2Vector(path, 16));
         path.erase(path.begin());
-        Vector2 direction = (position->getPosition() - path[0]).normalized();
+        Vector2 direction = (path[0] - position->getPosition()).normalized();
         Logger::logln("[A*C] next Node: " + path[0].toString() + " dir: " + direction.toString());
         return direction;
     }
