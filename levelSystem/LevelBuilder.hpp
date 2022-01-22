@@ -281,6 +281,7 @@ public:
 
                         if (symbol == "roomlink") {
                             //roomLink code
+                            createRoomLink(x, y, level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].find(' ')),level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1).substr(level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1).find(' ')+1, level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1).length()-1), ago);
                             placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "linkPoint") {
                             //linkPoint code
