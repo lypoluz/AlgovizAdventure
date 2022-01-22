@@ -37,6 +37,12 @@ struct ConfigParser {
         if(value == "default") return d;
         return std::stof(value);
     }
+
+    std::string stringToStringOrDefault(const std::string& key, std::string d="") const {
+        std::string value = getValue(key);
+        if(value == "default") return d;
+        return value;
+    }
 };
 
 #endif //ALGOVIZADVENTURE_CONFIGPARSER_HPP
