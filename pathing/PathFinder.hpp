@@ -62,9 +62,8 @@ public:
                 Node n(x, y, !obstacleArray[x][y]);
                 nodeMatrix[x][y] = n;
                 Vector2 pos(x,y);
-                Logger::logln(pos.toString() + startPos.toString() + std::to_string((pos-startPos).magnitude()));
-                if ((pos-startPos).magnitude() < .5) {startNode = &n;}
-                if ((pos-endPos).magnitude() < .5) {endNode = &n;}
+                if ((pos-startPos).magnitude() < .5) {startNode = &n; Logger::logln("sn");}
+                if ((pos-endPos).magnitude() < .5) {endNode = &n; Logger::logln("en");}
             }
         }
         nodeMatrix[startNode->x][startNode->y].state = 1;
