@@ -18,10 +18,9 @@ public:
     explicit Health(ObjectStructure* os) : GameComponent(os) {
     }
 
-    void setHealth(int newHealth) {health = newHealth;}
-
-    void update() override {
-        if (health == 0) {
+    void setHealth(int newHealth) {
+        health = newHealth;
+        if (health <= 0) {
             if(gameObject -> getName() == "Player") {
                 Engine::getInstance()->reloadLevel();
             }
