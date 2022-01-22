@@ -46,7 +46,7 @@ public:
     }
 
     std::string toString() const {
-        return stringBuilder({"(", std::to_string(m_x), ", ", std::to_string(m_y), ")"});
+        return "(" + std::to_string(m_x) + ", " + std::to_string(m_y) + ")";
     }
 
     // Vector2 with Vector2 operators
