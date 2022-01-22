@@ -6,7 +6,6 @@
 
 #include <string>
 #include <algoviz/SVG.hpp>
-#include <iads.h>
 #include "Vector2.hpp"
 #include "JavaScript.hpp"
 #include "Logger.hpp"
