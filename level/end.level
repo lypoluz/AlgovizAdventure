@@ -4,7 +4,7 @@ T:
 default
 A:
 3
-a roomLink 03.level linkPointTop
+a roomlink 03.level linkPointTop
 b linkPoint linkPointBot
 c enemy boss
 L:

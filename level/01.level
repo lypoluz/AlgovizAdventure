@@ -4,7 +4,7 @@ T:
 default
 A:
 4
-a roomLink start.level linkPointRight
+a roomlink start.level linkPointRight
 b linkPoint linkPointLeft
 c roomlink 02.level linkPointLeft
 d linkPoint linkPointRight

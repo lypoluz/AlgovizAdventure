@@ -4,11 +4,11 @@ T:
 default
 A:
 7
-a roomLink 02.level linkPointRight
+a roomlink 02.level linkPointRight
 b linkPoint linkPointLeft
-c roomLink 04.level linkPointLeft
+c roomlink 04.level linkPointLeft
 d linkPoint linkPointRight
-e roomLink end.level linkPointBot
+e roomlink end.level linkPointBot
 f linkPoint linkPointTop
 g item blocker
 L:

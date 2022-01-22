@@ -4,9 +4,9 @@ T:
 default
 A:
 4
-a roomLink 04.level linkPointRight
+a roomlink 04.level linkPointRight
 b linkPoint linkPointLeft
-c roomLink 06.level linkPointTop
+c roomlink 06.level linkPointTop
 d linkPoint linkPointBot
 L:
 ####11111111111111111111111111

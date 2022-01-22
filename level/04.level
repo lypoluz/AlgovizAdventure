@@ -4,11 +4,11 @@ T:
 default
 A:
 7
-a roomLink 03.level linkPointRight
+a roomlink 03.level linkPointRight
 b linkPoint linkPointLeft
-c roomLink 05.level linkPointTop
+c roomlink 05.level linkPointTop
 d linkPoint linkPointBot
-e roomLink 07.level linkPointLeft
+e roomlink 07.level linkPointLeft
 f linkPoint linkPointRight
 g item holy_documentation
 L:
