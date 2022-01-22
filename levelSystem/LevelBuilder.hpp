@@ -162,6 +162,8 @@ class LevelBuilder{
 public:
     static void build(Level level, std::string newPlayerLocation = "noLink") {
         //add algoviz clear?
+        int secureSpawnX, secureSpawnY;
+        bool secureSpawn = true;
         Logger::logln("parsing level: " + level.name);
         char levelArray[30][30];
         ActiveGameObjects* ago = Engine::getInstance()->getAGO();
@@ -211,8 +213,11 @@ public:
                         if (newPlayerLocation == "noLink") {
                             Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
                             ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
-                            placeFloor(x, y, level.theme, ago, window);
+                            secureSpawn = false;
                         }
+                        placeFloor(x, y, level.theme, ago, window);
+                        secureSpawnX = x;
+                        secureSpawnY = y;
                         break;
 
                     case 'E':
@@ -257,13 +262,14 @@ public:
                             placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "linkPoint") {
                             //linkPoint code
-                            placeFloor(x,y, level.theme, ago, window);
                             //get linkPoint from new levelBuilder parameter check if they're equal then place player
                             //player code
                             if (newPlayerLocation == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
                                 ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
+                                secureSpawn = false;
                             }
+                            placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "enemy") {
                             //enemy code
                             placeFloor(x,y, level.theme, ago, window);
@@ -275,6 +281,10 @@ public:
                         break;
                 }
             }
+        }
+        if (secureSpawn){
+            Logger::logln("[LB] ALERT! secure spawn used! setting player to " + Vector2(secureSpawnX, secureSpawnY).toString());
+            ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(secureSpawnX, secureSpawnY);
         }
     }
 };
