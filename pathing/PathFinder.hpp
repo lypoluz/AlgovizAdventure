@@ -62,10 +62,8 @@ public:
                 Node n(x, y, !obstacleArray[x][y]);
                 nodeMatrix[x][y] = n;
                 Vector2 pos(x,y);
-                Logger::log(((pos-startPos).magnitude() < .5)?"T":"F");
-                Logger::logln(((pos-startPos).magnitude() < .5f)?"T":"F");
-                if ((pos-startPos).magnitude() < .5) {startNode = &nodeMatrix[x][y]; Logger::logln("sn");}
-                if ((pos-endPos).magnitude() < .5) {endNode = &nodeMatrix[x][y]; Logger::logln("en");}
+                if ((pos-startPos).magnitude() < .5) {startNode = &nodeMatrix[x][y];}
+                if ((pos-endPos).magnitude() < .5) {endNode = &nodeMatrix[x][y];}
             }
         }
         Logger::logln("start node: " + std::to_string(startNode->x) + " " + std::to_string(startNode->y));
@@ -96,7 +94,7 @@ public:
             std::vector<Node*> neighbours;
             for(auto x : {-1, 0, 1}) {
                 for (auto y : {-1, 0, 1}) {
-                    if (std::abs(x) + std::abs(y) != 1) continue;
+                    if (std::abs(x) + std::abs(y) == 1) continue;
                     if(current->x+x < 0 or current->x+x >= 30 or
                        current->y+y < 0 or current->y+y >= 30) continue;
                     neighbours.push_back(&nodeMatrix[current->x+x][current->y+y]);
