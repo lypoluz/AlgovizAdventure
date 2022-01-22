@@ -44,6 +44,14 @@ class PathFinder {
         }
     }
 
+    Node* firstNodeWithState1() {
+        for (auto & rows : nodeMatrix)
+            for (auto & node : rows)
+                if(node.state == 1)
+                    return &node;
+        return nullptr;
+    }
+
 public:
     PathFinder(bool obstacleArray[30][30], const Vector2 &startPos, const Vector2 &endPos) : startPos(startPos), endPos(endPos) {
         for (int x = 0; x < 30; ++x)
@@ -71,11 +79,12 @@ public:
         //logMatrix();
 
         while (hasOpen()) {
-            Node* current = startNode;
+            Node* current = firstNodeWithState1();
+            if(current == nullptr) break;
             for(int x=0; x < 30; ++x) {
                 for (int y = 0; y < 30; ++y) {
                     if(nodeMatrix[x][y].state == 1) {
-                        if (nodeMatrix[x][y].fCost() <= current->fCost()) {
+                        if (nodeMatrix[x][y].fCost() < current->fCost()) {
                             current = &nodeMatrix[x][y];
                             Logger::logln("new current");
                         }
@@ -94,7 +103,7 @@ public:
             std::vector<Node*> neighbours;
             for(auto x : {-1, 0, 1}) {
                 for (auto y : {-1, 0, 1}) {
-                    if (std::abs(x) + std::abs(y) == 1) continue;
+                    if (std::abs(x) + std::abs(y) != 1) continue;
                     if(current->x+x < 0 or current->x+x >= 30 or
                        current->y+y < 0 or current->y+y >= 30) continue;
                     neighbours.push_back(&nodeMatrix[current->x+x][current->y+y]);
