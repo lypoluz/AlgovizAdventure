@@ -34,6 +34,16 @@ class PathFinder {
         return false;
     }
 
+    void logMatrix() {
+        Logger::logln("OA:");
+        for (int x = 0; x < 30; ++x) {
+            for (int y = 0; y < 30; ++y) {
+                Logger::log(std::to_string(nodeMatrix[x][y].state));
+            }
+            Logger::logln("");
+        }
+    }
+
 public:
     PathFinder(bool obstacleArray[30][30], const Vector2 &startPos, const Vector2 &endPos) : startPos(startPos), endPos(endPos) {
         for (int x = 0; x < 30; ++x)
@@ -44,13 +54,6 @@ public:
     bool hasPath() const {return pathFound;}
 
     void calculatePath() {
-        Logger::logln("OA:");
-        for (int x = 0; x < 30; ++x) {
-            for (int y = 0; y < 30; ++y) {
-                Logger::log((obstacleArray[x][y])?"*":" ");
-            }
-            Logger::logln("");
-        }
         pathFound = false;
         resetNodeMatrix();
 
@@ -64,6 +67,7 @@ public:
             }
         }
         nodeMatrix[startNode->x][startNode->y].state = 1;
+        logMatrix();
 
         while (hasOpen()) {
             Node* current = startNode;
@@ -77,6 +81,7 @@ public:
                     }
                 }
             }
+
             current->state = -1;
             Logger::log("Node: " + std::to_string(current->x) + " " + std::to_string(current->y));
 
