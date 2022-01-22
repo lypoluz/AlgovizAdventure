@@ -6,6 +6,7 @@
 #include "../Vector2.hpp"
 #include "Node.hpp"
 #include <algorithm>
+#include <vector>
 
 class PathFinder {
 
