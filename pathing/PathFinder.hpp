@@ -74,7 +74,6 @@ public:
                 if ((pos-endPos).magnitude() < .5) {endNode = &nodeMatrix[x][y];}
             }
         }
-        Logger::logln("start node: " + std::to_string(startNode->x) + " " + std::to_string(startNode->y));
         nodeMatrix[startNode->x][startNode->y].state = 1;
         //logMatrix();
 
@@ -86,14 +85,12 @@ public:
                     if(nodeMatrix[x][y].state == 1) {
                         if (nodeMatrix[x][y].fCost() < current->fCost()) {
                             current = &nodeMatrix[x][y];
-                            Logger::logln("new current");
                         }
                     }
                 }
             }
 
             current->state = -1;
-            Logger::log("current node: " + std::to_string(current->x) + " " + std::to_string(current->y));
 
             if (current == endNode) {
                 pathFound = true;
@@ -109,7 +106,6 @@ public:
                     neighbours.push_back(&nodeMatrix[current->x+x][current->y+y]);
                 }
             }
-            Logger::logln(" N: " + std::to_string(neighbours.size()));
 
             for (Node* n : neighbours) {
                 if(not n->traversable) continue;
@@ -118,6 +114,7 @@ public:
                 if (!(newGCost < n->gCost or n->state != 1)) continue;
                 n->gCost = newGCost;
                 n->hCost = (Vector2(n->x, n->y)-endPos).magnitude();
+                n->parent = current;
                 n->state = 1;
             }
         }
