@@ -63,7 +63,7 @@ public:
     void setGTime(GTime *pTime) {gTime = pTime;}
     void setStartLevel(Level level) { currentLevel = std::move(level);}
 
-    [[noreturn]] void startGameLoop() {
+    void startGameLoop() {
         buildLevel();
         toFront();
 
@@ -85,6 +85,7 @@ public:
         e->getGameWindow()->clear();
         currentLevel = LevelParser::readFile(e->getNextLevelName());
         LevelBuilder::build(currentLevel, e->getLinkPoint());
+        startGameLoop();
     }
 
 };
