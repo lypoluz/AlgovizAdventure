@@ -135,7 +135,7 @@ public:
         Path path;
     public:
         svgPath(std::string p, Window* window) {path = Path(p, window->getSvg());}
-        svgPath(const svgPath& p) {path = svgPath(path);}
+        svgPath(const svgPath& p) {path = Path(path);}
 
         int getX() override {return path.getX();}
         int getY() override {return path.getY();}
