@@ -6,6 +6,7 @@
 
 #include <string>
 #include <algoviz/SVG.hpp>
+#include <iads.h>
 #include "Vector2.hpp"
 #include "JavaScript.hpp"
 #include "Logger.hpp"
@@ -153,7 +154,7 @@ public:
         void setStrokeWidth(int width) override {path.setStrokeWidth(width);}
         void setAttribute(std::string attr, std::string val) override {path.setAttribute(attr, val);}
 
-        void setPath(const std::string& p) {Logger::logln("[PR] " + p[0]); path.setPath(p);}
+        void setPath(const std::string& p) {Logger::logln(&"[PR] " [ p.at(0)]); path.setPath(p);}
     };
 
 };
