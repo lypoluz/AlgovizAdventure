@@ -25,7 +25,7 @@ public:
     }
 
     void setWidth(int width) {svgpath.setStrokeWidth(width);}
-    void setColor(int r, int g, int b, int a=1) {svgpath.setColor(r,g,b,a);}
+    void setColor(int r, int g, int b, float a=1) {svgpath.setColor(r,g,b,a);}
 };
 
 #endif //ALGOVIZADVENTURE_PATHRENDERER_HPP
