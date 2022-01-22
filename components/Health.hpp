@@ -22,7 +22,7 @@ public:
 
     void update() override {
         if (health == 0) {
-            if(objs ==){
+            if(objs -> getName() == "Player") {
 //                game over
             }
             else{
