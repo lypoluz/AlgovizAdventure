@@ -19,7 +19,6 @@
 #include <string>
 #include <map>
 #include <cstdlib>
-#include "../AlgoWrapper.hpp"
 
 
 class LevelBuilder{
@@ -162,7 +161,6 @@ class LevelBuilder{
 
 public:
     static void build(Level level, std::string newPlayerLocation = "noLink") {
-        AlgoWrapper::clear();
         int secureSpawnX, secureSpawnY;
         bool secureSpawn = true;
         Logger::logln("parsing level: " + level.name);
