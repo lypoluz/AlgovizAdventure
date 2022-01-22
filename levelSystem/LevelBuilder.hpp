@@ -215,28 +215,30 @@ public:
 
                     case 'E':
                         // Test Enemy
-                        Logger::logln("[LB] setting test enemy to " + Vector2(x, y).toString());
-                        GameObject* enemy = new GameObject("TestEnemy");
-                        ago->add(enemy);
-                        auto* position = new Position(enemy);
-                        position->moveTo(x,y);
-                        enemy->addPosition(position);
-                        auto* sr = new SpriteRenderer(enemy, window);
-                        sr->setSprite("sprites/enemy/ghost.png");
-                        sr->setSize({16,16});
-                        enemy->addComponent(sr);
-                        auto* pr = new PathRenderer(enemy, window);
-                        pr->setWidth(4);
-                        pr->forceToFront();
-                        pr->setColor(255,20,0);
-                        enemy->addComponent(pr);
-                        auto* m = new Movement(enemy);
-                        m->setSpeed(2);
-                        enemy->addComponent(m);
-                        auto* asc = new AStartController(enemy, pr);
-                        enemy->addComponent(asc);
-                        auto* ec = new EntityScript(enemy, asc, m, nullptr);
-                        enemy->addComponent(ec);
+                        {
+                            Logger::logln("[LB] setting test enemy to " + Vector2(x, y).toString());
+                            GameObject *enemy = new GameObject("TestEnemy");
+                            ago->add(enemy);
+                            auto *position = new Position(enemy);
+                            position->moveTo(x, y);
+                            enemy->addPosition(position);
+                            auto *sr = new SpriteRenderer(enemy, window);
+                            sr->setSprite("sprites/enemy/ghost.png");
+                            sr->setSize({16, 16});
+                            enemy->addComponent(sr);
+                            auto *pr = new PathRenderer(enemy, window);
+                            pr->setWidth(4);
+                            pr->forceToFront();
+                            pr->setColor(255, 20, 0);
+                            enemy->addComponent(pr);
+                            auto *m = new Movement(enemy);
+                            m->setSpeed(2);
+                            enemy->addComponent(m);
+                            auto *asc = new AStartController(enemy, pr);
+                            enemy->addComponent(asc);
+                            auto *ec = new EntityScript(enemy, asc, m, nullptr);
+                            enemy->addComponent(ec);
+                        }
 
                         placeFloor(x, y, level.theme, ago, window);
                         break;
