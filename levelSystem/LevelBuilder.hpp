@@ -15,6 +15,7 @@
 #include "../Logger.hpp"
 #include "../components/AStarController.hpp"
 #include "../components/EntityScript.hpp"
+#include "../components/Movement.hpp"
 #include "SpecialLevelSymbols.hpp"
 #include <string>
 #include <map>

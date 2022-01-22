@@ -134,6 +134,7 @@ public:
     class svgPath : public WindowElement {
         Path path;
     public:
+        svgPath() {}
         svgPath(std::string p, Window* window) {path = Path(p, window->getSvg());}
         svgPath(const svgPath& p) {path = Path(path);}
 
