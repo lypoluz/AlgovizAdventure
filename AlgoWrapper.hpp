@@ -8,6 +8,7 @@
 #include <algoviz/SVG.hpp>
 #include "Vector2.hpp"
 #include "JavaScript.hpp"
+#include "Logger.hpp"
 
 
 class AlgoWrapper {
@@ -152,7 +153,7 @@ public:
         void setStrokeWidth(int width) override {path.setStrokeWidth(width);}
         void setAttribute(std::string attr, std::string val) override {path.setAttribute(attr, val);}
 
-        void setPath(const std::string& p) {path.setPath(p);}
+        void setPath(const std::string& p) {Logger::logln(p); path.setPath(p);}
     };
 
 };
