@@ -15,20 +15,20 @@ struct Logger{
     }
 
     static void log(std::string input){
-        std::ofstream file("logfile.txt", std::ios::app);
+        std::ofstream file("logfile.log", std::ios::app);
         file << input;
         file.close();
     }
 
     //puts logs into new file
     static void logToNew(std::string input, std::string newName) {
-        std::ofstream file(newName+".txt");
+        std::ofstream file(newName+".log");
         file << input << "\n";
         file.close();
     }
 
     static void clearFile(){
-        std::ofstream file("logfile.txt");
+        std::ofstream file("logfile.log");
         file << "";
         file.close();
     }
