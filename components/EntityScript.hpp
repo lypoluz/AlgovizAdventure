@@ -45,7 +45,7 @@ public:
         std::vector<Vector2> path = pf.tracePath();
         for (Vector2 v : path)
             Logger::logln(v.toString());
-        Logger::logln(SVGPathFromVector2Vector(path));
+        Logger::logln(SVGPathFromVector2Vector(path, 16));
 
     }
 
