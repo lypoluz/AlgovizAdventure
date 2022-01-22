@@ -152,7 +152,7 @@ public:
         void setStrokeWidth(int width) override {path.setStrokeWidth(width);}
         void setAttribute(std::string attr, std::string val) override {path.setAttribute(attr, val);}
 
-        void setPath(std::string p) {path.setPath(p);}
+        void setPath(const std::string& p) {path.setPath(p);}
     };
 
 };
