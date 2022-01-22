@@ -13,8 +13,9 @@ protected:
     Position* position;
     Vector2 positionOffset;
     int rotationOffset;
-    AlgoWrapper::WindowElement* element;
+    AlgoWrapper::WindowElement* element{};
     AlgoWrapper::Window* window;
+    bool front{};
 
     Renderer(ObjectStructure *os, AlgoWrapper::Window* win) : GameComponent(os) {
         position = ((GameObject *) gameObject)->position;
@@ -28,6 +29,7 @@ protected:
         Vector2 viewPosition = (position->getPosition() + positionOffset + Vector2(.5, .5)) * 16;
         element->moveTo(viewPosition);
         element->rotateTo(position->getRotation() + rotationOffset);
+        if(front) element->toFront();
     }
 
 
@@ -49,6 +51,7 @@ public:
     void toFront() {element->toFront();}
     void show() {element->show();}
     void hide() {element->hide();}
+    void forceToFront(bool b=true) {front = b;}
 
 };
 

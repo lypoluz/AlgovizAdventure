@@ -33,28 +33,12 @@ public:
         //inventory = i;
     }
 
-    void onStart() override {
-        PathFinder pf(Engine::getInstance()->getCurrentLevel().wallArray, {4,4}, {17,5});
-        Logger::logln("calc path");
-        pf.calculatePath();
-        if (not pf.hasPath()) {
-            Logger::logln("no path");
-            return;
-        }
-        Logger::logln("tracing path");
-        std::vector<Vector2> path = pf.tracePath();
-        for (Vector2 v : path)
-            Logger::logln(v.toString());
-        Logger::logln(SVGPathFromVector2Vector(path, 16));
-
-    }
-
     void update() override {
         // movement
         movement->MoveInDirection(inputController->getMoveVector());
 
         // attack
-        if (inputController->isAttacking())
+        if (inputController->isAttacking() and attackAnimator != nullptr)
             attackAnimator->startAnimation();
 
         /*/ pickup

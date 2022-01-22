@@ -1,0 +1,30 @@
+// Created by Lypoluz (Dominik) on 22.01.2022.
+
+#ifndef ALGOVIZADVENTURE_PATHRENDERER_HPP
+#define ALGOVIZADVENTURE_PATHRENDERER_HPP
+
+#include "Renderer.hpp"
+
+#include <utility>
+
+class PathRenderer : public Renderer {
+    AlgoWrapper::svgPath svgpath;
+    std::string path;
+
+public:
+    PathRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {
+        svgpath = AlgoWrapper::svgPath("", win);
+        element = &svgpath;
+        svgpath.setFill(0,0,0,0);
+    }
+
+    void setPath(std::string p) {
+        path = std::move(p);
+        svgpath.setPath(p);
+    }
+
+    void setWidth(int width) {svgpath.setStrokeWidth(width);}
+    void setColor(int r, int g, int b, int a=1) {svgpath.setColor(r,g,b,a);}
+};
+
+#endif //ALGOVIZADVENTURE_PATHRENDERER_HPP

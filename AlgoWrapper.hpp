@@ -131,6 +131,29 @@ public:
         void setRadius(int radius) {circle.setRadius(radius);}
     };
 
+    class svgPath : public WindowElement {
+        Path path;
+    public:
+        svgPath(std::string p, Window* window) {path = Path(p, window->getSvg());}
+        svgPath(const svgPath& p) {path = svgPath(p);}
+
+        int getX() override {return path.getX();}
+        int getY() override {return path.getY();}
+        void moveTo(Vector2 pos) override {path.moveTo(0, 0);}
+        void moveBy(Vector2 amount) override {path.moveBy(0, 0);}
+        void rotateTo(int alpha) override {path.rotateTo(alpha);}
+        void toFront() override {path.toFront();}
+        void hide() override {path.hide();}
+        void show() override {path.show();}
+        void removeFromView() override {path.removeFromView();}
+        void setColor(int r, int g, int b, float a) override {path.setColor(r,g,b,a);}
+        void setFill(int r, int g, int b, float a) override {path.setFill(r,g,b,a);}
+        void setStrokeWidth(int width) override {path.setStrokeWidth(width);}
+        void setAttribute(std::string attr, std::string val) override {path.setAttribute(attr, val);}
+
+        void setPath(std::string p) {path.setPath(p);}
+    };
+
 };
 
 
