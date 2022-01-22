@@ -160,7 +160,7 @@ class LevelBuilder{
 
 
 public:
-    static void build(Level level) {
+    static void build(Level level, std::string newPlayerLocation = "noLink") {
         Logger::logln("parsing level: " + level.name);
         char levelArray[30][30];
         ActiveGameObjects* ago = Engine::getInstance()->getAGO();
@@ -207,9 +207,11 @@ public:
 
                     case 'S':
                         // player code
-                        Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
-                        ((GameObject*)(Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
-                        placeFloor(x, y, level.theme, ago, window);
+                        if (newPlayerLocation == "noLink") {
+                            Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
+                            ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
+                            placeFloor(x, y, level.theme, ago, window);
+                        }
                         break;
 
                     case 'E':
