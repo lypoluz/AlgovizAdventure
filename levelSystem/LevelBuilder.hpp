@@ -283,7 +283,11 @@ public:
                             //roomLink code
                             // roomlink [targetLevel] [linkPoint] -> targetLevel
                             // roomlink [targetLevel] [linkPoint] -> [targetLevel] [linkPoint]-> [linkPoint]
-                            createRoomLink(x, y,level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].find(' ')),level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1).substr(level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1).find(' ')+1, level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1).length()-1), ago);
+                            std::string roomlinkInfo = level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1);
+                            std::string targetLevel = roomlinkInfo.substr(0, roomlinkInfo.find(' '));
+                            std::string linkPoint = roomlinkInfo.substr(roomlinkInfo.find(' ')+1, roomlinkInfo.length()-1);
+                            Logger::logToNew(roomlinkInfo + " " + targetLevel + " " + linkPoint, "roomlinktest");
+                            createRoomLink(x, y, targetLevel, linkPoint, ago);
                             placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "linkPoint") {
                             //linkPoint code
