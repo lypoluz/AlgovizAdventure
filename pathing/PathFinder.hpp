@@ -34,16 +34,6 @@ class PathFinder {
         return false;
     }
 
-    void logMatrix() {
-        Logger::logln("OA:");
-        for (int x = 0; x < 30; ++x) {
-            for (int y = 0; y < 30; ++y) {
-                Logger::log(std::to_string(nodeMatrix[x][y].state));
-            }
-            Logger::logln("");
-        }
-    }
-
     Node* firstNodeWithState1() {
         for (auto & rows : nodeMatrix)
             for (auto & node : rows)
@@ -74,10 +64,7 @@ public:
                 if ((pos-endPos).magnitude() < .5) {endNode = &nodeMatrix[x][y];}
             }
         }
-        Logger::logln("[PF] startNode: " + std::to_string(startPos.x()) + " " + std::to_string(startPos.y()));
-        Logger::logln("[PF] startNode: " + std::to_string(startNode->x) + " " + std::to_string(startNode->y));
         nodeMatrix[startNode->x][startNode->y].state = 1;
-        //logMatrix();
 
         while (hasOpen()) {
             Node* current = firstNodeWithState1();
