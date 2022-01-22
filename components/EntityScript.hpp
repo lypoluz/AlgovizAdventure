@@ -36,7 +36,6 @@ public:
     void onStart() override {
         PathFinder pf(Engine::getInstance()->getCurrentLevel().wallArray, {4,4}, {17,5});
         Logger::logln("calc path");
-        Logger::logln(" wall at 17 5: " + std::to_string(0) + ((Engine::getInstance()->getCurrentLevel().wallArray[17][5])?"T":"F"));
         pf.calculatePath();
         if (not pf.hasPath()) {
             Logger::logln("no path");

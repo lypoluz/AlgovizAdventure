@@ -5,6 +5,7 @@
 
 #include "../Vector2.hpp"
 #include "Node.hpp"
+#include "Logger.hpp"
 #include <algorithm>
 #include <vector>
 
@@ -69,6 +70,7 @@ public:
                 }
             }
             current->state = -1;
+            Logger::log("Node: " + std::to_string(current->x) + " " + std::to_string(current->y));
 
             if (current == endNode) {
                 pathFound = true;
@@ -84,6 +86,7 @@ public:
                     neighbours.push_back(&nodeMatrix[current->x+x][current->y+y]);
                 }
             }
+            Logger::logln(" N: " + std::to_string(neighbours.size()));
 
             for (Node* n : neighbours) {
                 if(not n->traversable) continue;
@@ -95,6 +98,7 @@ public:
                 n->state = 1;
             }
         }
+        Logger::logln("");
     }
 
     // this is not optimized! O(n!)
