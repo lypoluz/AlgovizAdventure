@@ -38,7 +38,7 @@ public:
     PathFinder(bool obstacleArray[30][30], const Vector2 &startPos, const Vector2 &endPos) : startPos(startPos), endPos(endPos) {
         for (int x = 0; x < 30; ++x)
             for (int y = 0; y < 30; ++y)
-                this->obstacleArray[x][y] = obstacleArray[x][y];
+                this->obstacleArray[x][y] = obstacleArray[y][x];
     }
 
     bool hasPath() const {return pathFound;}
