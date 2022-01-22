@@ -29,15 +29,6 @@ public:
 //                entferne enemy
 //                ActiveGameObjects::remove(gameObject);
             }
-            GameObject* player;
-            for (GameObject *go: activeObjects) {
-                if (go->getName() == "Player") {
-                    player = go;
-                } else {
-                    go->onDestroy();
-                    delete go;
-                }
-            }
         }
     }
 };
