@@ -23,10 +23,10 @@ void runtimeError(const std::string& errmsg) {
     throw std::runtime_error(errmsg);
 }
 
-std::string SVGPathFromVector2Vector(std::vector<Vector2> vects, float scale=1) {
-    std::string path = "M " + std::to_string((int)(vects[0].x()*scale)) + " " + std::to_string((int)(vects[0].y()*scale));
+std::string SVGPathFromVector2Vector(std::vector<Vector2> vects, float scale=1, float offset=0) {
+    std::string path = "M " + std::to_string((int)((vects[0].x()+offset)*scale)) + " " + std::to_string((int)((vects[0].y()+offset)*scale));
     for(auto vec : vects)
-        path += " L " + std::to_string((int)(vec.x()*scale)) + " " + std::to_string((int)(vec.y()*scale));
+        path += " L " + std::to_string((int)((vec.x()+offset)*scale)) + " " + std::to_string((int)((vec.y()+offset)*scale));
     return path;
 }
 
