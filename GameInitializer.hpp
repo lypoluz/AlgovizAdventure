@@ -130,7 +130,7 @@ public:
                 "sprites/player/sword_attack1.svg",
                 "sprites/player/sword_attack2.svg",
                 "sprites/player/sword_attack3.svg");
-        attackAnimator->setAttackTime(.2);
+        attackAnimator->setAttackTime(.3);
         player->addComponent(attackAnimator);
 
         // movement

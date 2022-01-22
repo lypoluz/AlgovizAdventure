@@ -8,7 +8,7 @@ struct Config {
     bool fullscreen = true;
     int windowSize = 480;
     int windowFrameSizeFactor = 24;
-    float playerSpeed = 3;
+    float playerSpeed = 3.5;
     bool funnyEnemies = false;
     bool buildStartLevel = true;
     bool levelBorder = true;
