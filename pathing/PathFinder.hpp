@@ -66,8 +66,9 @@ public:
                 if ((pos-endPos).magnitude() < .5) {endNode = &n; Logger::logln("en");}
             }
         }
+        Logger::log("start node: " + std::to_string(startNode->x) + " " + std::to_string(startNode->y));
         nodeMatrix[startNode->x][startNode->y].state = 1;
-        logMatrix();
+        //logMatrix();
 
         while (hasOpen()) {
             Node* current = startNode;
@@ -83,7 +84,7 @@ public:
             }
 
             current->state = -1;
-            Logger::log("Node: " + std::to_string(current->x) + " " + std::to_string(current->y));
+            Logger::log("current node: " + std::to_string(current->x) + " " + std::to_string(current->y));
 
             if (current == endNode) {
                 pathFound = true;
