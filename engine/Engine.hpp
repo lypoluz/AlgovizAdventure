@@ -19,6 +19,8 @@ class Engine {
     AlgoWrapper::Window* gameWindow{};
     Config* config{};
     Level currentLevel;
+    std::string nextLevelName;
+    std::string linkPointName;
     // Audio* audio;
 
     Engine() = default;
@@ -44,8 +46,13 @@ public:
     void setConfig(Config* c) {config = c;}
     Config* getConfig() {return config;}
 
-    void setCurrentLevel(Level l) {currentLevel = std::move(l);}
+    void setCurrentLevel(Level l) {currentLevel = std::move(l); nextLevelName = currentLevel.name;}
     Level getCurrentLevel() {return currentLevel;}
+    void setNextLevelName(std::string n) {nextLevelName = std::move(n);}
+    std::string getNextLevelName() {return nextLevelName;}
+    void setLinkPointName(std::string n) {linkPointName = std::move(n);}
+    std::string getLinkPoint() {return linkPointName;}
+
 };
 
 #endif //ALGOVIZADVENTURE_ENGINE_HPP

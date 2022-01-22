@@ -18,9 +18,20 @@ public:
         activeObjects.push_back(obj);
     }
 
-    void remove(GameObject* obj) {
-
+    void clearExceptPlayer() {
+        GameObject* player;
+        for (GameObject *go: activeObjects) {
+            if (go->getName() == "Player") {
+                player = go;
+            } else {
+                go->onDestroy();
+                delete go;
+            }
+        }
+        activeObjects.clear();
+        add(player);
     }
+
 };
 
 #endif //ALGOVIZADVENTURE_ACTIVEGAMEOBJECTS_HPP

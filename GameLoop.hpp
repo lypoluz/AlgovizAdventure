@@ -12,13 +12,15 @@
 #include "levelSystem/Level.hpp"
 #include "levelSystem/LevelBuilder.hpp"
 #include "Logger.hpp"
+#include "LevelParser.hpp"
 
 class GameLoop {
     ActiveGameObjects* ago;
     std::vector<Renderer*> toFrontRenderer;
     GTime* gTime;
-    Level startLevel{};
+    Level currentLevel{};
     bool displayFps;
+    Engine* e;
 
 
     GameLoop() = delete;
@@ -32,12 +34,12 @@ class GameLoop {
             obj->postUpdate();
     }
 
-    void buildStartLevel() {
+    void buildLevel() {
         if(not Engine::getInstance()->getConfig()->buildStartLevel) return;
-        Engine::getInstance()->setCurrentLevel(startLevel);
-        Logger::logln("Build start level");
+        Engine::getInstance()->setCurrentLevel(currentLevel);
+        Logger::logln("Build level " + currentLevel.name);
         AlgoWrapper::draw();
-        LevelBuilder::build(startLevel);
+        LevelBuilder::build(currentLevel);
     }
 
     void toFront() {
@@ -45,19 +47,24 @@ class GameLoop {
             r->toFront();
     }
 
+    bool newLevel() {
+        return e->getCurrentLevel().name != e->getNextLevelName();
+    }
+
 public:
 
     explicit GameLoop(ActiveGameObjects* ago){
         this->ago = ago;
-        displayFps = Engine::getInstance()->getConfig()->displayFps;
+        e = Engine::getInstance();
+        displayFps = e->getConfig()->displayFps;
     }
 
     void addToFrontRenderer(Renderer* pr) {toFrontRenderer.push_back(pr);}
     void setGTime(GTime *pTime) {gTime = pTime;}
-    void setStartLevel(Level level) {startLevel = std::move(level);}
+    void setStartLevel(Level level) { currentLevel = std::move(level);}
 
     [[noreturn]] void startGameLoop() {
-        buildStartLevel();
+        buildLevel();
         toFront();
 
         for (GameObject* obj : ago->getActive())
@@ -65,7 +72,8 @@ public:
 
         Logger::logln("[GL] actually starting game loop");
         gTime->setStart();
-        while (true) {
+
+        while (not newLevel()) {
             AlgoWrapper::draw();
             gTime->setDelta();
 
@@ -73,6 +81,10 @@ public:
             if(displayFps)
                 AlgoWrapper::algoText(std::to_string(1/(gTime->deltaTime())) + " fps");
         }
+
+        e->getGameWindow()->clear();
+        currentLevel = LevelParser::readFile(e->getNextLevelName());
+        LevelBuilder::build(currentLevel, e->getLinkPoint());
     }
 
 };
