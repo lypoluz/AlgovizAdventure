@@ -21,6 +21,7 @@ class Engine {
     Level currentLevel;
     std::string nextLevelName;
     std::string linkPointName;
+    bool levelReload{};
     // Audio* audio;
 
     Engine() = default;
@@ -52,6 +53,9 @@ public:
     std::string getNextLevelName() {return nextLevelName;}
     void setLinkPointName(std::string n) {linkPointName = std::move(n);}
     std::string getLinkPoint() {return linkPointName;}
+
+    void reloadLevel(bool b=true) {levelReload = b;}
+    bool needReload() {return levelReload;}
 
 };
 
