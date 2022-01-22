@@ -45,9 +45,9 @@ public:
 
     void calculatePath() {
         Logger::logln("OA:");
-        for (auto &rows: obstacleArray) {
-            for (auto &cell: rows) {
-                Logger::log((cell)?"*":" ");
+        for (int x = 0; x < 30; ++x) {
+            for (int y = 0; y < 30; ++y) {
+                Logger::log((obstacleArray[x][y])?"*":" ");
             }
             Logger::logln("");
         }
