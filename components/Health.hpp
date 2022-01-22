@@ -6,9 +6,7 @@
 
 
 #include "../engine/GameComponent.hpp"
-#include "../engine/ActiveGameObjects.hpp"
 #include "../engine/Engine.hpp"
-#include "../GameLoop.hpp"
 
 class Health : public GameComponent {
 
