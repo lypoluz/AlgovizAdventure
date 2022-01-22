@@ -141,8 +141,8 @@ public:
 
         int getX() override {return path.getX();}
         int getY() override {return path.getY();}
-        void moveTo(Vector2 pos) override {path.moveTo(0, 0);}
-        void moveBy(Vector2 amount) override {path.moveBy(0, 0);}
+        void moveTo(Vector2 pos) override {}
+        void moveBy(Vector2 amount) override {}
         void rotateTo(int alpha) override {path.rotateTo(alpha);}
         void toFront() override {path.toFront();}
         void hide() override {path.hide();}
