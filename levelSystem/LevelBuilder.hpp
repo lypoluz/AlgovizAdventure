@@ -19,7 +19,7 @@
 #include <string>
 #include <map>
 #include <cstdlib>
-#include "AlgoWrapper.hpp"
+#include "../AlgoWrapper.hpp"
 
 
 class LevelBuilder{
