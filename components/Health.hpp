@@ -23,7 +23,7 @@ public:
     void update() override {
         if (health == 0) {
             if(gameObject -> getName() == "Player") {
-                Engine::getInstance()->needReload();
+                Engine::getInstance()->reloadLevel();
             }
             else{
                 Engine::getInstance()->getAGO()->remove(gameObject->getName());
