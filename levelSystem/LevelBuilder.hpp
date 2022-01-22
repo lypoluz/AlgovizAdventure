@@ -251,7 +251,7 @@ public:
 
                         std::string symbol = level.specialSymbols[levelArray[x][y]].substr(0, level.specialSymbols[levelArray[x][y]].find(' ') );
 
-                        if (symbol == "roomLink") {
+                        if (symbol == "roomlink") {
                             //roomLink code
                             placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "linkPoint") {

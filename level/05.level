@@ -4,9 +4,9 @@ T:
 default
 A:
 5
-a roomLink 04.level linkPointBot
+a roomlink 04.level linkPointBot
 b linkPoint linkPointTop
-c roomLink 06.level linkPointLeft
+c roomlink 06.level linkPointLeft
 d linkPoint linkPointRight
 e enemy enemy01
 L:
