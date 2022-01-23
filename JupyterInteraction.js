@@ -10,8 +10,8 @@ function compressAlgoViz() {
     mouseEventOn(node, "click");
 }
 
-function mouseEventOn(node, type) {
-    const evt = new MouseEvent("click", {
+function mouseEventOn(node, type="click") {
+    const evt = new MouseEvent(type, {
         view: window,
         bubbles: true,
         cancelable: true,
