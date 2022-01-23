@@ -43,6 +43,7 @@ public:
         config.levelBorder = cp.stringToBoolOrDefault("levelBorder", config.levelBorder);
         config.displayFps = cp.stringToBoolOrDefault("displayFps", config.displayFps);
         config.pathFinderPaths = cp.stringToBoolOrDefault("pathFinderPaths", config.pathFinderPaths);
+        config.audioLevel = cp.stringToFloatOrDefault("audioLevel", config.audioLevel);
         startLevelPath = cp.stringToStringOrDefault("startLevel", "start.level");
     }
 

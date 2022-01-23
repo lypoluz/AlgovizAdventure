@@ -14,5 +14,6 @@ struct Config {
     bool levelBorder = true;
     bool displayFps = false;
     bool pathFinderPaths = false;
+    float audioLevel = 1;
 };
 #endif //ALGOVIZADVENTURE_CONFIG_HPP
