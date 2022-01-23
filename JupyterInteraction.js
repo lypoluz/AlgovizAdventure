@@ -9,7 +9,7 @@ function compressAlgoViz() {
 }
 
 function focusGame() {
-    const node = document.getElementById('_0');
+    const node = document.getElementById('algoviz-view-0');
     mouseEventOn(node, "click");
 }
 
