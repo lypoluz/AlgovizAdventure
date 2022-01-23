@@ -34,6 +34,7 @@ public:
     }
 
     void postUpdate() override {
+        if(not position->isDirty()) return;
         Vector2 moveVec = position->facing();
         std::string newSprite = "";
         if(moveVec == Vector2::down())

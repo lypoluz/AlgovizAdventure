@@ -56,7 +56,7 @@ public:
         if(position->facing() != direction) {
             newPos = targetPosition;
             position->setFacing(direction);
-            timer = 9 / ( 10 * speed);
+            timer = 14 / ( 15 * speed);
         } else {
             timer = 0;
         }
