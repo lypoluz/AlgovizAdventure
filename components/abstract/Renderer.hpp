@@ -49,7 +49,7 @@ public:
     void setRotationOffset(int offset) {rotationOffset = offset;}
 
     void toFront() {element->toFront();}
-    void show() {element->show();}
+    void show() {try{element->show();}catch (std::exception&) {}}
     void hide() {element->hide();}
     void forceToFront(bool b=true) {front = b;}
 
