@@ -44,7 +44,7 @@ public:
 
     void updateUI() {
         if(gameObject -> getName() == "Player")
-            ((UI*)Engine::getInstance()->getUI())->setLives(health/4);
+            ((UI*)Engine::getInstance()->getUI())->setLives(health/10);
     }
 
     void reduceHealth(int h) {
