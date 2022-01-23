@@ -68,6 +68,8 @@ public:
 
     // adds the time passed and enables movement if enough time has passed
     void update() override{
+        if(Engine::getInstance()->getConfig()->funnyEnemies and gameObject->getName()!="Player")
+            timer *= 2;
         timer += gTime->deltaTime();
         if(not movable) {
             if (timer >= 1 / speed) {
