@@ -50,12 +50,14 @@ public:
         pRenderer->setSprite("sprites/player/player_down.svg");
         pRenderer->setSize({16,16});
         player->addComponent(pRenderer);
+        e->addOnTopRenderer((ObjectStructure*)pRenderer);
 
         // attack renderer
         auto* aRenderer = new SpriteRenderer(player, window);
         aRenderer->setSprite("sprites/empty.svg");
         aRenderer->setSize({16, 16});
         player->addComponent(aRenderer);
+        e->addOnTopRenderer((ObjectStructure*)aRenderer);
 
         // changeSpriteOnMove
         auto* spriteChanger = new ChangeSpriteOnMove(player, pRenderer);
@@ -236,6 +238,7 @@ public:
         renderer->setSize({16,16});
         renderer->setSprite("sprites/HolyDoc.svg");
         holy->addComponent(renderer);
+        e->addOnTopRenderer((ObjectStructure*) renderer);
     }
 
 
@@ -274,12 +277,14 @@ public:
         sr->setSize({16, 16});
         sr->forceToFront();
         enemy->addComponent(sr);
+        e->addOnTopRenderer((ObjectStructure*) sr);
         auto *pr = new PathRenderer(enemy, window);
         if(Engine::getInstance()->getConfig()->pathFinderPaths) {
             pr->setWidth(4);
             pr->forceToFront();
             pr->setColor(255, 60, 0);
             enemy->addComponent(pr);
+            e->addOnTopRenderer((ObjectStructure*) pr);
         } else pr = nullptr;
         auto *m = new Movement(enemy);
         m->setSpeed(1.5);
