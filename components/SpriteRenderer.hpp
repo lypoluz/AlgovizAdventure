@@ -29,6 +29,10 @@ public:
     void setSize(Vector2 d) {dimension = d; sprite.setSize(dimension);}
 
     std::string getSpritePath() {return currentSprite;}
+
+    void onDestroy() override {
+        setSprite("sprites/empty.svg");
+    }
 };
 
 #endif //ALGOVIZADVENTURE_SPRITERENDERER_HPP
