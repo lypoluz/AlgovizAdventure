@@ -20,9 +20,8 @@ public:
         window = new AlgoWrapper::Window(112, 480, wfsf, wfsf, "UI");
     }
 
-    void setLifeRenderer(SpriteRenderer* sr[4]) {
-        for (auto & i : spriteRenderer)
-            i = sr[4];
+    void setLifeRenderer(SpriteRenderer* sr, int i) {
+        spriteRenderer[i] = sr;
     }
 
     void setHolyRender(SpriteRenderer* hd) {

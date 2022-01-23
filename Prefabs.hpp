@@ -379,20 +379,33 @@ public:
         back->setSize({112, 480});
         ui->addComponent(back);
 
-        SpriteRenderer* srs[4];
-        for (int i = 0; i < 4; ++i) {
-            srs[i] = new SpriteRenderer(ui, uiWindow);
-            srs[i]->setSprite("sprites/player/player_down.svg");
-            srs[i]->setSize({16, 16});
-            switch (i) {
-                case 0: srs[i]->setPositionOffset({3.6,2.8});
-                case 1: srs[i]->setPositionOffset({4.8,2.7});
-                case 2: srs[i]->setPositionOffset({5.5,1.7});
-                case 3: srs[i]->setPositionOffset({5.7,0.4});
-            }
-            ui->addComponent(srs[i]);
-        }
-        uic->setLifeRenderer(srs);
+        auto* sr1 = new SpriteRenderer(ui, uiWindow);
+        sr1->setSprite("sprites/player/player_down.svg");
+        sr1->setSize({16, 16});
+        sr1->setPositionOffset({3.6,2.8});
+        ui->addComponent(sr1);
+        uic->setLifeRenderer(sr1, 0);
+
+        auto* sr2 = new SpriteRenderer(ui, uiWindow);
+        sr2->setSprite("sprites/player/player_down.svg");
+        sr2->setSize({16, 16});
+        sr2->setPositionOffset({4.8,2.7});
+        ui->addComponent(sr2);
+        uic->setLifeRenderer(sr2, 1);
+
+        auto* sr3 = new SpriteRenderer(ui, uiWindow);
+        sr3->setSprite("sprites/player/player_down.svg");
+        sr3->setSize({16, 16});
+        sr3->setPositionOffset({5.5,1.7});
+        ui->addComponent(sr3);
+        uic->setLifeRenderer(sr3, 2);
+
+        auto* sr3 = new SpriteRenderer(ui, uiWindow);
+        sr3->setSprite("sprites/player/player_down.svg");
+        sr3->setSize({16, 16});
+        sr3->setPositionOffset({5.7,0.4});
+        ui->addComponent(sr3);
+        uic->setLifeRenderer(sr3, 3);
 
         auto* hd = new SpriteRenderer(ui, uiWindow);
         hd->setSprite("sprites/HolyDoc.svg");
