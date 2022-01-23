@@ -40,18 +40,12 @@ public:
         delete obj;
     }
 
-    void clearExceptPlayer() {
-        GameObject* player;
+    void clearAll() {
         for (GameObject *go: activeObjects) {
-            if (go->getName() == "Player") {
-                player = go;
-            } else {
                 go->onDestroy();
-                delete go;
-            }
         }
         activeObjects.clear();
-        add(player);
+        attackables.clear();
     }
 
 };

@@ -57,6 +57,7 @@ public:
         startGameLoop();
     }
 
+private:
     void createReferences() {
         engine = Engine::getInstance();
         engine->setConfig(&config);
@@ -84,14 +85,12 @@ public:
                                      config.windowFrameSizeFactor,
                                      "AlgoViz Adventure");
         engine->setGameWindow(&window);
-
     }
 
 
     void createPlayerInstance() {
         Logger::logln("create player");
         Prefabs::create().player();
-
     }
 
     void loadLevel() {
@@ -99,12 +98,65 @@ public:
         startLevel = LevelParser::readFile(startLevelPath);
     }
 
+
+// Game loop things
+    Level currentLevel;
+
+    void update() {
+        for (GameObject* obj : ago->getActive())
+            obj->preUpdate();
+        for (GameObject* obj : ago->getActive())
+            obj->update();
+        for (GameObject* obj : ago->getActive())
+            obj->postUpdate();
+    }
+
+    void buildLevel() {
+        if(not Engine::getInstance()->getConfig()->buildStartLevel) return;
+        Engine::getInstance()->setCurrentLevel(currentLevel);
+        Logger::logln("Build level " + currentLevel.name);
+        AlgoWrapper::draw();
+        if(engine->getLinkPoint().empty())
+            LevelBuilder::build(currentLevel);
+        else
+            LevelBuilder::build(currentLevel, engine->getLinkPoint());
+    }
+
+    void toFront() {
+        for (ObjectStructure *r : engine->getOnTopRenderer())
+            ((Renderer*)r)->toFront();
+    }
+
+    bool newLevel() {
+        return engine->getCurrentLevel().name != engine->getNextLevelName() or engine->needReload();
+    }
+
     void startGameLoop() {
-        Logger::logln("start game loop");
-        GameLoop gameLoop(ago);
-        gameLoop.setGTime(gTime);
-        gameLoop.setStartLevel(startLevel);
-        gameLoop.startGameLoop();
+        buildLevel();
+        toFront();
+        AlgoWrapper::draw();
+
+        for (GameObject* obj : ago->getActive())
+            obj->onStart();
+
+        Logger::logln("[GL] actually starting game loop");
+        gTime->setStart();
+
+        while (not newLevel()) {
+            AlgoWrapper::draw();
+            gTime->setDelta();
+
+            update();
+            if(config.displayFps)
+                AlgoWrapper::algoText(std::to_string(1/(gTime->deltaTime())) + " fps");
+        }
+
+        engine->getGameWindow()->clear();
+        engine->clearOnTopRenderer();
+        ago->clearExceptPlayer();
+        currentLevel = LevelParser::readFile(engine->getNextLevelName());
+        createPlayerInstance();
+        startGameLoop();
     }
 
 };
