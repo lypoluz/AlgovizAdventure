@@ -28,7 +28,7 @@ public:
             alreadyPlayed01 = true;
         }else if (levelName == "end.level" && !alreadyPlayedEnd){
             AudioPlayer::play("end.mp3", audioLevel);
-            alreadyPlayedEnd = false;
+            alreadyPlayedEnd = true;
         }/*else if (levelName == "end.level" && alreadyPlayedEnd){
             AudioPlayer::play("egg.mp3",audioLevel);
         }*/
