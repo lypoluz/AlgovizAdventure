@@ -122,7 +122,7 @@ public:
                                 // blocker code
                             }else if("holy_documentation" == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 // holy documentation code
-                                Prefabs::create().holyDocumentation(x, y);
+                                if(!Engine::getInstance()->hasHOLYDOCUMENTATION()) Prefabs::create().holyDocumentation(x, y);
                             }
                         }
 
