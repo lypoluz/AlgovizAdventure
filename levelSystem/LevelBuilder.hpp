@@ -120,6 +120,7 @@ public:
                             Prefabs::create().floor(x, y, level.theme);
                             if("blocker" == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 // blocker code
+                                if (!Engine::getInstance()->hasHOLYDOCUMENTATION()) Prefabs::create().blocker(x, y);
                             }else if("holy_documentation" == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 // holy documentation code
                                 if(!Engine::getInstance()->hasHOLYDOCUMENTATION()) Prefabs::create().holyDocumentation(x, y);
