@@ -40,7 +40,6 @@ public:
 
     Vector2 getMoveVector() override {return currentVec.normalized();}
     bool isAttacking() override {return lastKey == inputMap.attack;}
-    bool isPickingUp() override {return lastKey == inputMap.pickUp;}
     std::string getRawInput() {return lastKey;}
 };
 
