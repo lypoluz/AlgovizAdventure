@@ -35,7 +35,7 @@ public:
         config = e->getConfig();
     }
 
-    void Player() {
+    void player() {
         // create player instance
         auto* player = new GameObject("Player");
         ago->add(player);
@@ -50,12 +50,14 @@ public:
         pRenderer->setSprite("sprites/player/player_down.svg");
         pRenderer->setSize({16,16});
         player->addComponent(pRenderer);
+        e->addOnTopRenderer((ObjectStructure*)pRenderer);
 
         // attack renderer
         auto* aRenderer = new SpriteRenderer(player, window);
         aRenderer->setSprite("sprites/empty.svg");
         aRenderer->setSize({16, 16});
         player->addComponent(aRenderer);
+        e->addOnTopRenderer((ObjectStructure*)aRenderer);
 
         // changeSpriteOnMove
         auto* spriteChanger = new ChangeSpriteOnMove(player, pRenderer);
@@ -94,7 +96,7 @@ public:
     }
 
 
-    void Wall(int x, int y, const std::string& theme, bool wallSurroundings[3][3]) {
+    void wall(int x, int y, const std::string& theme, bool wallSurroundings[3][3]) {
         auto* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
         ago->add(wall);
 
@@ -172,7 +174,7 @@ public:
     }
 
 
-    void Floor(int x, int y, const std::string& theme) {
+    void floor(int x, int y, const std::string& theme) {
         auto* floor = new GameObject("floor" + std::to_string(x) + std::to_string(y));
         ago->add(floor);
 
@@ -207,7 +209,7 @@ public:
     }
 
 
-    void RoomLink(int x, int y, std::string targetLevel, std::string targetPoint) {
+    void roomLink(int x, int y, std::string targetLevel, std::string targetPoint) {
         auto* roomLink = new GameObject("RoomLink_" + std::to_string(x) + " " + std::to_string(y));
         ago->add(roomLink);
 
@@ -225,7 +227,7 @@ public:
     }
 
 
-    void HolyDocumentation(int x, int y) {
+    void holyDocumentation(int x, int y) {
         auto* holy = new GameObject("holy");
         ago->add(holy);
 
@@ -236,10 +238,11 @@ public:
         renderer->setSize({16,16});
         renderer->setSprite("sprites/HolyDoc.svg");
         holy->addComponent(renderer);
+        e->addOnTopRenderer((ObjectStructure*) renderer);
     }
 
 
-    void Corridor(int x, int y, const std::string& theme) {
+    void corridor(int x, int y, const std::string& theme) {
         auto* block = new GameObject("block" + std::to_string(x) + std::to_string(y));
         ago->add(block);
 
@@ -263,7 +266,7 @@ public:
     }
 
 
-    void Ghost(int x, int y) {
+    void ghost(int x, int y) {
         GameObject *enemy = new GameObject("TestEnemy");
         ago->add(enemy);
         auto *position = new Position(enemy);
@@ -274,12 +277,14 @@ public:
         sr->setSize({16, 16});
         sr->forceToFront();
         enemy->addComponent(sr);
+        e->addOnTopRenderer((ObjectStructure*) sr);
         auto *pr = new PathRenderer(enemy, window);
         if(Engine::getInstance()->getConfig()->pathFinderPaths) {
             pr->setWidth(4);
             pr->forceToFront();
             pr->setColor(255, 60, 0);
             enemy->addComponent(pr);
+            e->addOnTopRenderer((ObjectStructure*) pr);
         } else pr = nullptr;
         auto *m = new Movement(enemy);
         m->setSpeed(1.5);
