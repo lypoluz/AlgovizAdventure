@@ -400,12 +400,12 @@ public:
         ui->addComponent(sr3);
         uic->setLifeRenderer(sr3, 2);
 
-        auto* sr3 = new SpriteRenderer(ui, uiWindow);
-        sr3->setSprite("sprites/player/player_down.svg");
-        sr3->setSize({16, 16});
-        sr3->setPositionOffset({5.7,0.4});
-        ui->addComponent(sr3);
-        uic->setLifeRenderer(sr3, 3);
+        auto* sr4 = new SpriteRenderer(ui, uiWindow);
+        sr4->setSprite("sprites/player/player_down.svg");
+        sr4->setSize({16, 16});
+        sr4->setPositionOffset({5.7,0.4});
+        ui->addComponent(sr4);
+        uic->setLifeRenderer(sr4, 3);
 
         auto* hd = new SpriteRenderer(ui, uiWindow);
         hd->setSprite("sprites/HolyDoc.svg");
