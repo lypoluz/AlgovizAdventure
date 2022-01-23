@@ -327,6 +327,27 @@ public:
         enemy->addComponent(ec);
     }
 
+    void blocker(int x, int y){
+        auto* blocker = new GameObject("blocker" + std::to_string(x) + std::to_string(y));
+        ago->add(blocker);
+
+        //instantiate position component
+        auto* position = new Position(blocker);
+
+        //set position to value
+        position->moveTo(x, y);
+
+        //game object gets its position
+        blocker->addPosition(position);
+
+        auto* blockerComp = new WallComponent(blocker);
+        blocker->addComponent(blockerComp);
+
+        auto* renderer = new SpriteRenderer(blocker, window);
+        renderer->setSize({16,16});
+        renderer->setSprite("sprites/default/blocker.svg");
+        blocker->addComponent(renderer);
+    }
 
      void ui() {
         auto* ui = new GameObject("UI");
