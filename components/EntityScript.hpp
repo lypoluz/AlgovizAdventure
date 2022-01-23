@@ -39,8 +39,19 @@ public:
             movement->MoveInDirection(inputController->getMoveVector());
 
         // attack
-        if (inputController->isAttacking() and attackAnimator != nullptr)
-            attackAnimator->startAnimation();
+        if (inputController->isAttacking()) {
+            if (attackAnimator != nullptr) {
+                attackAnimator->startAnimation();
+
+            }
+
+            std::vector<GameObject*> gos = Engine::getInstance()->getAGO()->getActive();
+            for (GameObject* go : gos) {
+
+            }
+
+
+        }
 
         /*/ pickup
         if(inputController->isPickingUp()) {
