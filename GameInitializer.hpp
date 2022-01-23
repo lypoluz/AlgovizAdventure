@@ -112,7 +112,6 @@ private:
     void buildLevel() {
         Level currentLevel = engine->getCurrentLevel();
         if(not engine->getConfig()->buildStartLevel) return;
-        Engine::getInstance()->setCurrentLevel(currentLevel);
         Logger::logln("Build level " + currentLevel.name);
         AlgoWrapper::draw();
         if(engine->getLinkPoint().empty())
@@ -153,7 +152,7 @@ private:
         engine->getGameWindow()->clear();
         engine->clearOnTopRenderer();
         ago->clearAll();
-        currentLevel = LevelParser::readFile(engine->getNextLevelName());
+        engine->setCurrentLevel(LevelParser::readFile(engine->getNextLevelName()));
         createPlayerInstance();
         startGameLoop();
     }
