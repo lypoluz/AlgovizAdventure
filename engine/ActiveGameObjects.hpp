@@ -8,23 +8,36 @@
 
 class ActiveGameObjects {
     std::vector<GameObject *> activeObjects;
+    std::vector<GameObject *> attackables;
 
 public:
-    std::vector<GameObject *> getActive() {
-        return activeObjects;
-    }
+    void add(GameObject* obj) {activeObjects.push_back(obj);}
+    std::vector<GameObject *> getActive() {return activeObjects;}
 
-    void add(GameObject* obj) {
-        activeObjects.push_back(obj);
-    }
+    void addAttackable(GameObject* obj) { add(obj); attackables.push_back(obj);}
+    std::vector<GameObject *> getAttackavbles() {return attackables;}
 
-    void remove(const std::string& name) {
-        for(GameObject* go : activeObjects) {
-            if(go->getName() == name) {
-                go->onDestroy();
-                delete go;
+    void remove(GameObject* obj) {
+
+        for(int i=0; i<activeObjects.size(); ++i) {
+            if(activeObjects[i] == obj) {
+                activeObjects[i]->onDestroy();
+                activeObjects.erase(activeObjects.begin() + i);
+                break;
             }
         }
+
+        // attackables
+        for(int i=0; i<attackables.size(); ++i) {
+            if(attackables[i] == obj) {
+                attackables[i]->onDestroy();
+                attackables.erase(attackables.begin() + i);
+                break;
+            }
+        }
+
+        // no memory leak
+        delete obj;
     }
 
     void clearExceptPlayer() {
