@@ -15,6 +15,7 @@
 class Engine {
     GTime* gTime{};
     ObjectStructure* player{};
+    std::vector<ObjectStructure*> onTopRenderer{};
     ActiveGameObjects* ago{};
     AlgoWrapper::Window* gameWindow{};
     Config* config{};
@@ -56,6 +57,10 @@ public:
 
     void reloadLevel(bool b=true) {levelReload = b;}
     bool needReload() {return levelReload;}
+
+    void addOnTopRenderer(ObjectStructure* renderer) {onTopRenderer.push_back(renderer);}
+    void clearOnTopRenderer() {onTopRenderer.clear();}
+    std::vector<ObjectStructure*> getOnTopRenderer() {return onTopRenderer;}
 
 };
 

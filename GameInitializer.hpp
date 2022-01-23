@@ -19,6 +19,7 @@
 #include "levelSystem/LevelParser.hpp"
 #include "Logger.hpp"
 #include "components/ChangeSpriteOnMove.hpp"
+#include "Prefabs.hpp"
 
 class GameInitializer {
 
@@ -31,6 +32,7 @@ class GameInitializer {
     Config config;
     std::string startLevelPath;
     Level startLevel;
+    Engine* engine;
 
 public:
 
@@ -52,6 +54,11 @@ public:
         config.displayFps = cp.stringToBoolOrDefault("displayFps", config.displayFps);
         config.pathFinderPaths = cp.stringToBoolOrDefault("pathFinderPaths", config.pathFinderPaths);
         startLevelPath = cp.stringToStringOrDefault("startLevel", "test_01.level");
+
+        engine = Engine::getInstance();
+        engine->setConfig(&config);
+        engine->setLinkPointName("");
+
     }
 
 
@@ -59,15 +66,15 @@ public:
         createReferences();
         windowCreation();
         createPlayerInstance();
-        loadItems();
-        loadEnemies();
         loadLevel();
         startGameLoop();
     }
 
     void createReferences() {
         ago = ActiveGameObjects();
+        engine->setAGO(&ago);
         gTime = new GTime();
+        engine->setGTime(gTime);
         gTime->setTimeFactor();
     }
 
@@ -84,77 +91,14 @@ public:
                                      config.windowFrameSizeFactor,
                                      config.windowFrameSizeFactor,
                                      "AlgoViz Adventure");
+        engine->setGameWindow(&window);
 
     }
 
 
     void createPlayerInstance() {
         Logger::logln("create player");
-
-        // create player instance
-        player = new GameObject("Player");
-        ago.add(player);
-
-        // create position component
-        auto* position = new Position(player);
-        player->addPosition(position);
-        player->position->moveTo(Vector2(config.windowSize/32, config.windowSize/32));
-
-        // renderer
-        pRenderer = new SpriteRenderer(player, &window);
-        pRenderer->setSprite("sprites/player/player_down.svg");
-        pRenderer->setSize({16,16});
-        player->addComponent(pRenderer);
-
-        // attack renderer
-        aRenderer = new SpriteRenderer(player, &window);
-        aRenderer->setSprite("sprites/empty.svg");
-        aRenderer->setSize({16, 16});
-        player->addComponent(aRenderer);
-
-        // changeSpriteOnMove
-        auto* spriteChanger = new ChangeSpriteOnMove(player, pRenderer);
-        spriteChanger->setDownSprite("sprites/player/player_down.svg");
-        spriteChanger->setLeftSprite("sprites/player/player_left.svg");
-        spriteChanger->setRightSprite("sprites/player/player_right.svg");
-        spriteChanger->setUpSprite("sprites/player/player_up.svg");
-        player->addComponent(spriteChanger);
-
-        // attack animator
-        auto* attackAnimator = new AttackAnimator(player, pRenderer, aRenderer);
-        attackAnimator->setPlayerAttackSprites(
-                "sprites/player/player_up_attacking.svg",
-                "sprites/player/player_down_attacking.svg",
-                "sprites/player/player_left_attacking.svg",
-                "sprites/player/player_right_attacking.svg");
-        attackAnimator->setAttackSprites(
-                "sprites/player/sword_attack1.svg",
-                "sprites/player/sword_attack2.svg",
-                "sprites/player/sword_attack3.svg");
-        attackAnimator->setAttackTime(.3);
-        player->addComponent(attackAnimator);
-
-        // movement
-        auto* movement = new Movement(player);
-        movement->setSpeed(config.playerSpeed);
-        player->addComponent(movement);
-
-        // player input
-        auto* playerInputController = new PlayerInputController(player, &window);
-        player->addComponent(playerInputController);
-
-        // player script
-        auto* playerScript = new EntityScript(player, playerInputController, movement, attackAnimator);
-        player->addComponent(playerScript);
-    }
-
-    void loadItems() {
-        Logger::logln("load items");
-
-    }
-
-    void loadEnemies() {
-        Logger::logln("load enemies");
+        Prefabs::createPlayer();
 
     }
 
@@ -165,18 +109,7 @@ public:
 
     void startGameLoop() {
         Logger::logln("start game loop");
-
-        Engine* engine = Engine::getInstance();
-        engine->setPlayer(player);
-        engine->setAGO(&ago);
-        engine->setGTime(gTime);
-        engine->setConfig(&config);
-        engine->setGameWindow(&window);
-        engine->setLinkPointName("");
-
         GameLoop gameLoop(&ago);
-        gameLoop.addToFrontRenderer((Renderer*)pRenderer);
-        gameLoop.addToFrontRenderer((Renderer*)aRenderer);
         gameLoop.setGTime(gTime);
         gameLoop.setStartLevel(startLevel);
         gameLoop.startGameLoop();
