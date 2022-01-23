@@ -103,7 +103,7 @@ public:
 
     void startGameLoop() {
         Logger::logln("start game loop");
-        GameLoop gameLoop(&ago);
+        GameLoop gameLoop(ago);
         gameLoop.setGTime(gTime);
         gameLoop.setStartLevel(startLevel);
         gameLoop.startGameLoop();
