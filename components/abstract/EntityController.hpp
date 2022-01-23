@@ -13,7 +13,6 @@ public:
 
     virtual Vector2 getMoveVector() = 0;
     virtual bool isAttacking() = 0;
-    virtual bool isPickingUp() = 0;
 
 };
 
