@@ -51,7 +51,7 @@ public:
         createReferences();
         windowCreation();
         Prefabs::create().setEngine(engine);
-        createPlayerInstance();
+        createSomeGameComponents();
         loadLevel();
         startGameLoop();
     }
@@ -87,9 +87,10 @@ private:
     }
 
 
-    void createPlayerInstance() {
-        Logger::logln("create player");
+    void createSomeGameComponents() {
+        Logger::logln("create gameComponents");
         Prefabs::create().player();
+        Prefabs::create().audioManager();
     }
 
     void loadLevel() {
@@ -103,9 +104,15 @@ private:
     void update() {
         for (GameObject* obj : ago->getActive())
             obj->preUpdate();
+        for (GameObject* obj : ago->getPersistent())
+            obj->preUpdate();
         for (GameObject* obj : ago->getActive())
             obj->update();
+        for (GameObject* obj : ago->getPersistent())
+            obj->update();
         for (GameObject* obj : ago->getActive())
+            obj->postUpdate();
+        for (GameObject* obj : ago->getPersistent())
             obj->postUpdate();
     }
 
@@ -136,6 +143,8 @@ private:
 
         for (GameObject* obj : ago->getActive())
             obj->onStart();
+        for (GameObject* obj : ago->getPersistent())
+            obj->onStart();
 
         Logger::logln("[GL] actually starting game loop");
         gTime->setStart();
@@ -153,7 +162,7 @@ private:
         engine->clearOnTopRenderer();
         ago->clearAll();
         engine->setCurrentLevel(LevelParser::readFile(engine->getNextLevelName()));
-        createPlayerInstance();
+        createSomeGameComponents();
         startGameLoop();
     }
 

@@ -16,6 +16,7 @@
 #include "components/PathRenderer.hpp"
 #include "components/AStarController.hpp"
 #include "components/HolyDoc.hpp"
+#include "AudioManager.hpp"
 
 class Prefabs {
     Engine* e;
@@ -327,8 +328,17 @@ public:
     }
 
 
-    static void ui() {
+     void ui() {
         auto* ui = new GameObject("UI");
+    }
+
+
+     void audioManager() {
+        auto* am = new GameObject("AudioManager");
+        ago->addPersistent(am);
+
+        auto* pos = new Position(am);
+        am->addPosition(pos);
     }
 };
 
