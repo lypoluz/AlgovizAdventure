@@ -17,7 +17,7 @@
 
 class GameInitializer {
 
-    ActiveGameObjects ago{};
+    ActiveGameObjects* ago{};
     AlgoWrapper::Window window{};
     GameObject* player{};
     SpriteRenderer* pRenderer;
@@ -65,8 +65,8 @@ public:
     }
 
     void createReferences() {
-        ago = ActiveGameObjects();
-        engine->setAGO(&ago);
+        ago = new ActiveGameObjects();
+        engine->setAGO(ago);
         gTime = new GTime();
         engine->setGTime(gTime);
         gTime->setTimeFactor();
