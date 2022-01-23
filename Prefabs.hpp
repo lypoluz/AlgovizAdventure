@@ -3,7 +3,7 @@
 #ifndef ALGOVIZADVENTURE_PREFABS_HPP
 #define ALGOVIZADVENTURE_PREFABS_HPP
 
-#include "engine//Engine.hpp"
+#include "engine/Engine.hpp"
 #include "components/SpriteRenderer.hpp"
 #include "components/ChangeSpriteOnMove.hpp"
 #include "components/AttackAnimator.hpp"
@@ -15,7 +15,7 @@
 #include "components/RoomLink.hpp"
 #include "components/PathRenderer.hpp"
 #include "components/AStarController.hpp"
-#include "HolyDoc.hpp"
+#include "components/HolyDoc.hpp"
 
 class Prefabs {
     Engine* e;
