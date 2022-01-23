@@ -51,7 +51,8 @@ public:
         createReferences();
         windowCreation();
         Prefabs::create().setEngine(engine);
-        createSomeGameComponents();
+        persistentGameObjects();
+        newLevelGameObjects();
         loadLevel();
         startGameLoop();
     }
@@ -86,11 +87,13 @@ private:
         engine->setGameWindow(&window);
     }
 
+    void persistentGameObjects() {
+        Prefabs::create().audioManager();
+    }
 
-    void createSomeGameComponents() {
+    void newLevelGameObjects() {
         Logger::logln("create gameComponents");
         Prefabs::create().player();
-        Prefabs::create().audioManager();
     }
 
     void loadLevel() {
