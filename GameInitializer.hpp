@@ -51,6 +51,7 @@ public:
     void initialize() {
         createReferences();
         windowCreation();
+        Prefabs::setEngine(engine);
         createPlayerInstance();
         loadLevel();
         startGameLoop();
@@ -60,8 +61,6 @@ public:
         engine = Engine::getInstance();
         engine->setConfig(&config);
         engine->setLinkPointName("");
-
-        Prefabs::setEngine(engine);
 
         ago = new ActiveGameObjects();
         engine->setAGO(ago);
