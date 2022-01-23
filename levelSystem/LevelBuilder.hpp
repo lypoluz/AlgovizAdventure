@@ -114,6 +114,7 @@ public:
                         }else if (symbol == "enemy") {
                             //enemies code
                             Prefabs::create().floor(x, y, level.theme);
+                            Prefabs::create().ghost(x, y);
                         }else if (symbol == "item") {
                             //item code
                             Prefabs::create().floor(x, y, level.theme);
