@@ -4,8 +4,8 @@
 #define ALGOVIZADVENTURE_AUDIOMANAGER_HPP
 
 #include "../engine/GameComponent.hpp"
-#include "Engine.hpp"
-#include "AudioPlayer.hpp"
+#include "../engine/Engine.hpp"
+#include "../audioSystem/AudioPlayer.hpp"
 
 class AudioManager : public GameComponent {
 

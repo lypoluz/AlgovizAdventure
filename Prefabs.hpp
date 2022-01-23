@@ -16,7 +16,7 @@
 #include "components/PathRenderer.hpp"
 #include "components/AStarController.hpp"
 #include "components/HolyDoc.hpp"
-#include "AudioManager.hpp"
+#include "components/AudioManager.hpp"
 
 class Prefabs {
     Engine* e;
