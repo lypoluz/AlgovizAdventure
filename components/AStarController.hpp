@@ -51,7 +51,8 @@ public:
     }
 
     bool isAttacking() override {
-        return false;
+        // returns true if enemy is close enough to player
+        return (playerPosition->getPosition() - position->getPosition()).magnitude() < 0.7;
     }
 
 
