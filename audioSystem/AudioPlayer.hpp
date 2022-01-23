@@ -20,7 +20,7 @@ struct AudioPlayer {
     AudioPlayer(const std::string& fn, float v) {
         volume = v;
         fileName = fn;
-        std::string musicRoot = "music/";
+        std::string musicRoot = "sounds/";
         std::ifstream fin(musicRoot+fn, std::ios::binary);
         m_buffer << fin.rdbuf();
     }
