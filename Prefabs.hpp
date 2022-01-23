@@ -381,17 +381,16 @@ public:
 
         SpriteRenderer* srs[4];
         for (int i = 0; i < 4; ++i) {
-            auto* sr = new SpriteRenderer(ui, uiWindow);
-            sr->setSprite("sprites/player/player_down.svg");
-            sr->setSize({16, 16});
+            srs[i] = new SpriteRenderer(ui, uiWindow);
+            srs[i]->setSprite("sprites/player/player_down.svg");
+            srs[i]->setSize({16, 16});
             switch (i) {
-                case 0: sr->setPositionOffset({3.6,2.8});
-                case 1: sr->setPositionOffset({4.8,2.7});
-                case 2: sr->setPositionOffset({5.5,1.7});
-                case 3: sr->setPositionOffset({5.7,0.4});
+                case 0: srs[i]->setPositionOffset({3.6,2.8});
+                case 1: srs[i]->setPositionOffset({4.8,2.7});
+                case 2: srs[i]->setPositionOffset({5.5,1.7});
+                case 3: srs[i]->setPositionOffset({5.7,0.4});
             }
-            ui->addComponent(sr);
-            srs[i] = sr;
+            ui->addComponent(srs[i]);
         }
         uic->setLifeRenderer(srs);
 
