@@ -6,20 +6,14 @@
 #include <map>
 #include "engine/ActiveGameObjects.hpp"
 #include "AlgoWrapper.hpp"
-#include "components/Movement.hpp"
-#include "components/PlayerInputController.hpp"
 #include "GameLoop.hpp"
-#include "components/CircleRenderer.hpp"
-#include "components/EntityScript.hpp"
 #include "engine/GTime.hpp"
 #include "engine/Engine.hpp"
 #include "ConfigParser.hpp"
-#include "components/SpriteRenderer.hpp"
 #include "Config.hpp"
 #include "levelSystem/LevelParser.hpp"
 #include "Logger.hpp"
-#include "components/ChangeSpriteOnMove.hpp"
-#include "Prefabs.hpp"
+#include "../Prefabs.hpp"
 
 class GameInitializer {
 

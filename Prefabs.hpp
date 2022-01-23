@@ -3,18 +3,18 @@
 #ifndef ALGOVIZADVENTURE_PREFABS_HPP
 #define ALGOVIZADVENTURE_PREFABS_HPP
 
-#include "Engine.hpp"
-#include "SpriteRenderer.hpp"
-#include "ChangeSpriteOnMove.hpp"
-#include "AttackAnimator.hpp"
-#include "Movement.hpp"
-#include "PlayerInputController.hpp"
-#include "EntityScript.hpp"
-#include "WallComponent.hpp"
-#include "PlayerCollider.hpp"
-#include "RoomLink.hpp"
-#include "PathRenderer.hpp"
-#include "AStarController.hpp"
+#include "engine//Engine.hpp"
+#include "components/SpriteRenderer.hpp"
+#include "components/ChangeSpriteOnMove.hpp"
+#include "components/AttackAnimator.hpp"
+#include "components/Movement.hpp"
+#include "components/PlayerInputController.hpp"
+#include "components/EntityScript.hpp"
+#include "components/WallComponent.hpp"
+#include "components/PlayerCollider.hpp"
+#include "components/RoomLink.hpp"
+#include "components/PathRenderer.hpp"
+#include "components/AStarController.hpp"
 
 class Prefabs {
     static Engine* e;
