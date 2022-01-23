@@ -52,7 +52,7 @@ public:
         engine = Engine::getInstance();
         engine->setConfig(&config);
         engine->setLinkPointName("");
-
+        Prefabs::setEngine(engine);
     }
 
 
