@@ -8,6 +8,8 @@
 #include "../audioSystem/AudioPlayer.hpp"
 
 class AudioManager : public GameComponent {
+    bool alreadyPlayedStart = false;
+    bool alreadyPlayed01= false;
 
 public:
     AudioManager(ObjectStructure* os) : GameComponent(os) {}
@@ -15,10 +17,12 @@ public:
     void onStart() override {
         std::string levelName = Engine::getInstance()->getCurrentLevel().name;
         Logger::logln("[AM] playing sound of " + levelName);
-        if(levelName == "start.level") {
+        if(levelName == "start.level" && !alreadyPlayedStart) {
             AudioPlayer::play("start.mp3");
-        }else if (levelName == "01.level"){
+            alreadyPlayedStart = true;
+        }else if (levelName == "01.level" && !alreadyPlayed01){
             AudioPlayer::play("01.mp3");
+            alreadyPlayed01 = true;
         }
     }
 
