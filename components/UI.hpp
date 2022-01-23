@@ -4,12 +4,10 @@
 #define ALGOVIZADVENTURE_UI_HPP
 
 #include "../engine/GameComponent.hpp"
-#include "Health.hpp"
 #include "SpriteRenderer.hpp"
 
 class UI : public GameComponent {
 
-    Health* playerHealth{};
     SpriteRenderer* spriteRenderer[4]{};
     SpriteRenderer* holyRenderer{};
     AlgoWrapper::Window window;
@@ -26,11 +24,6 @@ public:
     void setHolyRender(SpriteRenderer* hd) {
         holyRenderer = hd;
     }
-
-    void onStart() override {
-        playerHealth = (Health*) Engine::getInstance()->getPlayer()->getComponent("Health");
-    }
-
     void setLives(int l) {
         for (int i = 0; i < 4; ++i) {
             if (l > i) spriteRenderer[i]->show();

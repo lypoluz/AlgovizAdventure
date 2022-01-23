@@ -397,7 +397,7 @@ public:
         auto* hd = new SpriteRenderer(ui, uiWindow);
         hd->setSprite("sprites/HolyDoc.svg");
         hd->setSize({32,32});
-        hd->setPositionOffset({1.9,2})
+        hd->setPositionOffset({1.9,2});
         hd->hide();
         ui->addComponent(hd);
         uic->setHolyRender(hd);
