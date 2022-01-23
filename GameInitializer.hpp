@@ -153,7 +153,7 @@ private:
 
         engine->getGameWindow()->clear();
         engine->clearOnTopRenderer();
-        ago->clearExceptPlayer();
+        ago->clearAll();
         currentLevel = LevelParser::readFile(engine->getNextLevelName());
         createPlayerInstance();
         startGameLoop();
