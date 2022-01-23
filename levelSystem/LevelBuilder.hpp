@@ -111,7 +111,7 @@ public:
                                 ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
                                 secureSpawn = false;
                             }
-                        }else if (symbol == "enemies") {
+                        }else if (symbol == "enemy") {
                             //enemies code
                             Prefabs::create().floor(x, y, level.theme);
                         }else if (symbol == "item") {
