@@ -68,6 +68,7 @@ public:
     void startGameLoop() {
         buildLevel();
         toFront();
+        AlgoWrapper::draw();
 
         for (GameObject* obj : ago->getActive())
             obj->onStart();
