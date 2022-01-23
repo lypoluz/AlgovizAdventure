@@ -3,8 +3,8 @@
 #ifndef ALGOVIZADVENTURE_ATTACKER_HPP
 #define ALGOVIZADVENTURE_ATTACKER_HPP
 
-#include "GameComponent.hpp"
-#include "Engine.hpp"
+#include "../engine/GameComponent.hpp"
+#include "../engine/Engine.hpp"
 #include "Health.hpp"
 
 class Attacker : public GameComponent {
