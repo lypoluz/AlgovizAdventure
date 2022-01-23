@@ -45,7 +45,7 @@ public:
     std::string getRawInput() {return lastKey;}
 
     void onDestroy() override {
-        if (firstDeath){
+        if (firstDeath && Engine::getInstance()->needReload()){
             AudioPlayer::play("firstDeath.mp3", Engine::getInstance()->getConfig()->audioLevel);
             firstDeath = false;
         }
