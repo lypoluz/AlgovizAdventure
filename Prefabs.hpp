@@ -391,6 +391,7 @@ public:
                 case 3: sr->setPositionOffset({5.7,0.4});
             }
             ui->addComponent(sr);
+            srs[i] = sr;
         }
         uic->setLifeRenderer(srs);
 
