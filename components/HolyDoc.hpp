@@ -3,9 +3,9 @@
 #ifndef ALGOVIZADVENTURE_HOLYDOC_HPP
 #define ALGOVIZADVENTURE_HOLYDOC_HPP
 
-#include "GameComponent.hpp"
-#include "Collider.hpp"
-#include "Engine.hpp"
+#include "../engine/GameComponent.hpp"
+#include "abstract/Collider.hpp"
+#include "../engine/Engine.hpp"
 
 class HolyDoc : public GameComponent {
 
