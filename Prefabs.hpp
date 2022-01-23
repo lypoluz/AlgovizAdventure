@@ -15,6 +15,7 @@
 #include "components/RoomLink.hpp"
 #include "components/PathRenderer.hpp"
 #include "components/AStarController.hpp"
+#include "HolyDoc.hpp"
 
 class Prefabs {
     Engine* e;
@@ -166,7 +167,6 @@ public:
         else if (!wallSurroundings[1][0] && !wallSurroundings[0][1] && !wallSurroundings[1][2] && !wallSurroundings[2][1]){wallType="wall_closed";}
 
 
-
         auto* renderer = new SpriteRenderer(wall, window);
         renderer->setSize({16,16});
         renderer->setSprite("sprites/" + theme + "/" + wallType + ".svg");
@@ -228,17 +228,24 @@ public:
 
 
     void holyDocumentation(int x, int y) {
-        auto* holy = new GameObject("holy");
-        ago->add(holy);
+        auto* hd = new GameObject("hd");
+        ago->add(hd);
 
-        auto* position = new Position(holy);
+        auto* position = new Position(hd);
         position->moveTo(x, y);
-        holy->addPosition(position);
-        auto* renderer = new SpriteRenderer(holy, window);
+        hd->addPosition(position);
+
+        auto* renderer = new SpriteRenderer(hd, window);
         renderer->setSize({16,16});
         renderer->setSprite("sprites/HolyDoc.svg");
-        holy->addComponent(renderer);
+        hd->addComponent(renderer);
         e->addOnTopRenderer((ObjectStructure*) renderer);
+
+        auto* collider = new PlayerCollider(hd);
+        hd->addComponent(collider);
+
+        auto* hdc = new HolyDoc(hd, collider);
+        hd->addComponent(hdc);
     }
 
 
