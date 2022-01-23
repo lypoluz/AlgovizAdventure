@@ -5,7 +5,7 @@
 
 #include "../engine/GameComponent.hpp"
 #include "SpriteRenderer.hpp"
-#include "Engine.hpp"
+#include "../engine/Engine.hpp"
 
 class UI : public GameComponent {
 
