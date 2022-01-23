@@ -292,7 +292,7 @@ public:
         enemy->addPosition(position);
 
         auto *sr = new SpriteRenderer(enemy, window);
-        sr->setSprite("sprites/enemies/ghost.png");
+        sr->setSprite("sprites/enemies/ghost.svg");
         sr->setSize({16, 16});
         sr->forceToFront();
         enemy->addComponent(sr);
