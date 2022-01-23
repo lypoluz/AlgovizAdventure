@@ -30,6 +30,7 @@ public:
 
     void setLives(int l) {
         for (int i = 0; i < 4; ++i) {
+            Logger::logln("[Health-SL] i" + std::to_string(i) + " l " + std::to_string(l));
             if (l > i) spriteRenderer[i]->show();
             else spriteRenderer[i]->hide();
         }
