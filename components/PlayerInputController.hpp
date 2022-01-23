@@ -10,7 +10,9 @@
 #include "../AlgoWrapper.hpp"
 #include "../InputMap.hpp"
 #include "abstract/EntityController.hpp"
+#include "AudioManager.hpp"
 
+bool firstDeath = true;
 
 class PlayerInputController : public EntityController {
     Vector2 currentVec;
@@ -41,6 +43,13 @@ public:
     Vector2 getMoveVector() override {return currentVec.normalized();}
     bool isAttacking() override {return lastKey == inputMap.attack;}
     std::string getRawInput() {return lastKey;}
+
+    void onDestroy() override {
+        if (firstDeath && Engine::getInstance()->needReload()){
+            AudioPlayer::play("firstDeath.mp3", Engine::getInstance()->getConfig()->audioLevel);
+            firstDeath = false;
+        }
+    }
 };
 
 #endif //ALGOVIZADVENTURE_PLAYERINPUTCONTROLLER_HPP
