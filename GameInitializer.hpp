@@ -13,7 +13,7 @@
 #include "Config.hpp"
 #include "levelSystem/LevelParser.hpp"
 #include "Logger.hpp"
-#include "../Prefabs.hpp"
+#include "Prefabs.hpp"
 
 class GameInitializer {
 
