@@ -51,7 +51,7 @@ public:
     void initialize() {
         createReferences();
         windowCreation();
-        Prefabs::setEngine(engine);
+        Prefabs::create().setEngine(engine);
         createPlayerInstance();
         loadLevel();
         startGameLoop();
