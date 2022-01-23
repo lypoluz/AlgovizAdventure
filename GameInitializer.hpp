@@ -22,7 +22,6 @@ class GameInitializer {
     GTime* gTime{};
     Config config;
     std::string startLevelPath;
-    Level startLevel;
     Engine* engine;
 
 public:
@@ -95,12 +94,11 @@ private:
 
     void loadLevel() {
         Logger::logln("load level");
-        startLevel = LevelParser::readFile(startLevelPath);
+        engine->setCurrentLevel(LevelParser::readFile(startLevelPath));
     }
 
 
 // Game loop things
-    Level currentLevel;
 
     void update() {
         for (GameObject* obj : ago->getActive())
@@ -112,7 +110,8 @@ private:
     }
 
     void buildLevel() {
-        if(not Engine::getInstance()->getConfig()->buildStartLevel) return;
+        Level currentLevel = engine->getCurrentLevel();
+        if(not engine->getConfig()->buildStartLevel) return;
         Engine::getInstance()->setCurrentLevel(currentLevel);
         Logger::logln("Build level " + currentLevel.name);
         AlgoWrapper::draw();
