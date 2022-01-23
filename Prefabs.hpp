@@ -339,6 +339,9 @@ public:
 
         auto* pos = new Position(am);
         am->addPosition(pos);
+
+        auto* amc = new AudioManager(am);
+        am->addComponent(amc);
     }
 };
 
