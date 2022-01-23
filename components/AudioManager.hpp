@@ -1,4 +1,4 @@
-// Created by Lypoluz (Dominik) on 23.01.2022.
+// Created by Tobias on 23.01.2022.
 
 #ifndef ALGOVIZADVENTURE_AUDIOMANAGER_HPP
 #define ALGOVIZADVENTURE_AUDIOMANAGER_HPP
