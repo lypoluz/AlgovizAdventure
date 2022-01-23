@@ -28,6 +28,8 @@ public:
             }
         }
     }
+
+    void reduceHealth(int h) { setHealth(health-h);}
 };
 
 #endif //ALGOVIZADVENTURE_HEALTH_HPP
