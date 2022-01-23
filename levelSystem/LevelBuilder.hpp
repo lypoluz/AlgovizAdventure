@@ -155,6 +155,18 @@ class LevelBuilder{
         floor->addComponent(renderer);
     }
 
+    static void createHolyDoc(int x, int y, ActiveGameObjects* ago, AlgoWrapper::Window* window){
+        auto* holy = new GameObject("holy");
+        ago->add(holy);
+
+        auto* position = new Position(holy);
+        position->moveTo(x, y);
+        holy->addPosition(position);
+        auto* renderer = new SpriteRenderer(holy, window);
+        renderer->setSize({16,16});
+        renderer->setSprite("sprites/HolyDoc.svg");
+    }
+
     static void placeCorridor(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window){
         auto* block = new GameObject("block" + std::to_string(x) + std::to_string(y));
         ago->add(block);
@@ -308,6 +320,7 @@ public:
                                 // blocker code
                             }else if("holy_documentation" == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 // holy documentation code
+                                createHolyDoc(x, y, ago, window);
                             }
                             placeFloor(x,y, level.theme, ago, window);
                         }
