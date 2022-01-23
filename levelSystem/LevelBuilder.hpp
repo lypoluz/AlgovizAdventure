@@ -226,6 +226,7 @@ public:
 
                     case 'C':
                         // crystal code
+                        placeFloor(x, y, level.theme, ago, window);
                         break;
 
                     case 'S':
