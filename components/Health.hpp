@@ -23,7 +23,7 @@ public:
                 Engine::getInstance()->reloadLevel();
             }
             else{
-                Engine::getInstance()->getAGO()->remove(gameObject->getName());
+                Engine::getInstance()->getAGO()->remove((GameObject*) gameObject);
             }
         }
     }
