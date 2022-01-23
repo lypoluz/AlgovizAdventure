@@ -19,6 +19,7 @@ public:
     void update() override {
         if(playerCollider->collision()) {
             Engine::getInstance()->HOLYDOCUMENTATION();
+            Engine::getInstance()->getAGO()->remove((GameObject*)gameObject);
         }
     }
 };
