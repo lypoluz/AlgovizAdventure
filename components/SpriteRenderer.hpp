@@ -18,7 +18,7 @@ public:
     SpriteRenderer(ObjectStructure* os, AlgoWrapper::Window* win) : Renderer(os, win) {
         dimension = Vector2::one();
         sprite = AlgoWrapper::Sprite("sprites/empty.svg", position->getPosition() * 16, dimension, window);
-        element = sprite;
+        element = &sprite;
     }
 
     void setSprite(const std::string& pathToSprite) {
