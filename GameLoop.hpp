@@ -16,7 +16,6 @@
 
 class GameLoop {
     ActiveGameObjects* ago;
-    std::vector<Renderer*> toFrontRenderer;
     GTime* gTime;
     Level currentLevel{};
     bool displayFps;
@@ -47,8 +46,8 @@ class GameLoop {
     }
 
     void toFront() {
-        for (Renderer* r : toFrontRenderer)
-            r->toFront();
+        for (ObjectStructure *r : e->getOnTopRenderer())
+            ((Renderer*)r)->toFront();
     }
 
     bool newLevel() {
@@ -63,7 +62,6 @@ public:
         displayFps = e->getConfig()->displayFps;
     }
 
-    void addToFrontRenderer(Renderer* pr) {toFrontRenderer.push_back(pr);}
     void setGTime(GTime *pTime) {gTime = pTime;}
     void setStartLevel(Level level) { currentLevel = std::move(level);}
 
@@ -87,6 +85,7 @@ public:
         }
 
         e->getGameWindow()->clear();
+        e->clearOnTopRenderer();
         ago->clearExceptPlayer();
         currentLevel = LevelParser::readFile(e->getNextLevelName());
         startGameLoop();
