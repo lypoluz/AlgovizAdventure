@@ -100,7 +100,7 @@ public:
         player->addComponent(playerInputController);
 
         // player script
-        auto* playerScript = new EntityScript(player, playerInputController, movement, attackAnimator);
+        auto* playerScript = new EntityScript(player, playerInputController, movement, attackAnimator, attacker);
         player->addComponent(playerScript);
     }
 
@@ -323,6 +323,11 @@ public:
 
         auto *ec = new EntityScript(enemy, asc, m, nullptr, attacker);
         enemy->addComponent(ec);
+    }
+
+
+    static void ui() {
+
     }
 };
 
