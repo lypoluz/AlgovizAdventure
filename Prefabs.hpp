@@ -37,6 +37,7 @@ public:
     }
 
     void player() {
+        e->reloadLevel(false);
         // create player instance
         auto* player = new GameObject("Player");
         ago->addAttackable(player);
@@ -87,7 +88,7 @@ public:
         player->addComponent(attacker);
 
         auto* health = new Health(player);
-        health->setHealth(50);
+        health->setHealth(30);
         player->addComponent(health);
 
         // movement
@@ -327,7 +328,7 @@ public:
 
 
     static void ui() {
-
+        auto* ui = new GameObject("UI");
     }
 };
 
