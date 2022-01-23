@@ -51,7 +51,7 @@ public:
         config.levelBorder = cp.stringToBoolOrDefault("levelBorder", config.levelBorder);
         config.displayFps = cp.stringToBoolOrDefault("displayFps", config.displayFps);
         config.pathFinderPaths = cp.stringToBoolOrDefault("pathFinderPaths", config.pathFinderPaths);
-        startLevelPath = cp.stringToStringOrDefault("startLevelPath", "test_01.level");
+        startLevelPath = cp.stringToStringOrDefault("startLevel", "test_01.level");
     }
 
 
