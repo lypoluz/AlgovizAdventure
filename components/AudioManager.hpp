@@ -14,8 +14,11 @@ public:
 
     void onStart() override {
         std::string levelName = Engine::getInstance()->getCurrentLevel().name;
-        if(levelName == "")
-            AudioPlayer::play("audioName");
+        if(levelName == "start.level") {
+            AudioPlayer::play("start.mp3");
+        }else if (levelName == "01.level"){
+            AudioPlayer::play("01.mp3");
+        }
     }
 
 };
