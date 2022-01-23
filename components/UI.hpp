@@ -17,7 +17,7 @@ class UI : public GameComponent {
 public:
     UI (ObjectStructure* os) : GameComponent(os) {
         int wfsf = Engine::getInstance()->getConfig()->windowFrameSizeFactor;
-        window = new AlgoWrapper::Window(112, 480, wfsf, wfsf, "UI");
+        window = new AlgoWrapper::Window(120, 480, wfsf/4, wfsf, "UI");
     }
 
     void setLifeRenderer(SpriteRenderer* sr, int i) {

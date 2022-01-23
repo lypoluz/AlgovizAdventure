@@ -376,8 +376,8 @@ public:
 
         auto* back = new SpriteRenderer(ui, uiWindow);
         back->setSprite("sprites/uiBack.svg");
-        back->setSize({128, 480});
-        back->setPositionOffset({64, 240})
+        back->setSize({112, 480});
+        back->setPositionOffset({64, 240});
         ui->addComponent(back);
 
         auto* sr1 = new SpriteRenderer(ui, uiWindow);
