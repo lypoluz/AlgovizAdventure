@@ -1,4 +1,8 @@
 
+=============================================================================================
+==Deprecated, aber ich hab keine lust das jetzt alles neu zu schreiben. Frag einfach Tobias==
+=============================================================================================
+
 Die verschiedenen Teile des Levels werden durch Tags festgelegt. Nach einem Tag kommt eine neue Zeile
 Alle level sind 30 mal 30 blöcke groß
 
