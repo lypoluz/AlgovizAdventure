@@ -90,6 +90,7 @@ private:
 
     void persistentGameObjects() {
         Prefabs::create().audioManager();
+        Prefabs::create().ui();
     }
 
     void newLevelGameObjects() {

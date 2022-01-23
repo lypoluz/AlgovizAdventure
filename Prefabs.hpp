@@ -349,10 +349,6 @@ public:
         blocker->addComponent(renderer);
     }
 
-     void ui() {
-        auto* ui = new GameObject("UI");
-    }
-
 
      void audioManager() {
         auto* am = new GameObject("AudioManager");
@@ -363,6 +359,50 @@ public:
 
         auto* amc = new AudioManager(am);
         am->addComponent(amc);
+    }
+
+
+    void ui() {
+        auto* ui = new GameObject("UI");
+        ago->addPersistent(ui);
+
+        auto* pos = new Position(ui);
+        ui->addPosition(pos);
+
+        auto* uic = new UI(ui);
+        ui->addComponent(uic);
+        AlgoWrapper::Window* uiWindow = uic->getWindow();
+        e->setUI(uic);
+
+        auto* back = new SpriteRenderer(ui, uiWindow);
+        back->setSprite("sprites/uiBack.svg");
+        back->setSize({112, 480});
+        ui->addComponent(back);
+
+        SpriteRenderer* srs[4];
+        for (int i = 0; i < 4; ++i) {
+            auto* sr = new SpriteRenderer(ui, uiWindow);
+            sr->setSprite("sprites/player/player_down.svg");
+            sr->setSize({16, 16});
+            switch (i) {
+                case 0: sr->setPositionOffset({3.6,2.8});
+                case 1: sr->setPositionOffset({4.8,2.7});
+                case 2: sr->setPositionOffset({5.5,1.7});
+                case 3: sr->setPositionOffset({5.7,0.4});
+            }
+            ui->addComponent(sr);
+        }
+        uic->setLifeRenderer(srs);
+
+        auto* hd = new SpriteRenderer(ui, uiWindow);
+        hd->setSprite("sprites/HolyDoc.svg");
+        hd->setSize({32,32});
+        hd->setPositionOffset({1.9,2})
+        hd->hide();
+        ui->addComponent(hd);
+        uic->setHolyRender(hd);
+
+
     }
 };
 

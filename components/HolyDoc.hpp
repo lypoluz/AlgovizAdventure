@@ -6,6 +6,7 @@
 #include "../engine/GameComponent.hpp"
 #include "abstract/Collider.hpp"
 #include "../engine/Engine.hpp"
+#include "UI.hpp"
 
 class HolyDoc : public GameComponent {
 
@@ -20,6 +21,7 @@ public:
         if(playerCollider->collision()) {
             Engine::getInstance()->HOLYDOCUMENTATION();
             Engine::getInstance()->getAGO()->remove((GameObject*)gameObject);
+            ((UI*)Engine::getInstance()->getUI())->setHoly();
         }
     }
 };

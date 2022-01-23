@@ -7,6 +7,8 @@
 
 #include "../engine/GameComponent.hpp"
 #include "../engine/Engine.hpp"
+#include "UI.hpp"
+
 
 class Health : public GameComponent {
 
@@ -17,7 +19,13 @@ public:
 
     std::string getName() override {return "Health";}
 
+    void onStart() override {
+        updateUI();
+    }
+
+
     void setHealth(int newHealth) {
+        updateUI();
         health = newHealth;
         if (health <= 0) {
             if(gameObject -> getName() == "Player") {
@@ -27,6 +35,11 @@ public:
                 Engine::getInstance()->getAGO()->remove((GameObject*) gameObject);
             }
         }
+    }
+
+    void updateUI() {
+        if(gameObject -> getName() == "Player")
+            ((UI*)Engine::getInstance()->getUI())->setLives(health/4);
     }
 
     void reduceHealth(int h) {
