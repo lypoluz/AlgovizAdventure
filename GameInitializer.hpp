@@ -6,7 +6,6 @@
 #include <map>
 #include "engine/ActiveGameObjects.hpp"
 #include "AlgoWrapper.hpp"
-#include "GameLoop.hpp"
 #include "engine/GTime.hpp"
 #include "engine/Engine.hpp"
 #include "ConfigParser.hpp"
@@ -14,6 +13,7 @@
 #include "levelSystem/LevelParser.hpp"
 #include "Logger.hpp"
 #include "Prefabs.hpp"
+#include "LevelBuilder.hpp"
 
 class GameInitializer {
 
