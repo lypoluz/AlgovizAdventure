@@ -15,7 +15,7 @@ public:
     std::vector<GameObject *> getActive() {return activeObjects;}
 
     void addAttackable(GameObject* obj) { add(obj); attackables.push_back(obj);}
-    std::vector<GameObject *> getAttackavbles() {return attackables;}
+    std::vector<GameObject *> getAttackables() {return attackables;}
 
     void remove(GameObject* obj) {
 
