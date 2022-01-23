@@ -39,7 +39,7 @@ public:
     void player() {
         // create player instance
         auto* player = new GameObject("Player");
-        ago->add(player);
+        ago->addAttackable(player);
         e->setPlayer(player);
 
         // create position component
@@ -81,6 +81,14 @@ public:
                 "sprites/player/sword_attack3.svg");
         attackAnimator->setAttackTime(.3);
         player->addComponent(attackAnimator);
+
+        auto* attacker = new Attacker(player);
+        attacker->setDamage(20);
+        player->addComponent(attacker);
+
+        auto* health = new Health(player);
+        health->setHealth(50);
+        player->addComponent(health);
 
         // movement
         auto* movement = new Movement(player);
@@ -275,16 +283,19 @@ public:
 
     void ghost(int x, int y) {
         GameObject *enemy = new GameObject("TestEnemy");
-        ago->add(enemy);
+        ago->addAttackable(enemy);
+
         auto *position = new Position(enemy);
         position->moveTo(x, y);
         enemy->addPosition(position);
+
         auto *sr = new SpriteRenderer(enemy, window);
         sr->setSprite("sprites/enemies/ghost.png");
         sr->setSize({16, 16});
         sr->forceToFront();
         enemy->addComponent(sr);
         e->addOnTopRenderer((ObjectStructure*) sr);
+
         auto *pr = new PathRenderer(enemy, window);
         if(Engine::getInstance()->getConfig()->pathFinderPaths) {
             pr->setWidth(4);
@@ -293,12 +304,24 @@ public:
             enemy->addComponent(pr);
             e->addOnTopRenderer((ObjectStructure*) pr);
         } else pr = nullptr;
+
         auto *m = new Movement(enemy);
         m->setSpeed(1.5);
         enemy->addComponent(m);
+
         auto *asc = new AStartController(enemy, pr);
         enemy->addComponent(asc);
-        auto *ec = new EntityScript(enemy, asc, m, nullptr);
+
+        auto* attacker = new Attacker(enemy);
+        attacker->setAttackCooldown(1);
+        attacker->setDamage(10);
+        enemy->addComponent(attacker);
+
+        auto* health = new Health(enemy);
+        health->setHealth(15);
+        enemy->addComponent(health);
+
+        auto *ec = new EntityScript(enemy, asc, m, nullptr, attacker);
         enemy->addComponent(ec);
     }
 };

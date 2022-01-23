@@ -10,27 +10,21 @@
 #include "Movement.hpp"
 #include "AttackAnimator.hpp"
 #include "../pathing/PathFinder.hpp"
+#include "Attacker.hpp"
 
 
 class EntityScript : public GameComponent {
     EntityController* inputController;
     Movement* movement;
     AttackAnimator* attackAnimator;
-    /*Inventory* inventory;
-    float pickUpRadius = 1;
-
-    Item* lookForItem() {
-        // check if an item is in range
-        // return that item
-        return nullptr;
-    }*/
+    Attacker* attacker;
 
 public:
-    EntityScript(ObjectStructure* os, EntityController* ec, Movement* m, AttackAnimator* aa/*, Inventory* i*/) : GameComponent(os) {
+    EntityScript(ObjectStructure* os, EntityController* ec, Movement* m, AttackAnimator* aa, Attacker* a) : GameComponent(os) {
         inputController = ec;
         movement = m;
         attackAnimator = aa;
-        //inventory = i;
+        attacker = a;
     }
 
     void update() override {
@@ -40,25 +34,11 @@ public:
 
         // attack
         if (inputController->isAttacking()) {
-            if (attackAnimator != nullptr) {
+            if (attackAnimator != nullptr)
                 attackAnimator->startAnimation();
-
-            }
-
-            std::vector<GameObject*> gos = Engine::getInstance()->getAGO()->getActive();
-            for (GameObject* go : gos) {
-
-            }
-
-
+            if (attacker != nullptr)
+                attacker->attack();
         }
-
-        /*/ pickup
-        if(inputController->isPickingUp()) {
-            Item* item = lookForItem();
-            if(item)
-                inventory->pickUpItem(item);
-        }*/
     }
 
 
