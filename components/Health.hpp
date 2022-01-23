@@ -13,8 +13,9 @@ class Health : public GameComponent {
     int health;
 
 public:
-    explicit Health(ObjectStructure* os) : GameComponent(os) {
-    }
+    explicit Health(ObjectStructure* os) : GameComponent(os) {}
+
+    std::string getName() override {return "Health";}
 
     void setHealth(int newHealth) {
         health = newHealth;
