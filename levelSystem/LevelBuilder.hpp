@@ -50,27 +50,27 @@ public:
                                 }
                             }
                         }
-                        Prefabs::create().Wall(x,y,level.theme,wallSurroundings);
+                        Prefabs::create().wall(x, y, level.theme, wallSurroundings);
                         break;
 
                     case '1':
                         //place floor (to back)
-                        Prefabs::create().Floor(x, y, level.theme);
+                        Prefabs::create().floor(x, y, level.theme);
                         break;
 
                     case 'B':
                         //place black floor
-                        Prefabs::create().Corridor(x, y, level.theme);
+                        Prefabs::create().corridor(x, y, level.theme);
                         break;
 
                     case 'C':
                         // crystal code
-                        Prefabs::create().Floor(x, y, level.theme);
+                        Prefabs::create().floor(x, y, level.theme);
                         break;
 
                     case 'S':
                         // player code
-                        Prefabs::create().Floor(x, y, level.theme);
+                        Prefabs::create().floor(x, y, level.theme);
                         secureSpawnX = x;
                         secureSpawnY = y;
                         if (newPlayerLocation == "noLink") {
@@ -82,8 +82,8 @@ public:
 
                     case 'E':
                         // Test Enemy
-                        Prefabs::create().Floor(x, y, level.theme);
-                        Prefabs::create().Ghost(x,y);
+                        Prefabs::create().floor(x, y, level.theme);
+                        Prefabs::create().ghost(x, y);
                         break;
 
                     default:
@@ -96,16 +96,16 @@ public:
                             //roomLink code
                             // roomlink [targetLevel] [linkPoint] -> targetLevel
                             // roomlink [targetLevel] [linkPoint] -> [targetLevel] [linkPoint]-> [linkPoint]
-                            Prefabs::create().Floor(x,y, level.theme);
+                            Prefabs::create().floor(x, y, level.theme);
                             std::string roomlinkInfo = level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1);
                             std::string targetLevel = roomlinkInfo.substr(0, roomlinkInfo.find(' '));
                             std::string linkPoint = roomlinkInfo.substr(roomlinkInfo.find(' ')+1, roomlinkInfo.length()-1);
-                            Prefabs::create().RoomLink(x, y, targetLevel, linkPoint);
+                            Prefabs::create().roomLink(x, y, targetLevel, linkPoint);
                         }else if (symbol == "linkPoint") {
                             //linkPoint code
                             //get linkPoint from new levelBuilder parameter check if they're equal then place player
                             //player code
-                            Prefabs::create().Floor(x,y, level.theme);
+                            Prefabs::create().floor(x, y, level.theme);
                             if (newPlayerLocation == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
                                 ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
@@ -113,15 +113,15 @@ public:
                             }
                         }else if (symbol == "enemies") {
                             //enemies code
-                            Prefabs::create().Floor(x,y, level.theme);
+                            Prefabs::create().floor(x, y, level.theme);
                         }else if (symbol == "item") {
                             //item code
-                            Prefabs::create().Floor(x,y, level.theme);
+                            Prefabs::create().floor(x, y, level.theme);
                             if("blocker" == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 // blocker code
                             }else if("holy_documentation" == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 // holy documentation code
-                                Prefabs::create().HolyDocumentation(x, y);
+                                Prefabs::create().holyDocumentation(x, y);
                             }
                         }
 

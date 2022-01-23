@@ -35,7 +35,7 @@ public:
         config = e->getConfig();
     }
 
-    void Player() {
+    void player() {
         // create player instance
         auto* player = new GameObject("Player");
         ago->add(player);
@@ -94,7 +94,7 @@ public:
     }
 
 
-    void Wall(int x, int y, const std::string& theme, bool wallSurroundings[3][3]) {
+    void wall(int x, int y, const std::string& theme, bool wallSurroundings[3][3]) {
         auto* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
         ago->add(wall);
 
@@ -172,7 +172,7 @@ public:
     }
 
 
-    void Floor(int x, int y, const std::string& theme) {
+    void floor(int x, int y, const std::string& theme) {
         auto* floor = new GameObject("floor" + std::to_string(x) + std::to_string(y));
         ago->add(floor);
 
@@ -207,7 +207,7 @@ public:
     }
 
 
-    void RoomLink(int x, int y, std::string targetLevel, std::string targetPoint) {
+    void roomLink(int x, int y, std::string targetLevel, std::string targetPoint) {
         auto* roomLink = new GameObject("RoomLink_" + std::to_string(x) + " " + std::to_string(y));
         ago->add(roomLink);
 
@@ -225,7 +225,7 @@ public:
     }
 
 
-    void HolyDocumentation(int x, int y) {
+    void holyDocumentation(int x, int y) {
         auto* holy = new GameObject("holy");
         ago->add(holy);
 
@@ -239,7 +239,7 @@ public:
     }
 
 
-    void Corridor(int x, int y, const std::string& theme) {
+    void corridor(int x, int y, const std::string& theme) {
         auto* block = new GameObject("block" + std::to_string(x) + std::to_string(y));
         ago->add(block);
 
@@ -263,7 +263,7 @@ public:
     }
 
 
-    void Ghost(int x, int y) {
+    void ghost(int x, int y) {
         GameObject *enemy = new GameObject("TestEnemy");
         ago->add(enemy);
         auto *position = new Position(enemy);
