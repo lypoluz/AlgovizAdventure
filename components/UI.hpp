@@ -15,7 +15,10 @@ class UI : public GameComponent {
 
 
 public:
-    UI (ObjectStructure* os) : GameComponent(os) {}
+    UI (ObjectStructure* os) : GameComponent(os) {
+        int wfsf = Engine::getInstance()->getConfig()->windowFrameSizeFactor;
+        window = AlgoWrapper::Window(112, 480, wfsf, wfsf, "UI");
+    }
 
     void setLifeRenderer(SpriteRenderer* sr[4]) {
         for (auto & i : spriteRenderer)
@@ -34,11 +37,6 @@ public:
 
     void setHoly() {
         holyRenderer->show();
-    }
-
-    void createNewWindow() {
-        int wfsf = Engine::getInstance()->getConfig()->windowFrameSizeFactor;
-        window = AlgoWrapper::Window(112, 480, wfsf, wfsf, "UI");
     }
 
     AlgoWrapper::Window* getWindow() {return &window;}
