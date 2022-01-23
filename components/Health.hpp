@@ -21,7 +21,12 @@ public:
         health = newHealth;
         if (health <= 0) {
             if(gameObject -> getName() == "Player") {
-                Engine::getInstance()->reloadLevel();
+                if(Engine::getInstance()->getCurrentLevel().name == "end.level"){
+                    AlgoWrapper::exitFullscreen();
+                    AlgoWrapper::compress();
+                }else{
+                    Engine::getInstance()->reloadLevel();
+                }
             }
             else{
                 Engine::getInstance()->getAGO()->remove((GameObject*) gameObject);
