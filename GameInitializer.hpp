@@ -76,6 +76,7 @@ public:
             AlgoWrapper::expand();
         if(config.fullscreen)
             AlgoWrapper::enterFullscreen();
+        AlgoWrapper::focusGame();
         AlgoWrapper::clear();
         Logger::logln("window creation");
         window = AlgoWrapper::Window(config.windowSize,
