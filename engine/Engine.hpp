@@ -23,6 +23,7 @@ class Engine {
     std::string nextLevelName;
     std::string linkPointName;
     bool levelReload{};
+    bool holyDoc{};
     // Audio* audio;
 
     Engine() = default;
@@ -61,6 +62,9 @@ public:
     void addOnTopRenderer(ObjectStructure* renderer) {onTopRenderer.push_back(renderer);}
     void clearOnTopRenderer() {onTopRenderer.clear();}
     std::vector<ObjectStructure*> getOnTopRenderer() {return onTopRenderer;}
+
+    void HOLYDOCUMENTATION() {holyDoc = true;}
+    bool hasHOLYDOCUMENTATION() {return holyDoc;}
 
 };
 
