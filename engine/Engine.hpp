@@ -15,6 +15,7 @@
 class Engine {
     GTime* gTime{};
     ObjectStructure* player{};
+    ObjectStructure* ui{};
     std::vector<ObjectStructure*> onTopRenderer{};
     ActiveGameObjects* ago{};
     AlgoWrapper::Window* gameWindow{};
@@ -39,6 +40,9 @@ public:
 
     void setPlayer(ObjectStructure* p) {player = p;}
     ObjectStructure* getPlayer() {return player;}
+
+    void setUI(ObjectStructure* u) {ui = u;}
+    ObjectStructure* getUI() {return ui;}
 
     void setAGO(ActiveGameObjects* a) {ago = a;}
     ActiveGameObjects* getAGO() {return ago;}
