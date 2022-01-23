@@ -8,7 +8,7 @@ a roomlink 01.level linkPointRight
 b linkPoint linkPointLeft
 c roomlink 03.level linkPointLeft
 d linkPoint linkPointRight
-e enemy enemy01
+e enemy ghostBlue
 L:
 ##############################
 ##############################

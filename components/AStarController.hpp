@@ -54,9 +54,7 @@ public:
         return false;
     }
 
-    bool isPickingUp() override {
-        return false;
-    }
+
 };
 
 

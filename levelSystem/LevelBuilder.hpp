@@ -155,6 +155,18 @@ class LevelBuilder{
         floor->addComponent(renderer);
     }
 
+    static void createHolyDoc(int x, int y, ActiveGameObjects* ago, AlgoWrapper::Window* window){
+        auto* holy = new GameObject("holy");
+        ago->add(holy);
+
+        auto* position = new Position(holy);
+        position->moveTo(x, y);
+        holy->addPosition(position);
+        auto* renderer = new SpriteRenderer(holy, window);
+        renderer->setSize({16,16});
+        renderer->setSprite("sprites/HolyDoc.svg");
+    }
+
     static void placeCorridor(int x, int y, const std::string& theme, ActiveGameObjects* ago, AlgoWrapper::Window* window){
         auto* block = new GameObject("block" + std::to_string(x) + std::to_string(y));
         ago->add(block);
@@ -231,14 +243,14 @@ public:
 
                     case 'S':
                         // player code
+                        placeFloor(x, y, level.theme, ago, window);
+                        secureSpawnX = x;
+                        secureSpawnY = y;
                         if (newPlayerLocation == "noLink") {
                             Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
                             ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
                             secureSpawn = false;
                         }
-                        placeFloor(x, y, level.theme, ago, window);
-                        secureSpawnX = x;
-                        secureSpawnY = y;
                         break;
 
                     case 'E':
@@ -284,32 +296,33 @@ public:
                             //roomLink code
                             // roomlink [targetLevel] [linkPoint] -> targetLevel
                             // roomlink [targetLevel] [linkPoint] -> [targetLevel] [linkPoint]-> [linkPoint]
+                            placeFloor(x,y, level.theme, ago, window);
                             std::string roomlinkInfo = level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1);
                             std::string targetLevel = roomlinkInfo.substr(0, roomlinkInfo.find(' '));
                             std::string linkPoint = roomlinkInfo.substr(roomlinkInfo.find(' ')+1, roomlinkInfo.length()-1);
                             createRoomLink(x, y, targetLevel, linkPoint, ago);
-                            placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "linkPoint") {
                             //linkPoint code
                             //get linkPoint from new levelBuilder parameter check if they're equal then place player
                             //player code
+                            placeFloor(x,y, level.theme, ago, window);
                             if (newPlayerLocation == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 Logger::logln("[LB] setting player to " + Vector2(x, y).toString());
                                 ((GameObject *) (Engine::getInstance()->getPlayer()))->position->moveTo(x, y);
                                 secureSpawn = false;
                             }
-                            placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "enemy") {
                             //enemy code
                             placeFloor(x,y, level.theme, ago, window);
                         }else if (symbol == "item") {
                             //item code
+                            placeFloor(x,y, level.theme, ago, window);
                             if("blocker" == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 // blocker code
                             }else if("holy_documentation" == level.specialSymbols[levelArray[x][y]].substr(level.specialSymbols[levelArray[x][y]].find(' ')+1, level.specialSymbols[levelArray[x][y]].length()-1)){
                                 // holy documentation code
+                                createHolyDoc(x, y, ago, window);
                             }
-                            placeFloor(x,y, level.theme, ago, window);
                         }
 
                         break;
