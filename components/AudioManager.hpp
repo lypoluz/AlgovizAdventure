@@ -9,7 +9,8 @@
 
 class AudioManager : public GameComponent {
     bool alreadyPlayedStart = false;
-    bool alreadyPlayed01= false;
+    bool alreadyPlayed01 = false;
+    bool alreadyPlayedEnd = false;
     float audioLevel = 1;
 
 public:
@@ -25,7 +26,12 @@ public:
         }else if (levelName == "01.level" && !alreadyPlayed01){
             AudioPlayer::play("01.mp3", audioLevel);
             alreadyPlayed01 = true;
-        }
+        }else if (levelName == "end.level" && !alreadyPlayedEnd){
+            AudioPlayer::play("end.mp3", audioLevel);
+            alreadyPlayedEnd = false;
+        }/*else if (levelName == "end.level" && alreadyPlayedEnd){
+            AudioPlayer::play("egg.mp3",audioLevel);
+        }*/
     }
 
 };
