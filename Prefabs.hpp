@@ -371,6 +371,7 @@ public:
 
         auto* uic = new UI(ui);
         ui->addComponent(uic);
+        uic->createNewWindow();
         AlgoWrapper::Window* uiWindow = uic->getWindow();
         e->setUI(uic);
 
