@@ -310,7 +310,7 @@ public:
         m->setSpeed(1.5);
         enemy->addComponent(m);
 
-        auto *asc = new AStartController(enemy, pr);
+        auto *asc = new AStarController(enemy, pr);
         enemy->addComponent(asc);
 
         auto* attacker = new Attacker(enemy);

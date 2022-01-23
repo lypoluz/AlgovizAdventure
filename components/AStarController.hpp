@@ -10,7 +10,7 @@
 #include "../pathing/PathFinder.hpp"
 #include "../engine/Engine.hpp"
 
-class AStartController : public EntityController {
+class AStarController : public EntityController {
 
     PathRenderer* pathRenderer;
     Position* position;
@@ -19,7 +19,7 @@ class AStartController : public EntityController {
     Level level;
 
 public:
-    AStartController(ObjectStructure* os, PathRenderer* pr= nullptr) : EntityController(os) {
+    AStarController(ObjectStructure* os, PathRenderer* pr= nullptr) : EntityController(os) {
         pathRenderer = pr;
     }
 
