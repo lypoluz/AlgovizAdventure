@@ -90,7 +90,7 @@ public:
 
     void createPlayerInstance() {
         Logger::logln("create player");
-        Prefabs::createPlayer();
+        Prefabs::create().Player();
 
     }
 

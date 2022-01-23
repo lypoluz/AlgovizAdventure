@@ -17,20 +17,25 @@
 #include "components/AStarController.hpp"
 
 class Prefabs {
-    static Engine* e;
-    static ActiveGameObjects* ago;
-    static AlgoWrapper::Window* window;
-    static Config* config;
+    Engine* e;
+    ActiveGameObjects* ago;
+    AlgoWrapper::Window* window;
+    Config* config;
 
 public:
-    static void setEngine(Engine* engine) {
+    static Prefabs& create() {
+        static Prefabs instance;
+        return instance;
+    }
+
+    void setEngine(Engine* engine) {
         e = engine;
         ago = e->getAGO();
         window = e->getGameWindow();
         config = e->getConfig();
     }
 
-    static void createPlayer() {
+    void Player() {
         // create player instance
         auto* player = new GameObject("Player");
         ago->add(player);
@@ -89,7 +94,7 @@ public:
     }
 
 
-    static void createWall(int x, int y, const std::string& theme, bool wallSurroundings[3][3]) {
+    void Wall(int x, int y, const std::string& theme, bool wallSurroundings[3][3]) {
         auto* wall = new GameObject("wall" + std::to_string(x) + std::to_string(y));
         ago->add(wall);
 
@@ -167,7 +172,7 @@ public:
     }
 
 
-    static void createFloor(int x, int y, const std::string& theme) {
+    void Floor(int x, int y, const std::string& theme) {
         auto* floor = new GameObject("floor" + std::to_string(x) + std::to_string(y));
         ago->add(floor);
 
@@ -202,7 +207,7 @@ public:
     }
 
 
-    static void createRoomLink(int x, int y, std::string targetLevel, std::string targetPoint) {
+    void RoomLink(int x, int y, std::string targetLevel, std::string targetPoint) {
         auto* roomLink = new GameObject("RoomLink_" + std::to_string(x) + " " + std::to_string(y));
         ago->add(roomLink);
 
@@ -220,7 +225,7 @@ public:
     }
 
 
-    static void createHolyDocumentation(int x, int y) {
+    void HolyDocumentation(int x, int y) {
         auto* holy = new GameObject("holy");
         ago->add(holy);
 
@@ -234,7 +239,7 @@ public:
     }
 
 
-    static void createCorridor(int x, int y, const std::string& theme) {
+    void Corridor(int x, int y, const std::string& theme) {
         auto* block = new GameObject("block" + std::to_string(x) + std::to_string(y));
         ago->add(block);
 
@@ -258,7 +263,7 @@ public:
     }
 
 
-    static void createGhost(int x, int y) {
+    void Ghost(int x, int y) {
         GameObject *enemy = new GameObject("TestEnemy");
         ago->add(enemy);
         auto *position = new Position(enemy);
