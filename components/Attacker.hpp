@@ -27,6 +27,7 @@ public:
         e = Engine::getInstance();
         gTime = e->getGTime();
         position = ((GameObject*) gameObject)->position;
+        ago = e->getAGO();
     }
 
     void update() override {
