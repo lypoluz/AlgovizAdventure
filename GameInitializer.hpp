@@ -165,7 +165,7 @@ private:
         engine->clearOnTopRenderer();
         ago->clearAll();
         engine->setCurrentLevel(LevelParser::readFile(engine->getNextLevelName()));
-        createSomeGameComponents();
+        newLevelGameObjects();
         startGameLoop();
     }
 
