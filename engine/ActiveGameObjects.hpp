@@ -9,6 +9,7 @@
 class ActiveGameObjects {
     std::vector<GameObject *> activeObjects;
     std::vector<GameObject *> attackables;
+    std::vector<GameObject *> persistent;
 
 public:
     void add(GameObject* obj) {activeObjects.push_back(obj);}
@@ -17,8 +18,10 @@ public:
     void addAttackable(GameObject* obj) { add(obj); attackables.push_back(obj);}
     std::vector<GameObject *> getAttackables() {return attackables;}
 
-    void remove(GameObject* obj) {
+    void addPersistent(GameObject* obj) { persistent.push_back(obj);}
+    std::vector<GameObject *> getPersistent() {return persistent;}
 
+    void remove(GameObject* obj) {
         for(int i=0; i<activeObjects.size(); ++i) {
             if(activeObjects[i] == obj) {
                 activeObjects[i]->onDestroy();
