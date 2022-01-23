@@ -19,9 +19,6 @@ class GameInitializer {
 
     ActiveGameObjects* ago{};
     AlgoWrapper::Window window{};
-    GameObject* player{};
-    SpriteRenderer* pRenderer;
-    SpriteRenderer* aRenderer;
     GTime* gTime{};
     Config config;
     std::string startLevelPath;
@@ -48,11 +45,6 @@ public:
         config.displayFps = cp.stringToBoolOrDefault("displayFps", config.displayFps);
         config.pathFinderPaths = cp.stringToBoolOrDefault("pathFinderPaths", config.pathFinderPaths);
         startLevelPath = cp.stringToStringOrDefault("startLevel", "test_01.level");
-
-        engine = Engine::getInstance();
-        engine->setConfig(&config);
-        engine->setLinkPointName("");
-        Prefabs::setEngine(engine);
     }
 
 
@@ -65,8 +57,15 @@ public:
     }
 
     void createReferences() {
+        engine = Engine::getInstance();
+        engine->setConfig(&config);
+        engine->setLinkPointName("");
+
+        Prefabs::setEngine(engine);
+
         ago = new ActiveGameObjects();
         engine->setAGO(ago);
+
         gTime = new GTime();
         engine->setGTime(gTime);
         gTime->setTimeFactor();
