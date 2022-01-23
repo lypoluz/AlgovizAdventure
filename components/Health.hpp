@@ -29,7 +29,12 @@ public:
         }
     }
 
-    void reduceHealth(int h) { setHealth(health - h);}
+    void reduceHealth(int h) {
+        if (health < 40) {
+            setHealth(health - h);
+        }
+    }
+
 };
 
 #endif //ALGOVIZADVENTURE_HEALTH_HPP
