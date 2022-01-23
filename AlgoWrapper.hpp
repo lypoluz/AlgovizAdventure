@@ -20,6 +20,8 @@ public:
     static void compress() {JavaScript::run("compressAlgoViz();");}
     static void enterFullscreen() {JavaScript::run("enterFullscreen();");}
     static void exitFullscreen() {JavaScript::run("exitFullscreen();");}
+    static void focusGame() {JavaScript::run("focusGame()");}
+    static void javaScript(const std::string& js) {JavaScript::run(js);}
 
     // wrapper for SVG
     class Window {

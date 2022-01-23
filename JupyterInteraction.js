@@ -1,14 +1,26 @@
 function expandAlgoViz() {
-    console.log("expandAlgoViz yeah");
     const node = document.getElementsByClassName('fa-expand')[0];
     mouseEventOn(node, "click");
 }
 
 function compressAlgoViz() {
-    console.log("compressAlgoViz yeah");
     const node = document.getElementsByClassName('fa-compress')[0];
     mouseEventOn(node, "click");
 }
+
+function focusGame() {
+    const node = document.getElementById('_0');
+    mouseEventOn(node, "click");
+}
+
+function enterFullscreen() {
+    document.head.requestFullscreen();
+}
+
+function exitFullscreen() {
+    document.exitFullscreen();
+}
+
 
 function mouseEventOn(node, type="click") {
     const evt = new MouseEvent(type, {
@@ -17,14 +29,4 @@ function mouseEventOn(node, type="click") {
         cancelable: true,
     });
     node.dispatchEvent(evt);
-}
-
-function enterFullscreen() {
-    console.log("enterFullscreen yeah");
-    document.head.requestFullscreen();
-}
-
-function exitFullscreen() {
-    console.log("exitFullscreen yeah");
-    document.exitFullscreen();
 }
